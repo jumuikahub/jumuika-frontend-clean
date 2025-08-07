@@ -14,18 +14,16 @@ export function Navbar() {
   return (
     <nav className="border-b bg-background shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Brand */}
         <Link href="/" className="text-xl font-bold text-foreground">
           Jumuika Hub KE
         </Link>
 
-        {/* Links */}
-        <div className="flex space-x-6 text-sm">
+        <div className="flex items-center gap-6 text-sm">
           <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
           <Link href="/institutions" className={linkClass("/institutions")}>
-            For Colleges & Schools
+            For Colleges &amp; Schools
           </Link>
           <Link href="/internlink" className={linkClass("/internlink")}>
             InternLink
