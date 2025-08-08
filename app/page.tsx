@@ -1,29 +1,33 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 text-center">
-      <h1 className="text-4xl font-bold mb-4">Welcome to Jumuika Hub KE</h1>
-      <p className="mb-6 max-w-xl">
-        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.
-      </p>
+    <main className="min-h-screen flex flex-col justify-center items-center px-4 text-center">
+      <section className="max-w-3xl">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white mb-6">
+          Welcome to Jumuika Hub KE
+        </h1>
+        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly.
+          Real-time commerce. No apps needed.
+        </p>
 
-      <div className="flex flex-col sm:flex-row gap-4">
-        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Buy%20Items%20via%20Jumuika">
-          <Button className="text-lg px-6 py-3">
-            Buy Items via WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
+        <div className="flex justify-center">
+          <Button
+            asChild
+            className="text-base px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all"
+          >
+            <a
+              href="https://wa.me/254104250912?text=Hello%2C%20I%20would%20like%20to%20book%20services%20via%20Jumuika%20Hub%20KE."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book Services via WhatsApp <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
           </Button>
-        </Link>
-        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Book%20a%20Service%20on%20Jumuika">
-          <Button variant="outline" className="text-lg px-6 py-3">
-            Book Services via WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </Link>
-      </div>
+        </div>
+      </section>
     </main>
-  );
+  )
 }
