@@ -1,38 +1,43 @@
-// components/Navbar.tsx
-"use client";
+'use client'
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
-export function Navbar() {
-  const pathname = usePathname();
-  const linkClass = (href: string) =>
-    `hover:text-primary transition ${
-      pathname === href ? "font-semibold text-primary" : "text-muted-foreground"
-    }`;
+export default function Navbar() {
+  const pathname = usePathname()
+
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/institutions', label: 'For Colleges & Schools' },
+    { href: '/internlink', label: 'InternLink' },
+    { href: '/blog', label: 'Blog' },
+  ]
 
   return (
-    <nav className="border-b bg-background shadow-sm">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <Link href="/" className="text-xl font-bold text-foreground">
+    <header className="w-full border-b shadow-sm bg-white dark:bg-black">
+      <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+        <Link href="/" className="text-xl font-bold text-black dark:text-white hover:opacity-90">
           Jumuika Hub KE
         </Link>
 
-        <div className="flex items-center gap-6 text-sm">
-          <Link href="/about" className={linkClass("/about")}>
-            About
-          </Link>
-          <Link href="/institutions" className={linkClass("/institutions")}>
-            For Colleges &amp; Schools
-          </Link>
-          <Link href="/internlink" className={linkClass("/internlink")}>
-            InternLink
-          </Link>
-          <Link href="/blog" className={linkClass("/blog")}>
-            Blog
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
+        <ul className="flex gap-6 text-sm font-medium text-gray-600 dark:text-gray-300">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={cn(
+                  pathname === item.href ? 'text-black dark:text-white underline underline-offset-4' : '',
+                  'hover:text-black dark:hover:text-white transition-colors'
+                )}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  )
 }
