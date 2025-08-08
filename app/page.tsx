@@ -1,41 +1,29 @@
-// app/page.tsx
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground px-6 py-10">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Jumuika Hub KE</h1>
-        <p className="text-muted-foreground mb-8">
-          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors,
-          institutions, and students seamlessly. Real-time commerce. No apps needed.
-        </p>
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 text-center">
+      <h1 className="text-4xl font-bold mb-4">Welcome to Jumuika Hub KE</h1>
+      <p className="mb-6 max-w-xl">
+        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.
+      </p>
 
-        <div className="flex flex-wrap gap-4">
-          <Button
-            as="a"
-            href="https://wa.me/254104250912?text=Hi%2C%20I%20want%20to%20buy%20via%20Jumuika%20Hub%20KE."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buy Items via WhatsApp
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Buy%20Items%20via%20Jumuika">
+          <Button className="text-lg px-6 py-3">
+            Buy Items via WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-
-          <Button
-            as="a"
-            href="https://wa.me/254104250912?text=Hi%2C%20I%20want%20to%20book%20a%20service%20via%20Jumuika%20Hub%20KE."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-600 hover:bg-green-700"
-          >
-            Book Services via WhatsApp
+        </Link>
+        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Book%20a%20Service%20on%20Jumuika">
+          <Button variant="outline" className="text-lg px-6 py-3">
+            Book Services via WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-
-          <Button as="a" href="/internlink" className="bg-gray-900 hover:bg-black">
-            Explore InternLink
-          </Button>
-        </div>
+        </Link>
       </div>
-    </div>
+    </main>
   );
 }
