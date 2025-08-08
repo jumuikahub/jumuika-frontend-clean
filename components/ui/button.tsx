@@ -4,26 +4,52 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  asChild?: boolean;
-}
+type CommonProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, asChild, ...props }, ref) => {
-    const Comp: any = asChild ? "span" : "button";
+// Use `as="a"` with `href` for links, or default <button> for actions.
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  CommonProps & { as?: "a"; href: string };
+
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  CommonProps & { as?: "button"; href?: never };
+
+export type ButtonProps = AnchorProps | NativeButtonProps;
+
+export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  ({ as = "button", className, children, ...rest }, ref) => {
+    const classes = cn(
+      "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium",
+      "bg-blue-600 text-white hover:bg-blue-700",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600",
+      "disabled:pointer-events-none disabled:opacity-60",
+      className
+    );
+
+    if (as === "a") {
+      const anchorProps = rest as AnchorProps;
+      return (
+        <a
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          className={classes}
+          {...anchorProps}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    const buttonProps = rest as NativeButtonProps;
     return (
-      <Comp
-        ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium",
-          "bg-primary text-primary-foreground hover:opacity-90",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-          "disabled:pointer-events-none disabled:opacity-60",
-          className
-        )}
-        {...props}
-      />
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        className={classes}
+        {...buttonProps}
+      >
+        {children}
+      </button>
     );
   }
 );
