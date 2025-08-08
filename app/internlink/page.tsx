@@ -1,32 +1,54 @@
 // app/internlink/page.tsx
-import Link from 'next/link'
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: 'InternLink Registration',
-  description: 'Student onboarding and weekly reporting portal for internship programs.',
-}
+  title: "InternLink – Intern Registration & Weekly Reports | Jumuika Hub KE",
+  description:
+    "Register as a student intern and submit weekly performance reports directly to your assigned supervisor via Jumuika's secure InternLink module.",
+  openGraph: {
+    title: "InternLink – Jumuika Hub KE",
+    description:
+      "Secure student onboarding and weekly report submissions via WhatsApp and web dashboard.",
+    url: "https://jumuikahub.com/internlink",
+    type: "website",
+  },
+};
 
-export default function InternLink() {
+export default function InternLinkPage() {
   return (
-    <div className="space-y-6 text-center">
-      <h1 className="text-3xl font-bold">InternLink Registration</h1>
-      <p className="text-base max-w-xl mx-auto">
-        Secure onboarding and weekly reporting for students under internship programs. Use the buttons below to complete onboarding and access your dashboard.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-        <Link
-          href="https://wa.me/254104250912?text=I%20want%20to%20register%20as%20an%20intern"
-          className="px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition text-sm font-semibold"
-        >
-          Start Registration via WhatsApp
-        </Link>
-        <Link
-          href="/manager"
-          className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition text-sm font-semibold"
-        >
-          Supervisor Dashboard
-        </Link>
+    <div className="min-h-screen bg-background text-foreground py-12 px-6">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-3">InternLink Registration</h1>
+        <p className="text-muted-foreground mb-6">
+          Secure onboarding and weekly reporting for students under internship programs.
+        </p>
+
+        <Card className="border">
+          <CardContent className="p-6 space-y-5">
+            <p>
+              Use the buttons below to complete onboarding and access your dashboard.
+              After onboarding, submit weekly reports to your assigned supervisor.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Button
+                as="a"
+                href="https://wa.me/254104250912?text=Hello%2C%20I%20would%20like%20to%20register%20as%20an%20intern%20via%20Jumuika%20Hub%20KE."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start Registration via WhatsApp
+              </Button>
+
+              <Button as="a" href="/manager" className="bg-gray-900 hover:bg-black">
+                Supervisor Dashboard
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
-  )
+  );
 }
