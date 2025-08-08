@@ -1,23 +1,27 @@
 // app/page.tsx
-import { Metadata } from "next";
+import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: "Jumuika Hub KE | WhatsApp-First Smart Toolkit",
-  description:
-    "Helping vendors, students, and institutions transact via WhatsApp.",
-};
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="min-h-screen py-12 px-4 md:px-8">
-      <div className="max-w-4xl mx-auto text-center space-y-4">
-        <h1 className="text-4xl font-bold">Welcome to Jumuika Hub KE</h1>
-        <p className="text-muted-foreground">
-          Jumuika Hub KE is a WhatsApp-first smart business toolkit that
-          connects vendors, institutions, and students seamlessly. Real-time
-          commerce. No apps needed.
-        </p>
+    <div className="space-y-6 text-center">
+      <h1 className="text-4xl font-bold">Welcome to Jumuika Hub KE</h1>
+      <p className="text-lg max-w-xl mx-auto">
+        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <Link
+          href="https://wa.me/254104250912?text=I%20want%20to%20buy%20items"
+          className="px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition text-sm font-semibold"
+        >
+          Buy Items via WhatsApp
+        </Link>
+        <Link
+          href="https://wa.me/254104250912?text=I%20want%20to%20book%20a%20service"
+          className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition text-sm font-semibold"
+        >
+          Book Services via WhatsApp
+        </Link>
       </div>
-    </main>
-  );
+    </div>
+  )
 }
