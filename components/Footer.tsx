@@ -1,18 +1,28 @@
-// components/Footer.tsx
 import Link from "next/link";
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="border-t">
-      <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-muted-foreground flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <p>© 2025 Jumuika Hub KE. All Rights Reserved.</p>
-        <nav className="flex items-center gap-4">
-          <Link href="/blog" className="hover:text-primary">Blog</Link>
-          <span>•</span>
-          <Link href="/terms" className="hover:text-primary">Terms &amp; Conditions</Link>
-          <span>•</span>
-          <Link href="/privacy" className="hover:text-primary">Privacy Policy</Link>
-        </nav>
+    <footer className="mt-16 border-t bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-6">
+        {/* Top row: policy/secondary links */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-600">
+          <Link href="/blog" className="hover:text-emerald-700">
+            Blog
+          </Link>
+          <span className="text-slate-400">•</span>
+          <Link href="/terms" className="hover:text-emerald-700">
+            Terms &amp; Conditions
+          </Link>
+          <span className="text-slate-400">•</span>
+          <Link href="/privacy" className="hover:text-emerald-700">
+            Privacy Policy
+          </Link>
+        </div>
+
+        {/* Bottom row: copyright */}
+        <p className="mt-3 text-center text-xs text-slate-500">
+          © {new Date().getFullYear()} Jumuika Hub KE. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

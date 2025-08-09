@@ -1,39 +1,38 @@
-// app/layout.tsx
-import './globals.css'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-export const metadata = {
-  title: 'Jumuika Hub KE',
-  description: 'WhatsApp-first smart business toolkit for vendors, institutions, and students',
-}
+export const metadata: Metadata = {
+  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
+  description:
+    "Connect vendors, institutions, and students seamlessly via WhatsApp. No apps needed.",
+  metadataBase:
+    new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://jumuika-frontend-clean.vercel.app"),
+  openGraph: {
+    title: "Jumuika Hub KE",
+    description:
+      "WhatsApp-first smart business toolkit for vendors, institutions and students.",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://jumuika-frontend-clean.vercel.app",
+    siteName: "Jumuika Hub KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jumuika Hub KE",
+    description:
+      "WhatsApp-first smart business toolkit for vendors, institutions and students.",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-        <header className="w-full border-b border-gray-200 dark:border-gray-700">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-xl font-bold hover:opacity-80">Jumuika Hub KE</Link>
-            <div className="space-x-4 text-sm font-medium">
-              <Link href="/about" className="hover:text-blue-600">About</Link>
-              <Link href="/institutions" className="hover:text-blue-600">For Colleges & Schools</Link>
-              <Link href="/internlink" className="hover:text-blue-600">InternLink</Link>
-              <Link href="/blog" className="hover:text-blue-600">Blog</Link>
-            </div>
-          </nav>
-        </header>
-        <main className="max-w-4xl mx-auto px-4 py-10">{children}</main>
-        <footer className="mt-16 text-center text-xs text-gray-500 border-t pt-6">
-          <p>© 2025 Jumuika Hub KE. All Rights Reserved.</p>
-          <div className="space-x-2 mt-1">
-            <Link href="/blog" className="hover:underline">Blog</Link>
-            <span>•</span>
-            <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
-            <span>•</span>
-            <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
-          </div>
-        </footer>
+    <html lang="en" className="scroll-smooth">
+      <body className="min-h-screen flex flex-col bg-white text-slate-800 antialiased">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }
