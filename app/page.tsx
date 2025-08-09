@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
   description:
     "Connect vendors, students, and institutions via WhatsApp in real-time. No apps needed.",
@@ -10,24 +10,23 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4 text-center">
-      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">
-        Welcome to <span className="text-primary">Jumuika Hub KE</span>
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center">
+      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        Welcome to Jumuika Hub KE
       </h1>
-
-      <p className="max-w-xl text-muted-foreground">
-        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors,
-        institutions, and students seamlessly. Real-time commerce. No apps needed.
+      <p className="mt-4 max-w-2xl text-gray-600">
+        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
+        vendors, institutions, and students seamlessly. Real-time commerce. No
+        apps needed.
       </p>
 
-      <div className="flex justify-center gap-3">
+      <div className="mt-8">
         <Link
-          href="https://wa.me/254700915610?text=I%20want%20to%20book%20services%20on%20Jumuika"
+          href="https://wa.me/254700915610?text=Hello%20Jumuika%20Hub%20KE"
           target="_blank"
-          rel="noopener noreferrer"
         >
-          <Button className="text-base px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all">
-            Book Services via WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
+          <Button size="lg" className="bg-green-600 hover:bg-green-700">
+            Buy Items via WhatsApp
           </Button>
         </Link>
       </div>
