@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Jumuika Hub KE",
-  description:
-    "Review the official terms of service for using Jumuika Hub KE. Read about our responsibilities, user agreements, and platform rules.",
-};
+"use client";
 
 export default function TermsPage() {
   return (
-    <main className="p-6 text-center">
-      <h1 className="text-3xl font-semibold mb-4">Terms & Conditions</h1>
-      <p className="text-gray-600">
-        By using Jumuika Hub KE, you agree to abide by our platform rules,
-        subscription model, and referral terms. Jumuika is not liable for
-        vendor-client interactions.
+    <main className="px-4 py-10 max-w-4xl mx-auto text-left">
+      <h1 className="text-4xl font-bold mb-4">Terms & Conditions</h1>
+      <p className="text-base text-muted-foreground">
+        By using Jumuika Hub KE, you agree to comply with our platform’s rules and responsibilities.
+        Users are responsible for their listings, payments, and communication. Jumuika only facilitates connections.
       </p>
     </main>
   );

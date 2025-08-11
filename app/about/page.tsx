@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About | Jumuika Hub KE",
-  description:
-    "Learn more about Jumuika Hub KE — a WhatsApp-first commerce engine powering businesses across Kenya.",
-};
+"use client";
 
 export default function AboutPage() {
   return (
-    <main className="p-6 text-center">
-      <h1 className="text-3xl font-semibold mb-4">About Jumuika Hub KE</h1>
-      <p className="text-gray-600">
-        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
-        buyers, sellers, institutions, and students seamlessly. We enable
-        real-time commerce without the need for apps.
+    <main className="px-4 py-10 max-w-4xl mx-auto text-center">
+      <h1 className="text-4xl font-bold mb-4">About Jumuika Hub KE</h1>
+      <p className="text-lg text-muted-foreground">
+        Jumuika Hub KE is a WhatsApp-First Smart Business Toolkit designed to empower vendors, students, and institutions.
+        Our mission is to simplify commerce, bookings, and communication through seamless automation and instant engagement.
       </p>
     </main>
   );

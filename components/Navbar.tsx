@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 "use client";
 
 import Link from "next/link";
@@ -13,6 +14,12 @@ const nav = [
 export default function Navbar() {
   const pathname = usePathname();
 
+=======
+// components/Navbar.tsx
+import Link from "next/link";
+
+export default function Navbar() {
+>>>>>>> Stashed changes
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto max-w-6xl px-4">
@@ -24,6 +31,7 @@ export default function Navbar() {
             Jumuika Hub KE
           </Link>
 
+<<<<<<< Updated upstream
           <nav className="hidden gap-6 md:flex">
             {nav.map((item) => {
               const active = pathname === item.href;
@@ -42,6 +50,27 @@ export default function Navbar() {
                 </Link>
               );
             })}
+=======
+          <nav className="hidden md:flex gap-6">
+            <Link
+              href="/about"
+              className="text-sm text-slate-600 hover:text-emerald-700 transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/institutions"
+              className="text-sm text-slate-600 hover:text-emerald-700 transition-colors"
+            >
+              For Colleges &amp; Schools
+            </Link>
+            <Link
+              href="/internlink"
+              className="text-sm text-slate-600 hover:text-emerald-700 transition-colors"
+            >
+              InternLink
+            </Link>
+>>>>>>> Stashed changes
           </nav>
         </div>
       </div>

@@ -2,28 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light/Dark mode support */
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #fafafa;
-  }
-}
-
-html, body {
-  height: 100%;
+  --bg: 255 255 255;
+  --fg: 13 13 13;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
-
-a {
-  @apply underline underline-offset-4 hover:opacity-80;
+  @apply bg-[rgb(var(--bg))] text-[rgb(var(--fg))];
 }
