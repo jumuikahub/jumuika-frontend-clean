@@ -1,12 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* app/globals.css */
 
-:root {
-  --bg: 255 255 255;
-  --fg: 13 13 13;
+/* Remove iOS grey tap highlight but keep focus visible */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  @apply bg-[rgb(var(--bg))] text-[rgb(var(--fg))];
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
+
+/* Small helper shadows */
+.shadow-xs { box-shadow: 0 1px 2px rgba(15, 118, 110, .08); }

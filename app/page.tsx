@@ -1,92 +1,82 @@
 // app/page.tsx
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingCart } from "lucide-react";
+import type { Metadata } from "next";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP ?? "254104250912";
-const wa = (msg: string) =>
-  `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+// Optional: if you prefer per-page metadata (you already have global in (site)/layout)
+export const metadata: Metadata = {
+  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
+  description:
+    "WhatsApp-first smart business toolkit that connects vendors, institutions and students seamlessly. Real-time commerce. No apps needed.",
+};
+
+const WA = process.env.NEXT_PUBLIC_WHATSAPP || "254104250912";
+const waBase = `https://wa.me/${WA}`;
 
 export default function Home() {
+  const bookUrl =
+    waBase +
+    "?text=" +
+    encodeURIComponent("Hello Jumuika Hub KE – I want to book services.");
+  const buyUrl =
+    waBase +
+    "?text=" +
+    encodeURIComponent("Hello Jumuika Hub KE – I want to buy items.");
+
   return (
-    <main
-      className={`
-        relative overflow-hidden
-        flex min-h-[70vh] flex-col items-center justify-center
-        gap-6 px-4 text-center
-      `}
-    >
-      {/* Diagonal emerald overlay */}
-      <div
-        aria-hidden
-        className={`
-          pointer-events-none absolute inset-0 -z-10
-          bg-gradient-to-tr from-emerald-100 via-emerald-50 to-white
-        `}
-      />
+    <main className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-emerald-50/80 via-emerald-50/30 to-white">
+      {/* centered container */}
+      <section className="mx-auto flex max-w-6xl flex-col items-center px-4 py-12 sm:py-16 md:py-20">
+        <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-emerald-900">
+          Welcome to Jumuika Hub KE
+        </h1>
 
-      {/* Stronger radial blobs for depth */}
-      <div
-        aria-hidden
-        className={`
-          pointer-events-none absolute -left-28 -top-28 -z-10 h-72 w-72
-          rounded-full bg-emerald-300/40 blur-3xl
-        `}
-      />
-      <div
-        aria-hidden
-        className={`
-          pointer-events-none absolute -bottom-24 -right-28 -z-10 h-80 w-80
-          rounded-full bg-emerald-400/30 blur-3xl
-        `}
-      />
+        <p className="mt-4 max-w-2xl text-center text-slate-600">
+          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
+          vendors, institutions, and students seamlessly. Real-time commerce. No
+          apps needed.
+        </p>
 
-      {/* Subtle horizontal glow line */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-emerald-900/10 to-transparent"
-      />
-
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-emerald-900">
-        Welcome to Jumuika Hub KE
-      </h1>
-
-      <p className="max-w-3xl text-muted-foreground">
-        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
-        vendors, institutions, and students seamlessly. Real-time commerce. No
-        apps needed.
-      </p>
-
-      <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
-        {/* Book Services CTA */}
-        <Link
-          href={wa("Hi! I want to book services via Jumuika Hub KE.")}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button
-            variant="emerald"
-            className="h-11 rounded-xl px-5 sm:px-6 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
+        <div className="mt-6 flex w-full max-w-lg flex-col gap-3 sm:flex-row sm:justify-center">
+          <a
+            href={bookUrl}
+            aria-label="Book services via WhatsApp"
+            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-xl bg-emerald-700 px-5 font-semibold text-white shadow-sm hover:bg-emerald-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
           >
-            <span className="mr-2">Book Services via WhatsApp</span>
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
+            Book Services via WhatsApp
+            <span aria-hidden="true" className="ml-2">
+              →
+            </span>
+          </a>
 
-        {/* Buy Items CTA */}
-        <Link
-          href={wa("Hi! I want to buy items via Jumuika Hub KE.")}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button
-            variant="emerald"
-            className="h-11 rounded-xl px-5 sm:px-6 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
+          <a
+            href={buyUrl}
+            aria-label="Buy items via WhatsApp"
+            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-xl bg-emerald-700 px-5 font-semibold text-white shadow-sm hover:bg-emerald-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
           >
-            <span className="mr-2">Buy Items via WhatsApp</span>
-            <ShoppingCart className="h-4 w-4" />
-          </Button>
-        </Link>
+            Buy Items via WhatsApp
+            <svg
+              aria-hidden="true"
+              className="ml-2 h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 3h2l.4 2M7 13h10l1.6-6H6.4M7 13l-1.293 3.879A1 1 0 006.667 19h10.666"
+              />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* optional decorative radial mist for depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="mx-auto h-64 w-64 translate-y-10 rounded-full bg-emerald-300/20 blur-3xl sm:h-80 sm:w-80" />
       </div>
     </main>
   );
