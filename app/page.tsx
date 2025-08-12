@@ -1,58 +1,55 @@
-"use client";
-
+// app/page.tsx
 import Link from "next/link";
-import { ArrowRight, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, ShoppingCart } from "lucide-react";
+
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP ?? "254104250912";
+const wa = (msg: string) =>
+  `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 export default function Home() {
-  const waUrl = (text: string) =>
-    `https://wa.me/254104250912?text=${encodeURIComponent(text)}`;
-
   return (
-    <main className="flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-3xl">
-        <h1 className="text-4xl font-extrabold tracking-tight text-emerald-800 sm:text-5xl">
-          Welcome to Jumuika Hub KE
-        </h1>
-        <p className="mt-4 text-lg text-gray-700">
-          Jumuika Hub KE is a WhatsApp-first smart business toolkit that
-          connects vendors, institutions, and students seamlessly. Real-time
-          commerce. No apps needed.
-        </p>
+    <main className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4 text-center">
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-emerald-900">
+        Welcome to Jumuika Hub KE
+      </h1>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href={waUrl(
-              "Hi! I want to book services via Jumuika Hub KE."
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              variant="default"
-              className="h-11 rounded-xl px-5 sm:px-6 bg-emerald-700 text-white hover:bg-emerald-800 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
-            >
-              <span className="mr-2">Book Services via WhatsApp</span>
-              <ArrowRight className="size-[18px]" aria-hidden="true" />
-            </Button>
-          </Link>
+      <p className="max-w-3xl text-muted-foreground">
+        Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
+        vendors, institutions, and students seamlessly. Real-time commerce. No
+        apps needed.
+      </p>
 
-          <Link
-            href={waUrl(
-              "Hi! I want to buy items via Jumuika Hub KE."
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+        {/* Book Services CTA */}
+        <Link
+          href={wa("Hi! I want to book services via Jumuika Hub KE.")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            variant="emerald"
+            className="h-11 rounded-xl px-5 sm:px-6 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
           >
-            <Button
-              variant="default"
-              className="h-11 rounded-xl px-5 sm:px-6 bg-emerald-700 text-white hover:bg-emerald-800 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
-            >
-              <span className="mr-2">Buy Items via WhatsApp</span>
-              <ShoppingCart className="size-[18px]" aria-hidden="true" />
-            </Button>
-          </Link>
-        </div>
+            <span className="mr-2">Book Services via WhatsApp</span>
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </Link>
+
+        {/* Buy Items CTA */}
+        <Link
+          href={wa("Hi! I want to buy items via Jumuika Hub KE.")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            variant="emerald"
+            className="h-11 rounded-xl px-5 sm:px-6 shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
+          >
+            <span className="mr-2">Buy Items via WhatsApp</span>
+            <ShoppingCart className="h-4 w-4" />
+          </Button>
+        </Link>
       </div>
     </main>
   );
