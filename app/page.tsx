@@ -9,7 +9,7 @@ const wa = (msg: string) =>
 
 export default function Home() {
   return (
-    <main className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4 text-center">
+    <main className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4 text-center bg-gradient-to-b from-emerald-50 via-white to-white">
       <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-emerald-900">
         Welcome to Jumuika Hub KE
       </h1>
