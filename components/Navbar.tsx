@@ -1,12 +1,12 @@
 "use client";
 
-// components/Navbar.tsx
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const links = [
+const nav = [
   { href: "/about", label: "About" },
-  { href: "/institutions", label: "For Colleges & Schools" },
+  // Renamed label only (route stays /institutions)
+  { href: "/institutions", label: "Institutions" },
   { href: "/internlink", label: "InternLink" },
 ];
 
@@ -14,26 +14,33 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-semibold text-emerald-700">
+    <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+        <Link
+          href="/"
+          className="text-lg font-semibold tracking-tight text-emerald-800"
+        >
           Jumuika Hub KE
         </Link>
 
-        <nav className="flex gap-6 text-sm">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={
-                pathname === l.href
-                  ? "text-emerald-700 font-medium"
-                  : "text-slate-700 hover:text-emerald-700"
-              }
-            >
-              {l.label}
-            </Link>
-          ))}
+        <nav className="flex items-center gap-6 text-sm">
+          {nav.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={[
+                  "transition-colors",
+                  active
+                    ? "text-emerald-800"
+                    : "text-slate-600 hover:text-slate-900",
+                ].join(" ")}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>
