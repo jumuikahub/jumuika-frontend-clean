@@ -9,7 +9,44 @@ const wa = (msg: string) =>
 
 export default function Home() {
   return (
-    <main className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4 text-center bg-gradient-to-b from-emerald-50 via-white to-white">
+    <main
+      className={`
+        relative overflow-hidden
+        flex min-h-[70vh] flex-col items-center justify-center
+        gap-6 px-4 text-center
+      `}
+    >
+      {/* Diagonal emerald overlay */}
+      <div
+        aria-hidden
+        className={`
+          pointer-events-none absolute inset-0 -z-10
+          bg-gradient-to-tr from-emerald-100 via-emerald-50 to-white
+        `}
+      />
+
+      {/* Stronger radial blobs for depth */}
+      <div
+        aria-hidden
+        className={`
+          pointer-events-none absolute -left-28 -top-28 -z-10 h-72 w-72
+          rounded-full bg-emerald-300/40 blur-3xl
+        `}
+      />
+      <div
+        aria-hidden
+        className={`
+          pointer-events-none absolute -bottom-24 -right-28 -z-10 h-80 w-80
+          rounded-full bg-emerald-400/30 blur-3xl
+        `}
+      />
+
+      {/* Subtle horizontal glow line */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-emerald-900/10 to-transparent"
+      />
+
       <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-emerald-900">
         Welcome to Jumuika Hub KE
       </h1>
