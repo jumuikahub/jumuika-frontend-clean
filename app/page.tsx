@@ -1,83 +1,29 @@
-// app/page.tsx
-import type { Metadata } from "next";
-
-// Optional: if you prefer per-page metadata (you already have global in (site)/layout)
-export const metadata: Metadata = {
-  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
-  description:
-    "WhatsApp-first smart business toolkit that connects vendors, institutions and students seamlessly. Real-time commerce. No apps needed.",
-};
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP || "254104250912";
-const waBase = `https://wa.me/${WA}`;
-
 export default function Home() {
-  const bookUrl =
-    waBase +
-    "?text=" +
-    encodeURIComponent("Hello Jumuika Hub KE – I want to book services.");
-  const buyUrl =
-    waBase +
-    "?text=" +
-    encodeURIComponent("Hello Jumuika Hub KE – I want to buy items.");
-
   return (
-    <main className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-emerald-50/80 via-emerald-50/30 to-white">
-      {/* centered container */}
-      <section className="mx-auto flex max-w-6xl flex-col items-center px-4 py-12 sm:py-16 md:py-20">
-        <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-emerald-900">
+    <main className="bg-gradient-to-b from-green-100 via-green-50 to-white min-h-screen flex flex-col">
+      <section className="flex flex-col items-center justify-center py-20 text-center flex-grow">
+        <h1 className="text-4xl font-bold text-green-900 mb-6">
           Welcome to Jumuika Hub KE
         </h1>
-
-        <p className="mt-4 max-w-2xl text-center text-slate-600">
-          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
-          vendors, institutions, and students seamlessly. Real-time commerce. No
-          apps needed.
+        <p className="text-lg text-gray-700 max-w-2xl mb-8">
+          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors,
+          institutions, and students seamlessly. Real-time commerce. No apps needed.
         </p>
-
-        <div className="mt-6 flex w-full max-w-lg flex-col gap-3 sm:flex-row sm:justify-center">
+        <div className="flex flex-wrap gap-4 justify-center">
           <a
-            href={bookUrl}
-            aria-label="Book services via WhatsApp"
-            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-xl bg-emerald-700 px-5 font-semibold text-white shadow-sm hover:bg-emerald-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            href="https://wa.me/254700915610?text=I%20want%20to%20book%20a%20service"
+            className="px-6 py-3 bg-green-700 text-white rounded-lg shadow hover:bg-green-800 transition"
           >
-            Book Services via WhatsApp
-            <span aria-hidden="true" className="ml-2">
-              →
-            </span>
+            Book Services via WhatsApp →
           </a>
-
           <a
-            href={buyUrl}
-            aria-label="Buy items via WhatsApp"
-            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-xl bg-emerald-700 px-5 font-semibold text-white shadow-sm hover:bg-emerald-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            href="https://wa.me/254700915610?text=I%20want%20to%20buy%20an%20item"
+            className="px-6 py-3 bg-green-700 text-white rounded-lg shadow hover:bg-green-800 transition"
           >
-            Buy Items via WhatsApp
-            <svg
-              aria-hidden="true"
-              className="ml-2 h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 3h2l.4 2M7 13h10l1.6-6H6.4M7 13l-1.293 3.879A1 1 0 006.667 19h10.666"
-              />
-            </svg>
+            Buy Items via WhatsApp 🛒
           </a>
         </div>
       </section>
-
-      {/* optional decorative radial mist for depth */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        <div className="mx-auto h-64 w-64 translate-y-10 rounded-full bg-emerald-300/20 blur-3xl sm:h-80 sm:w-80" />
-      </div>
     </main>
   );
 }
