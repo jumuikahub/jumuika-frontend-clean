@@ -1,36 +1,39 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import Link from "next/link";
-import { cn } from "@/lib/cn"; // tiny helper: cn(...classes) -> string (or replace with your own)
+import * as React from "react";
+import { cn } from "@/lib/cn";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-xl text-base font-medium transition-colors shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:cursor-not-allowed",
-  {
-    variants: {
-      variant: {
-        primary:
-          "bg-emerald-700 text-white hover:bg-emerald-800 focus-visible:outline-emerald-600",
-        secondary:
-          "bg-white text-emerald-900 ring-1 ring-emerald-300/70 hover:bg-emerald-50 focus-visible:outline-emerald-600",
-        ghost:
-          "bg-transparent text-emerald-800 hover:bg-emerald-50 focus-visible:outline-emerald-600",
-      },
-      size: {
-        md: "px-5 py-3",
-        lg: "px-6 py-4 text-lg",
-      },
-    },
-    defaultVariants: { variant: "primary", size: "md" },
-  }
+type Variant = "primary" | "outline" | "ghost";
+type Size = "sm" | "md" | "lg";
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: Variant;
+  size?: Size;
+  fullWidth?: boolean;
+}
+
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+
+const variants: Record<Variant, string> = {
+  primary: "bg-emerald-700 hover:bg-emerald-800 text-white focus:ring-emerald-700",
+  outline: "border border-emerald-200 text-emerald-900 hover:bg-emerald-50 focus:ring-emerald-700",
+  ghost: "bg-transparent hover:bg-emerald-50 text-emerald-900 focus:ring-emerald-700",
+};
+
+const sizes: Record<Size, string> = {
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-6 text-base",
+  lg: "h-12 px-7 text-base",
+};
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = "primary", size = "md", fullWidth, ...props }, ref) => (
+    <button
+      ref={ref}
+      className={cn(base, variants[variant], sizes[size], fullWidth && "w-full", className)}
+      {...props}
+    />
+  )
 );
 
-type ButtonBase = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants>;
-type ButtonLink = React.ComponentProps<typeof Link> & VariantProps<typeof buttonVariants>;
-
-export function Button({ className, variant, size, ...props }: ButtonBase) {
-  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />;
-}
-
-export function ButtonLink({ className, variant, size, ...props }: ButtonLink) {
-  return <Link className={cn(buttonVariants({ variant, size }), className)} {...props} />;
-}
+Button.displayName = "Button";
+export default Button;

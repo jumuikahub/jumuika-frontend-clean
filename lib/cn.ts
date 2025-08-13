@@ -1,4 +1,3 @@
-// lib/cn.ts
-export function cn(...classes: (string | false | null | undefined)[]) {
+export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
