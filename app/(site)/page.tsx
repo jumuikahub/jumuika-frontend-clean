@@ -1,55 +1,30 @@
-// app/(site)/page.tsx
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 import { ShoppingCart, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-
-export const revalidate = 0; // make sure CDN doesn’t serve an old HTML copy while we iterate
 
 export default function HomePage() {
   return (
-    <main className="relative">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* soft emerald gradient */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-40%,rgba(16,185,129,.20),transparent_60%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20 lg:py-24">
-          <h1 className="text-center text-4xl font-extrabold leading-tight tracking-tight text-emerald-900 sm:text-5xl">
-            Welcome to Jumuika Hub KE
-          </h1>
+    <section className="bg-gradient-to-b from-emerald-50 to-white">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+        <h1 className="text-4xl sm:text-5xl font-bold text-emerald-900 text-center">
+          Welcome to Jumuika Hub KE
+        </h1>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-slate-700">
+          Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors,
+          institutions, and students seamlessly. Real-time commerce. No apps needed.
+        </p>
 
-          <p className="mx-auto mt-5 max-w-3xl text-center text-emerald-900/80 sm:text-lg">
-            Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
-            vendors, institutions, and students seamlessly. Real-time commerce. No apps
-            needed.
-          </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <ButtonLink href="https://wa.me/2547XXXXXXX" variant="primary" size="lg">
+            Book Services via WhatsApp
+            <ArrowRight className="size-4" />
+          </ButtonLink>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="https://wa.me/254700000000?text=Hi%20Jumuika%20Hub%2C%20I%20want%20to%20book%20a%20service"
-              className={cn(
-                "inline-flex h-12 items-center rounded-xl bg-emerald-700 px-6 font-semibold text-white",
-                "shadow-sm ring-1 ring-emerald-800/20 transition-all hover:bg-emerald-800 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/60",
-                "min-w-[260px] justify-center gap-2"
-              )}
-            >
-              <span>Book Services via WhatsApp</span>
-              <ArrowRight size={18} />
-            </Link>
-
-            <Link
-              href="https://wa.me/254700000000?text=Hi%20Jumuika%20Hub%2C%20I%20want%20to%20buy%20items"
-              className={cn(
-                "inline-flex h-12 items-center rounded-xl bg-emerald-700 px-6 font-semibold text-white",
-                "shadow-sm ring-1 ring-emerald-800/20 transition-all hover:bg-emerald-800 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/60",
-                "min-w-[260px] justify-center gap-2"
-              )}
-            >
-              <span>Buy Items via WhatsApp</span>
-              <ShoppingCart size={18} />
-            </Link>
-          </div>
+          <ButtonLink href="https://wa.me/2547XXXXXXX" variant="secondary" size="lg">
+            Buy Items via WhatsApp
+            <ShoppingCart className="size-4" />
+          </ButtonLink>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
