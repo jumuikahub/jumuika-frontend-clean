@@ -1,88 +1,71 @@
+// app/(site)/internlink/page.tsx
 import Link from "next/link";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "InternLink: Onboarding & Weekly Reports | Jumuika Hub KE",
+export const metadata = {
+  title: "InternLink: Onboarding & Weekly Reports",
   description:
-    "InternLink is a simple WhatsApp-first workflow for interns to onboard, submit weekly reports, and stay in sync with supervisors.",
-  keywords: [
-    "InternLink",
-    "internship",
-    "weekly reports",
-    "onboarding",
-    "WhatsApp automation",
-    "Jumuika Hub KE",
-  ],
+    "A simple, secure way for students to onboard, submit weekly reports, and stay synced with supervisors via WhatsApp. No apps to install.",
 };
 
 export default function InternLinkPage() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
-      <header className="mx-auto mb-8 max-w-3xl text-center">
-        <h1 className="text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl">
-          InternLink: Onboarding &amp; Weekly Reports
-        </h1>
-        <p className="mt-4 text-emerald-950/80">
-          Welcome to <strong>InternLink</strong> — a simple, secure way for
-          students to onboard, submit weekly reports, and stay in sync with
-          supervisors via WhatsApp. No apps to install.
-        </p>
-      </header>
+    <main className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
+      <h1 className="text-center text-3xl font-bold tracking-tight text-emerald-900 sm:text-4xl">
+        InternLink: Onboarding & Weekly Reports
+      </h1>
 
-      <div className="grid gap-5 sm:grid-cols-3">
-        <Card
-          title="1) Quick Onboarding"
-          body="Register your profile and confirm your WhatsApp number. We’ll use it to send reminders and confirm submissions."
-        />
-        <Card
-          title="2) Submit Weekly Reports"
-          body="Fill a short weekly form and attach proof (if required). Your supervisor gets an instant WhatsApp notification."
-        />
-        <Card
-          title="3) Stay in Sync"
-          body="You’ll receive reminders, feedback, and status updates — all through WhatsApp. Zero friction."
-        />
-      </div>
+      <p className="mx-auto mt-4 max-w-3xl text-center text-emerald-900/80">
+        Welcome to <strong>InternLink</strong> — a simple, secure way for students
+        to onboard, submit weekly reports, and stay in sync with supervisors via WhatsApp.
+        No apps to install.
+      </p>
 
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <section className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-2xl border border-emerald-900/10 bg-white p-6 shadow-sm">
+          <h3 className="mb-2 text-lg font-semibold text-emerald-900">
+            1) Quick Onboarding
+          </h3>
+          <p className="text-emerald-900/80">
+            Register your profile and confirm your WhatsApp number. We’ll use it
+            to send reminders and confirm submissions.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-emerald-900/10 bg-white p-6 shadow-sm">
+          <h3 className="mb-2 text-lg font-semibold text-emerald-900">
+            2) Submit Weekly Reports
+          </h3>
+          <p className="text-emerald-900/80">
+            Fill a short weekly form and attach proof (if required). Your supervisor gets an instant WhatsApp notification.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-emerald-900/10 bg-white p-6 shadow-sm">
+          <h3 className="mb-2 text-lg font-semibold text-emerald-900">
+            3) Stay in Sync
+          </h3>
+          <p className="text-emerald-900/80">
+            Receive reminders, feedback, and status updates — all through WhatsApp. Zero friction.
+          </p>
+        </div>
+      </section>
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
         <Link
-          href="https://wa.me/254700000000?text=Hi%20Jumuika!%20I%27d%20like%20to%20onboard%20to%20InternLink."
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+          href="https://wa.me/254700000000?text=Hi%2C%20I%27d%20like%20to%20onboard%20to%20InternLink"
+          target="_blank"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-emerald-800 px-5 text-white shadow-sm hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-900/40"
         >
-          Onboard via WhatsApp
-          <span aria-hidden>→</span>
+          Onboard via WhatsApp →
         </Link>
 
-        {/* Replace the # below with your live weekly–report form link */}
         <Link
           href="#"
-          className="inline-flex items-center gap-2 rounded-xl border border-emerald-700 px-5 py-3 text-emerald-800 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+          className="inline-flex h-11 items-center justify-center rounded-xl border border-emerald-900/15 bg-white px-5 text-emerald-900 shadow-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-900/20"
         >
           Submit Weekly Report
         </Link>
       </div>
-
-      <div className="mt-10 rounded-xl bg-emerald-50/60 p-5 text-sm text-emerald-950/80">
-        <p className="font-semibold">Privacy</p>
-        <p className="mt-1">
-          Your data is used only for internship coordination. Reports are
-          visible to your assigned supervisor and authorized institution
-          admins. Learn more in our{" "}
-          <Link href="/privacy" className="underline decoration-emerald-600">
-            Privacy Policy
-          </Link>
-          .
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function Card({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
-      <h3 className="text-lg font-semibold text-emerald-900">{title}</h3>
-      <p className="mt-2 text-emerald-950/80">{body}</p>
-    </div>
+    </main>
   );
 }
