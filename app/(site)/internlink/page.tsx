@@ -1,12 +1,13 @@
-"use client";
-
 export default function InternLinkPage() {
   return (
-    <main className="px-4 py-10 max-w-4xl mx-auto text-center">
-      <h1 className="text-4xl font-bold mb-4">InternLink: Onboarding & Weekly Reports</h1>
-      <p className="text-lg text-muted-foreground">
-        Welcome to InternLink — a secure way for students to onboard, submit weekly reports, and stay in sync with supervisors via WhatsApp.
+    <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <h1 className="text-center text-4xl font-semibold tracking-tight text-emerald-900">
+        InternLink: Onboarding & Weekly Reports
+      </h1>
+      <p className="mx-auto mt-4 max-w-3xl text-center text-slate-700">
+        Welcome to InternLink — a secure way for students to onboard, submit weekly reports,
+        and stay in sync with supervisors via WhatsApp.
       </p>
-    </main>
+    </section>
   );
 }

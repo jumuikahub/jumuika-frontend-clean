@@ -1,33 +1,27 @@
-// app/(site)/layout.tsx
+import type { Metadata } from "next";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
+  description:
+    "Connect vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.",
+};
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Navbar />
-
-      {/* Hero gradient that now extends down to the footer */}
-      <div className="relative isolate">
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_50%_10%,rgba(16,185,129,0.15),rgba(20,83,45,0.10),transparent)]"
-          aria-hidden="true"
-        />
-        {/* content */}
-        {children}
-      </div>
-
-      <footer className="border-t bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-slate-600">
-          <nav className="mb-2 space-x-4">
-            <a href="/blog" className="hover:underline">Blog</a>
-            <span>•</span>
-            <a href="/terms" className="hover:underline">Terms &amp; Conditions</a>
-            <span>•</span>
-            <a href="/privacy" className="hover:underline">Privacy Policy</a>
-          </nav>
-          <p>© 2025 Jumuika Hub KE. All Rights Reserved.</p>
+    <html lang="en">
+      {/* Whole page gets the soft diagonal emerald gradient */}
+      <body className="min-h-screen bg-[radial-gradient(1200px_600px_at_50%_0%,_rgba(16,185,129,0.08),_transparent_70%),linear-gradient(180deg,_rgba(16,185,129,0.06)_0%,_rgba(16,185,129,0.08)_30%,_transparent_70%)] text-slate-900 antialiased">
+        {/* Sticky footer layout */}
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          {/* This grows to fill available space, preventing huge empty areas */}
+          <main className="flex-1">{children}</main>
+          <Footer />
         </div>
-      </footer>
-    </>
+      </body>
+    </html>
   );
 }
