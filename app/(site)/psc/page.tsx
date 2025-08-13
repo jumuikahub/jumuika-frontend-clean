@@ -1,68 +1,65 @@
+import { Metadata } from "next";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "PSC Dashboard | Jumuika Hub KE",
+  title: "PSC | Jumuika Hub KE",
   description:
-    "Public Service Commission interface for broadcasting updates to interns and institutions via WhatsApp.",
-  keywords: [
-    "PSC",
-    "broadcast",
-    "announcements",
-    "internship program",
-    "Jumuika Hub KE",
-  ],
+    "Public Service Commission support: onboarding, notices, and WhatsApp-powered engagement.",
+  openGraph: {
+    title: "PSC | Jumuika Hub KE",
+    description:
+      "Public Service Commission support: onboarding, notices, and WhatsApp-powered engagement.",
+    url: "/psc",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function PSCPage() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
-    <header className="mx-auto mb-8 max-w-3xl text-center">
-      <h1 className="text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl">
-        PSC Dashboard
-      </h1>
-      <p className="mt-4 text-emerald-950/80">
-        A focused surface for the Public Service Commission to share
-        announcements, deadlines, and program updates with interns and
-        institutions — delivered reliably over WhatsApp.
-      </p>
-    </header>
+    <section className="relative isolate">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(90%_60%_at_50%_10%,rgba(16,185,129,0.18),rgba(16,185,129,0)_60%)]" />
+      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-18 lg:py-20">
+        <h1 className="text-center text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl">
+          PSC — WhatsApp-powered Services
+        </h1>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-emerald-900/80">
+          From notices to application reminders — Jumuika Hub KE helps PSC
+          teams communicate and collect information instantly over WhatsApp.
+        </p>
 
-    <div className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
-      <h2 className="text-lg font-semibold text-emerald-900">
-        Broadcast (Preview)
-      </h2>
-      <p className="mt-2 text-emerald-950/80">
-        This is a frontend mock. Connect it to your messaging backend or
-        WhatsApp BSP (Business Solution Provider). You can target audiences
-        by cohort, institution, county, or custom tags.
-      </p>
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          {[
+            ["Broadcast Notices", "Reach candidates instantly with verified updates."],
+            ["Collect Submissions", "Forms and documents via secure links."],
+            ["Automated Reminders", "Reduce no-shows and missed deadlines."],
+          ].map(([title, body]) => (
+            <div
+              key={title}
+              className="rounded-2xl border border-emerald-900/10 bg-white/70 p-5 shadow-sm backdrop-blur"
+            >
+              <h3 className="font-semibold text-emerald-900">{title}</h3>
+              <p className="mt-1 text-sm text-emerald-900/70">{body}</p>
+            </div>
+          ))}
+        </div>
 
-      <div className="mt-5 grid gap-4 sm:grid-cols-3">
-        <StaticTile title="Create Announcement" detail="Compose and preview template messages before sending." />
-        <StaticTile title="Target Audience" detail="Select interns by cohort, institution, or tag filters." />
-        <StaticTile title="Delivery & Logs" detail="Track delivery, failures, and responses at a glance." />
+        <div className="mt-10 flex justify-center gap-4">
+          <Link
+            href="https://wa.me/254700000000?text=Hello%20PSC%20team%2C%20I'd%20like%20a%20demo"
+            className="inline-flex h-11 items-center rounded-xl bg-emerald-800 px-5 font-medium text-white shadow-sm hover:bg-emerald-900"
+          >
+            Request a Demo
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+          <Link
+            href="/about"
+            className="inline-flex h-11 items-center rounded-xl border border-emerald-900/15 bg-white px-5 font-medium text-emerald-900 hover:bg-emerald-50"
+          >
+            Learn About Jumuika
+          </Link>
+        </div>
       </div>
-
-      <div className="mt-6">
-        <Link
-          href="https://wa.me/254700000000?text=Hi%20Jumuika!%20Please%20enable%20PSC%20broadcast%20access."
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-300"
-        >
-          Request PSC Access via WhatsApp
-          <span aria-hidden>→</span>
-        </Link>
-      </div>
-    </div>
-  </section>
-  );
-}
-
-function StaticTile({ title, detail }: { title: string; detail: string }) {
-  return (
-    <div className="rounded-xl bg-emerald-50/60 p-4">
-      <p className="text-sm font-semibold text-emerald-900">{title}</p>
-      <p className="mt-2 text-sm text-emerald-950/80">{detail}</p>
-    </div>
+    </section>
   );
 }
