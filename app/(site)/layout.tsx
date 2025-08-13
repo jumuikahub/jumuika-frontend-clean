@@ -1,25 +1,26 @@
 // app/(site)/layout.tsx
-import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
-  description:
-    "Connect vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.",
-};
-
-export default function SiteLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-dvh flex-col">
+    <>
       <Navbar />
-      {/* main grows. You can add page-wide backgrounds here or inside pages */}
-      <main className="flex-1">{children}</main>
+      <main className="relative">
+        {/* Top radial emerald wash that fades down (reaches near the footer) */}
+        <div
+          aria-hidden
+          className="
+            pointer-events-none absolute inset-x-0 -top-24
+            h-[560px]
+            bg-[radial-gradient(1200px_560px_at_50%_-200px,theme(colors.emerald.200),transparent)]
+            [mask-image:linear-gradient(to_bottom,black,transparent)]
+          "
+        />
+        <div className="relative">{children}</div>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
