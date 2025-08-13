@@ -1,30 +1,33 @@
 // app/layout.tsx
-import "./globals.css";
+import "./globals.css"; // <- REQUIRED
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Jumuika Hub KE – WhatsApp-First Smart Business Toolkit",
+  title: "Jumuika Hub KE",
   description:
-    "Connect vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.",
-  icons: { icon: "/favicon.ico" },
+    "WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.",
+  metadataBase: new URL("https://jumuika-frontend-clean-2.vercel.app"),
   openGraph: {
     title: "Jumuika Hub KE",
     description:
-      "WhatsApp-first smart business toolkit to connect vendors, institutions, and students.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      "WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly.",
+    url: "https://jumuika-frontend-clean-2.vercel.app",
+    siteName: "Jumuika Hub KE",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Jumuika Hub KE" }],
+    type: "website",
   },
-  metadataBase: new URL("https://jumuika-frontend-clean-2.vercel.app"),
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      {/* Keep body simple; sub-layouts can add gradients/wrappers */}
-      <body className="min-h-dvh bg-white antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen antialiased bg-white text-slate-900">
+        {children}
+      </body>
     </html>
   );
 }

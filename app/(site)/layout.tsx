@@ -1,26 +1,33 @@
 // app/(site)/layout.tsx
-import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
-export default function SiteLayout({ children }: { children: ReactNode }) {
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      <main className="relative">
-        {/* Top radial emerald wash that fades down (reaches near the footer) */}
+
+      {/* Hero gradient that now extends down to the footer */}
+      <div className="relative isolate">
         <div
-          aria-hidden
-          className="
-            pointer-events-none absolute inset-x-0 -top-24
-            h-[560px]
-            bg-[radial-gradient(1200px_560px_at_50%_-200px,theme(colors.emerald.200),transparent)]
-            [mask-image:linear-gradient(to_bottom,black,transparent)]
-          "
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_50%_10%,rgba(16,185,129,0.15),rgba(20,83,45,0.10),transparent)]"
+          aria-hidden="true"
         />
-        <div className="relative">{children}</div>
-      </main>
-      <Footer />
+        {/* content */}
+        {children}
+      </div>
+
+      <footer className="border-t bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-slate-600">
+          <nav className="mb-2 space-x-4">
+            <a href="/blog" className="hover:underline">Blog</a>
+            <span>•</span>
+            <a href="/terms" className="hover:underline">Terms &amp; Conditions</a>
+            <span>•</span>
+            <a href="/privacy" className="hover:underline">Privacy Policy</a>
+          </nav>
+          <p>© 2025 Jumuika Hub KE. All Rights Reserved.</p>
+        </div>
+      </footer>
     </>
   );
 }
