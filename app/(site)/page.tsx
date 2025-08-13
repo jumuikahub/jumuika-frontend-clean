@@ -1,56 +1,51 @@
-'use client';
+// app/(site)/page.tsx
+import Link from "next/link";
+import { ShoppingCart, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import Link from 'next/link';
-import { ArrowRight, ShoppingCart } from 'lucide-react';
+export const revalidate = 0; // make sure CDN doesn’t serve an old HTML copy while we iterate
 
 export default function HomePage() {
   return (
     <main className="relative">
       {/* Hero */}
-      <section
-        aria-labelledby="hero-heading"
-        className="relative isolate overflow-hidden"
-      >
-        {/* Soft emerald gradient background */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1200px_800px_at_50%_-200px,rgba(16,185,129,0.18),transparent),linear-gradient(to_bottom,#ecfdf5,transparent_35%)]"
-        />
-
-        <div className="mx-auto max-w-5xl px-4 py-20 sm:py-24 lg:py-28">
-          <h1
-            id="hero-heading"
-            className="text-center text-4xl font-extrabold tracking-tight text-emerald-900 sm:text-5xl"
-          >
+      <section className="relative overflow-hidden">
+        {/* soft emerald gradient */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-40%,rgba(16,185,129,.20),transparent_60%)]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20 lg:py-24">
+          <h1 className="text-center text-4xl font-extrabold leading-tight tracking-tight text-emerald-900 sm:text-5xl">
             Welcome to Jumuika Hub KE
           </h1>
 
-          <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-7 text-slate-700">
+          <p className="mx-auto mt-5 max-w-3xl text-center text-emerald-900/80 sm:text-lg">
             Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
-            vendors, institutions, and students seamlessly. Real-time commerce.
-            No apps needed.
+            vendors, institutions, and students seamlessly. Real-time commerce. No apps
+            needed.
           </p>
 
-          {/* CTA buttons — consistent sizing & styles */}
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="https://wa.me/254700000000?text=I'd%20like%20to%20book%20services"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-xl bg-emerald-800 px-5 font-medium text-white shadow-sm hover:bg-emerald-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900"
+              href="https://wa.me/254700000000?text=Hi%20Jumuika%20Hub%2C%20I%20want%20to%20book%20a%20service"
+              className={cn(
+                "inline-flex h-12 items-center rounded-xl bg-emerald-700 px-6 font-semibold text-white",
+                "shadow-sm ring-1 ring-emerald-800/20 transition-all hover:bg-emerald-800 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/60",
+                "min-w-[260px] justify-center gap-2"
+              )}
             >
-              Book Services via WhatsApp
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <span>Book Services via WhatsApp</span>
+              <ArrowRight size={18} />
             </Link>
 
             <Link
-              href="https://wa.me/254700000000?text=I'd%20like%20to%20buy%20items"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-xl border border-emerald-900/15 bg-white px-5 font-medium text-emerald-900 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900"
+              href="https://wa.me/254700000000?text=Hi%20Jumuika%20Hub%2C%20I%20want%20to%20buy%20items"
+              className={cn(
+                "inline-flex h-12 items-center rounded-xl bg-emerald-700 px-6 font-semibold text-white",
+                "shadow-sm ring-1 ring-emerald-800/20 transition-all hover:bg-emerald-800 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/60",
+                "min-w-[260px] justify-center gap-2"
+              )}
             >
-              Buy Items via WhatsApp
-              <ShoppingCart className="ml-2 h-4 w-4" />
+              <span>Buy Items via WhatsApp</span>
+              <ShoppingCart size={18} />
             </Link>
           </div>
         </div>
