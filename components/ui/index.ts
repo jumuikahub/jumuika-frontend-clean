@@ -1,2 +1,3 @@
-// components/ui/index.ts
-export { Button } from "./button"; // <- file on disk is "button.tsx" (lowercase)
+// use the exact same casing as the file on disk
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
