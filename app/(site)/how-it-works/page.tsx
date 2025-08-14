@@ -1,7 +1,6 @@
-// app/how-it-works/page.tsx
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui";
 
 export const metadata = {
   title: "How It Works | Jumuika Hub KE",
@@ -12,13 +11,11 @@ export const metadata = {
 export default function HowItWorks() {
   return (
     <main className="relative min-h-screen px-6 py-12 text-center">
-      {/* Diagonal emerald gradient background */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-tr from-emerald-50 via-white to-emerald-100"
       />
 
-      {/* Hero Section */}
       <h1 className="text-4xl sm:text-5xl font-bold text-emerald-900">
         How Jumuika Hub KE Works
       </h1>
@@ -28,7 +25,6 @@ export default function HowItWorks() {
         WhatsApp. Here’s how it works:
       </p>
 
-      {/* Steps */}
       <div className="mt-10 grid gap-8 sm:grid-cols-3">
         <div className="rounded-xl bg-white shadow-sm border p-6">
           <h3 className="text-xl font-semibold text-emerald-800">1. Onboard</h3>
@@ -43,8 +39,8 @@ export default function HowItWorks() {
             2. List & Manage
           </h3>
           <p className="mt-2 text-sm text-gray-600">
-            Add your products, services, or bookings directly to your Jumuika
-            dashboard and manage in real-time.
+            Add products, services, or bookings to your Jumuika dashboard and
+            manage in real time.
           </p>
         </div>
 
@@ -53,18 +49,14 @@ export default function HowItWorks() {
             3. Connect & Sell
           </h3>
           <p className="mt-2 text-sm text-gray-600">
-            Customers contact you instantly via WhatsApp, book services, or buy
-            items without downloading any extra app.
+            Customers message you instantly on WhatsApp, book services, or buy
+            items — no extra app needed.
           </p>
         </div>
       </div>
 
-      {/* Call to Action */}
       <div className="mt-12">
-        <Link
-          href="/"
-          className="inline-block"
-        >
+        <Link href="/" className="inline-block">
           <Button
             variant="emerald"
             className="h-11 px-6 rounded-xl shadow-sm hover:shadow-md hover:shadow-emerald-900/10"
