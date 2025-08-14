@@ -4,7 +4,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   as?: 'button' | 'a';
 };
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const ButtonImpl = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ as = 'button', className = '', ...props }, ref) => {
     const base =
       'inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm ' +
@@ -19,4 +19,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-Button.displayName = 'Button';
+ButtonImpl.displayName = 'Button';
+
+export const Button = ButtonImpl;      // named export
+export default ButtonImpl;            // keep default too (optional)
