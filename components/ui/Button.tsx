@@ -1,39 +1,22 @@
-import * as React from "react";
-import { cn } from "@/lib/cn";
+import * as React from 'react';
 
-type Variant = "primary" | "outline" | "ghost";
-type Size = "sm" | "md" | "lg";
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
-  size?: Size;
-  fullWidth?: boolean;
-}
-
-const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
-
-const variants: Record<Variant, string> = {
-  primary: "bg-emerald-700 hover:bg-emerald-800 text-white focus:ring-emerald-700",
-  outline: "border border-emerald-200 text-emerald-900 hover:bg-emerald-50 focus:ring-emerald-700",
-  ghost: "bg-transparent hover:bg-emerald-50 text-emerald-900 focus:ring-emerald-700",
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  as?: 'button' | 'a';
 };
 
-const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-6 text-base",
-  lg: "h-12 px-7 text-base",
-};
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ as = 'button', className = '', ...props }, ref) => {
+    const base =
+      'inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm ' +
+      'transition-all ring-1 ring-inset ring-emerald-700/15 bg-emerald-700 text-white hover:bg-emerald-800 ' +
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 disabled:opacity-50';
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", fullWidth, ...props }, ref) => (
-    <button
-      ref={ref}
-      className={cn(base, variants[variant], sizes[size], fullWidth && "w-full", className)}
-      {...props}
-    />
-  )
+    if (as === 'a') {
+      // @ts-expect-error allowing button props on anchor when used as link-like button
+      return <a ref={ref as any} className={`${base} ${className}`} {...props} />;
+    }
+    return <button ref={ref} className={`${base} ${className}`} {...props} />;
+  }
 );
 
-Button.displayName = "Button";
-export default Button;
+Button.displayName = 'Button';
