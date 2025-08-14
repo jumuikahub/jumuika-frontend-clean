@@ -1,53 +1,50 @@
-// components/ui/Button.tsx
 import * as React from 'react';
-import clsx from 'clsx';
 
-/**
- * A small polymorphic Button that can render as:
- *  - <button> (default) with full button props
- *  - <a> with full anchor props (href, target, rel...)
- */
 type CommonProps = {
-  as?: 'button' | 'a';
+  variant?: 'primary' | 'secondary';
   className?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
-export type ButtonProps =
-  CommonProps &
-  React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;             // when href is present we render <a>
+};
+
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  href?: undefined;
+};
+
+export type ButtonProps = CommonProps & (AnchorProps | NativeButtonProps);
 
 const base =
-  'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold ' +
-  'transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ' +
-  'bg-emerald-700 text-white hover:bg-emerald-800 focus-visible:ring-emerald-600';
+  'inline-flex items-center justify-center rounded-lg px-6 py-3 text-[15px] font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+const styles = {
+  primary:
+    'bg-emerald-700 text-white hover:bg-emerald-800 focus:ring-emerald-600',
+  secondary:
+    'bg-white text-emerald-800 ring-1 ring-emerald-200 hover:bg-emerald-50 focus:ring-emerald-600',
+};
 
-export const Button = React.forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  ButtonProps
->(function Button({ as = 'button', className, children, ...rest }, ref) {
-  if (as === 'a') {
-    // Anchor variant (accepts href, target, rel, etc.)
+export default function Button({
+  variant = 'primary',
+  className,
+  children,
+  ...rest
+}: ButtonProps) {
+  const cls = `${base} ${styles[variant]} ${className ?? ''}`;
+
+  if ('href' in rest && typeof rest.href === 'string') {
+    const { href, ...anchorRest } = rest;
     return (
-      <a
-        ref={ref as React.Ref<HTMLAnchorElement>}
-        className={clsx(base, className)}
-        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
-      >
+      <a href={href} className={cls} {...anchorRest}>
         {children}
       </a>
     );
   }
 
-  // Button variant
   return (
-    <button
-      ref={ref as React.Ref<HTMLButtonElement>}
-      className={clsx(base, className)}
-      {...(rest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
-    >
+    <button className={cls} {...(rest as NativeButtonProps)}>
       {children}
     </button>
   );
-});
+}

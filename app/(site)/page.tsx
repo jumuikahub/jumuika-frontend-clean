@@ -1,53 +1,40 @@
-// app/(site)/page.tsx
-import React from 'react';
 import { Button } from '@/components/ui';
-
-export const metadata = {
-  title: 'Jumuika Hub KE',
-  description:
-    'WhatsApp-first smart business toolkit that connects vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.',
-};
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="relative">
-      <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:py-16">
-        <div className="rounded-3xl bg-emerald-50/70 p-6 sm:p-10 ring-1 ring-emerald-100">
+    <section className="bg-gradient-to-b from-emerald-50 to-white">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6 sm:p-10">
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-emerald-900">
             Welcome to Jumuika Hub KE
           </h1>
 
-          <p className="mt-4 max-w-3xl text-emerald-900/80 sm:text-lg">
-            Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects vendors,
-            institutions, and students seamlessly. Real-time commerce. No apps needed.
+          <p className="mt-4 max-w-3xl text-zinc-700">
+            Jumuika Hub KE is a WhatsApp-first smart business toolkit that
+            connects vendors, institutions, and students seamlessly.
+            Real-time commerce. No apps needed.
           </p>
 
-          {/* CTAs */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            {/* Book Services via WhatsApp */}
+          <div className="mt-8 flex flex-col items-center justify-start gap-3 sm:flex-row">
             <Button
-              as="a"
-              href="https://wa.me/254104250912?text=Hi%20Jumuika%20Hub%20KE%2C%20I%27d%20like%20to%20book%20services."
+              href="https://wa.me/254104250912"
               target="_blank"
-              rel="noopener noreferrer"
-              className="min-w-[270px]"
+              rel="noopener"
+              variant="primary"
             >
               Book Services via WhatsApp
             </Button>
 
-            {/* Buy Items via WhatsApp */}
             <Button
-              as="a"
-              href="https://wa.me/254104250912?text=Hi%20Jumuika%20Hub%20KE%2C%20I%27d%20like%20to%20buy%20items."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-w-[270px] bg-white text-emerald-800 hover:bg-emerald-100 ring-1 ring-emerald-200"
+              href="/internlink"
+              variant="secondary"
             >
               Buy Items via WhatsApp
             </Button>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

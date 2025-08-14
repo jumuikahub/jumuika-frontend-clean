@@ -1,18 +1,15 @@
-// components/Footer.tsx
-import Link from "next/link";
-
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t bg-white/50 backdrop-blur">
-      <div className="mx-auto w-full max-w-6xl px-4 py-6 text-sm text-slate-700">
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          <Link href="/blog" className="hover:underline">Blog</Link>
-          <span>•</span>
-          <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
-          <span>•</span>
-          <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
+    <footer className="border-t bg-white/60 backdrop-blur-sm py-6 text-sm">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-zinc-600">
+          <a href="/blog" className="hover:text-zinc-800">Blog</a>
+          <span className="select-none">•</span>
+          <a href="/terms" className="hover:text-zinc-800">Terms &amp; Conditions</a>
+          <span className="select-none">•</span>
+          <a href="/privacy" className="hover:text-zinc-800">Privacy Policy</a>
         </div>
-        <p className="mt-4 text-center text-slate-500">
+        <p className="mt-3 text-center text-zinc-500">
           © 2025 Jumuika Hub KE. All Rights Reserved.
         </p>
       </div>

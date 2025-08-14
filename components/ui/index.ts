@@ -1,5 +1,3 @@
-// Barrel exports for UI components
-// IMPORTANT: match the casing on disk: "Button.tsx" exports a *named* Button.
-
-export { Button } from './Button';
+// Barrel exports – keep casing exactly as the filename on disk.
+export { default as Button } from './Button';
 export type { ButtonProps } from './Button';
