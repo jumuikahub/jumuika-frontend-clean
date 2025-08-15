@@ -48,13 +48,13 @@ export default function InternLinkPage() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          {/* IMPORTANT: when using href, render Button as an anchor */}
+          {/* When using href, render Button as an anchor */}
           <Button as="a" href="/internlink/onboard" variant="primary">
             Onboard via WhatsApp
           </Button>
 
-          {/* If you keep a second CTA here, make sure it also uses as="a" */}
-          <Button as="a" href="/internlink/weekly-report" variant="secondary">
+          {/* Remove the unsupported 'secondary' variant */}
+          <Button as="a" href="/internlink/weekly-report">
             Submit Weekly Report
           </Button>
         </div>
