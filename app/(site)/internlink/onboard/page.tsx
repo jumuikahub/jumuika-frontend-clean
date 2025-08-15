@@ -1,49 +1,56 @@
-import { Button } from '@/components/ui';
+// app/(site)/internlink/onboard/page.tsx
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui";
 
-export default function OnboardPage() {
+export const metadata: Metadata = {
+  title: "InternLink • Quick Onboarding",
+  description:
+    "Register your profile and confirm your WhatsApp number for InternLink reminders and submission confirmations.",
+};
+
+export default function InternlinkOnboardPage() {
   return (
-    <section className="bg-gradient-to-b from-emerald-50 to-white">
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-emerald-900">
-          Quick Onboarding
-        </h1>
-        <p className="mt-3 text-zinc-700">
-          Register your profile and confirm your WhatsApp number. We’ll use it to send
-          reminders and confirm submissions.
-        </p>
+    <main className="min-h-[60vh] w-full">
+      <section className="mx-auto w-full max-w-4xl px-4 py-14 sm:py-16">
+        <div className="rounded-3xl border border-emerald-100 bg-gradient-to-b from-emerald-50 to-white p-6 sm:p-10">
+          <h1 className="text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl">
+            Quick Onboarding
+          </h1>
 
-        <form className="mt-8 space-y-4 rounded-xl border p-6">
-          <label className="block">
-            <span className="text-sm font-medium text-zinc-700">Full name</span>
-            <input className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Jane Doe" />
-          </label>
+          <p className="mt-3 max-w-2xl text-emerald-900/80">
+            Register your profile and confirm your WhatsApp number. We’ll use it
+            to send reminders and confirm submissions.
+          </p>
 
-          <label className="block">
-            <span className="text-sm font-medium text-zinc-700">WhatsApp number</span>
-            <input className="mt-1 w-full rounded-lg border px-3 py-2" placeholder="+2547XXXXXXXX" />
-          </label>
-
+          {/* CTA */}
           <div className="pt-2">
-            <Button href="https://wa.me/254104250912" target="_blank" rel="noopener">
+            <Button
+              as="a"
+              href="https://wa.me/254104250912"
+              target="_blank"
+              rel="noopener"
+              variant="primary"
+            >
               Complete Onboarding
             </Button>
           </div>
-        </form>
 
-        <div className="mt-6 flex items-center justify-between text-sm">
-          <a className="text-emerald-700 hover:underline" href="/internlink">
-            ← Back to InternLink
-          </a>
-          <a
-            className="text-emerald-700 hover:underline"
-            href="https://wa.me/254104250912"
-            target="_blank"
-            rel="noopener"
-          >
-            Message us on WhatsApp
-          </a>
+          <div className="mt-6 flex items-center justify-between text-sm text-emerald-900/70">
+            <Link href="/internlink" className="hover:underline">
+              ← Back to InternLink
+            </Link>
+            <a
+              href="https://wa.me/254104250912"
+              target="_blank"
+              rel="noopener"
+              className="hover:underline"
+            >
+              Message us on WhatsApp
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
