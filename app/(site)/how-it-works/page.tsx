@@ -1,6 +1,6 @@
 // app/(site)/how-it-works/page.tsx
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 
 export default function HowItWorksPage() {
   return (
@@ -40,7 +40,7 @@ export default function HowItWorksPage() {
           </div>
 
           <div className="mt-8">
-            <Button as="a" href="https://wa.me/254104250912" variant="primary">
+            <Button as="a" href="https://wa.me/254104250912">
               Get Started Now
             </Button>
           </div>

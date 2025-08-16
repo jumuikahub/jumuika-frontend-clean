@@ -1,13 +1,12 @@
 // app/(site)/page.tsx
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 
 export default function HomePage() {
   return (
     <main className="w-full">
       {/* Full-bleed hero band */}
       <section className="relative isolate">
-        {/* soft green wash */}
         <div className="absolute inset-0 -z-10 bg-emerald-50/80" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -23,12 +22,12 @@ export default function HomePage() {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {/* CTA 1 — services */}
-              <Button as="a" href="https://wa.me/254104250912" variant="primary">
+              <Button as="a" href="https://wa.me/254104250912">
                 Book Services via WhatsApp
               </Button>
 
-              {/* CTA 2 — items */}
-              <Button as="a" href="https://wa.me/254104250912" variant="secondary">
+              {/* CTA 2 — items (keep variant default to avoid union type issues) */}
+              <Button as="a" href="https://wa.me/254104250912">
                 Buy Items via WhatsApp
               </Button>
             </div>
