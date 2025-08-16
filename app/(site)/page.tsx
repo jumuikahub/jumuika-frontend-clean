@@ -1,43 +1,40 @@
+// app/(site)/page.tsx
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export default function HomePage() {
   return (
-    <section className="py-12 sm:py-16">
-      <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6 sm:p-8">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-emerald-900">
-            Welcome to Jumuika Hub KE
-          </h1>
+    <main className="w-full">
+      {/* Full-bleed hero band */}
+      <section className="relative isolate">
+        {/* soft green wash */}
+        <div className="absolute inset-0 -z-10 bg-emerald-50/80" />
 
-          <p className="mt-4 text-base sm:text-lg text-slate-700">
-            Jumuika Hub KE is a WhatsApp-first smart business toolkit that
-            connects vendors, institutions, and students seamlessly. Real-time
-            commerce. No apps needed.
-          </p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="rounded-3xl bg-white/50 ring-1 ring-emerald-100/60 backdrop-blur-sm p-6 sm:p-8 lg:p-10 shadow-sm">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-emerald-900">
+              Welcome to Jumuika Hub KE
+            </h1>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            {/* Primary CTA – services */}
-            <Link
-              href="https://wa.me/254104250912"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center justify-center rounded-md bg-emerald-700 px-4 py-2 text-white font-medium hover:bg-emerald-800"
-            >
-              Book Services via WhatsApp
-            </Link>
+            <p className="mt-4 max-w-3xl text-base sm:text-lg text-emerald-900/80">
+              Jumuika Hub KE is a WhatsApp-first smart business toolkit that connects
+              vendors, institutions, and students seamlessly. Real-time commerce. No apps needed.
+            </p>
 
-            {/* Secondary CTA – items */}
-            <Link
-              href="https://wa.me/254104250912"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-slate-800 font-medium hover:bg-slate-50"
-            >
-              Buy Items via WhatsApp
-            </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {/* CTA 1 — services */}
+              <Button as="a" href="https://wa.me/254104250912" variant="primary">
+                Book Services via WhatsApp
+              </Button>
+
+              {/* CTA 2 — items */}
+              <Button as="a" href="https://wa.me/254104250912" variant="secondary">
+                Buy Items via WhatsApp
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
