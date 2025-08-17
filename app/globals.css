@@ -70,8 +70,8 @@
 
 /* ---------- Base element resets & theming ---------- */
 @layer base {
-  * {
-    @apply border-border;
+  *, ::before, ::after {
+    border-color: hsl(var(--border)); /* ✅ replaced @apply border-border */
   }
 
   html,
@@ -128,28 +128,4 @@
 /* ---------- Typography defaults ---------- */
 @layer base {
   h1 { @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight; }
-  h2 { @apply text-2xl md:text-3xl font-semibold leading-snug; }
-  h3 { @apply text-xl md:text-2xl font-semibold leading-snug; }
-  p  { @apply leading-relaxed; }
-  a  { @apply underline-offset-4 hover:underline; }
-}
-
-/* ---------- Container & layout helpers ---------- */
-@layer components {
-  .container-responsive {
-    @apply mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8;
-  }
-  .card {
-    @apply rounded-2xl border bg-card text-card-foreground shadow-sm;
-  }
-}
-
-/* ---------- Utility enhancements ---------- */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .shadow-soft {
-    box-shadow: 0 10px 30px -12px rgba(0,0,0,0.15);
-  }
-}
+  h2 { @apply text-2xl md:text-3xl font-semibold leadi
