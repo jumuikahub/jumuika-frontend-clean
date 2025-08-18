@@ -1,61 +1,53 @@
 // app/(site)/how-it-works/page.tsx
-import Container from "@/components/layout/Container";
-import PrimaryButton from "@/components/ui/PrimaryButton";
+import Section from "@/components/layout/Section";
+import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
 
 export const metadata = {
-  title: "How it works (Vendors) | Jumuika Hub KE",
-  description:
-    "The quickest way for vendors to list, sell, and message customers — all via WhatsApp.",
+  title: "How it works • Jumuika Hub KE",
+  description: "A quick look at the Jumuika Hub flow on WhatsApp.",
 };
-
-const STEPS = [
-  {
-    title: "1. Onboard",
-    body:
-      "Register your business and confirm your WhatsApp number. No apps to install.",
-  },
-  {
-    title: "2. List & Manage",
-    body:
-      "Create services, products, or bookings. Manage everything in real-time.",
-  },
-  {
-    title: "3. Connect & Sell",
-    body:
-      "Customers contact you instantly on WhatsApp — book services or buy items without extra apps.",
-  },
-];
 
 export default function HowItWorksPage() {
   return (
-    <section className="w-full bg-white">
-      <Container>
-        <div className="mx-auto max-w-4xl py-14 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            How Jumuika Hub KE Works
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            The easiest way for vendors to connect, transact, and grow —
-            all via WhatsApp.
-          </p>
+    <>
+      <Section className="pt-10">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-emerald-900">
+          How Jumuika Hub KE Works
+        </h1>
+        <p className="mt-4 max-w-3xl text-emerald-900/80">
+          We’ve designed Jumuika Hub KE to make it easy to connect and transact
+          via WhatsApp — without additional apps.
+        </p>
+      </Section>
+
+      <Section>
+        <div className="grid gap-6 sm:grid-cols-3">
+          <div className="rounded-xl border border-emerald-900/10 p-5">
+            <h3 className="font-semibold text-emerald-900">1. Onboard</h3>
+            <p className="mt-2 text-sm text-emerald-900/80">
+              Vendors register and connect their WhatsApp number.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-emerald-900/10 p-5">
+            <h3 className="font-semibold text-emerald-900">2. List & Manage</h3>
+            <p className="mt-2 text-sm text-emerald-900/80">
+              Add products or services, manage orders in real time.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-emerald-900/10 p-5">
+            <h3 className="font-semibold text-emerald-900">3. Connect & Sell</h3>
+            <p className="mt-2 text-sm text-emerald-900/80">
+              Customers message you on WhatsApp — no extra apps required.
+            </p>
+          </div>
         </div>
 
-        <div className="mx-auto grid max-w-5xl gap-6 pb-10 sm:grid-cols-3">
-          {STEPS.map((s) => (
-            <div
-              key={s.title}
-              className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">{s.title}</h3>
-              <p className="mt-2 text-slate-600">{s.body}</p>
-            </div>
-          ))}
+        <div className="mt-6">
+          <WhatsAppCTA>Get Started on WhatsApp</WhatsAppCTA>
         </div>
-
-        <div className="pb-14 text-center">
-          <PrimaryButton label="Get Started via WhatsApp" />
-        </div>
-      </Container>
-    </section>
+      </Section>
+    </>
   );
 }

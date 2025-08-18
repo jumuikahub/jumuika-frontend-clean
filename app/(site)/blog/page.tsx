@@ -1,28 +1,28 @@
 // app/(site)/blog/page.tsx
-import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 
 export const metadata = {
-  title: "Blog | Jumuika Hub KE",
+  title: "Blog • Jumuika Hub KE",
   description:
-    "Updates, tips, and success stories from WhatsApp-first commerce in Kenya.",
+    "Ideas, updates, and stories from the Jumuika community.",
 };
 
-const POSTS = [
+const posts = [
   {
     title: "WhatsApp-first commerce: why it wins in Kenya",
-    date: "Coming soon",
+    kicker: "Coming soon",
     excerpt:
-      "Practical reasons WhatsApp is the best channel for vendors and students — and how to make it work for you.",
+      "Practical reasons WhatsApp is the best channel — and how to make it work for vendors and students.",
   },
   {
     title: "Real-time bookings without apps",
-    date: "Coming soon",
+    kicker: "Coming soon",
     excerpt:
       "A lightweight approach to services and appointments that customers already understand.",
   },
   {
     title: "From marketplace noise to direct chats",
-    date: "Coming soon",
+    kicker: "Coming soon",
     excerpt:
       "Cut latency and improve conversion by moving conversations to WhatsApp.",
   },
@@ -30,32 +30,32 @@ const POSTS = [
 
 export default function BlogPage() {
   return (
-    <section className="w-full bg-white">
-      <Container>
-        <div className="mx-auto max-w-4xl py-14 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Blog
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Ideas, updates, and stories from the Jumuika community.
-          </p>
-        </div>
+    <>
+      <Section className="pt-10">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-emerald-900">
+          Blog
+        </h1>
+        <p className="mt-4 max-w-3xl text-emerald-900/80">
+          Ideas, updates, and stories from the Jumuika community.
+        </p>
+      </Section>
 
-        <div className="mx-auto grid max-w-5xl gap-6 pb-16 sm:grid-cols-3">
-          {POSTS.map((p) => (
+      <Section>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {posts.map((p) => (
             <article
               key={p.title}
-              className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm"
+              className="rounded-xl border border-emerald-900/10 p-5"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-              <p className="mt-2 text-xs uppercase tracking-wide text-slate-500">
-                {p.date}
+              <h3 className="font-semibold text-emerald-900">{p.title}</h3>
+              <p className="mt-1 text-xs uppercase tracking-wide text-emerald-700">
+                {p.kicker}
               </p>
-              <p className="mt-3 text-sm text-slate-600">{p.excerpt}</p>
+              <p className="mt-2 text-sm text-emerald-900/80">{p.excerpt}</p>
             </article>
           ))}
         </div>
-      </Container>
-    </section>
+      </Section>
+    </>
   );
 }

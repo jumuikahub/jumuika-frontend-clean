@@ -1,34 +1,37 @@
-// app/(site)/page.tsx  (only the hero section shown)
-export default function Home() {
+// app/(site)/page.tsx
+import Section from "@/components/layout/Section";
+import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { WHATSAPP_CTA_URL } from "@/lib/constants";
+
+export const metadata = {
+  title: "Jumuika Hub KE • WhatsApp-first commerce",
+  description:
+    "A WhatsApp-first smart business toolkit connecting vendors and students. Real-time commerce. No apps needed.",
+};
+
+export default function HomePage() {
   return (
-    <section className="container mx-auto px-4">
-      <div className="rounded-2xl border bg-accent/40 p-8 md:p-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-emerald-900 md:text-5xl">
+    <>
+      <Section className="pt-14">
+        <div className="rounded-2xl bg-emerald-50/50 p-6 sm:p-10">
+          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-emerald-900">
             Welcome to Jumuika Hub KE
           </h1>
-          <p className="mt-4 text-base text-muted-foreground md:text-lg">
+          <p className="mt-4 max-w-3xl text-emerald-900/80">
             Jumuika Hub KE is a WhatsApp-first smart business toolkit that
-            connects vendors, institutions, and students seamlessly. Real-time
-            commerce. No apps needed.
+            connects vendors and students seamlessly. Real-time commerce. No
+            apps needed.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://wa.me/"
-              className="btn-primary"
-            >
-              Book Services via WhatsApp
-            </a>
-            <a
-              href="https://wa.me/"
-              className="btn-outline"
-            >
+          <div className="mt-6 flex flex-wrap gap-3">
+            <WhatsAppCTA>Book Services via WhatsApp</WhatsAppCTA>
+            <PrimaryButton href={WHATSAPP_CTA_URL} variant="outline">
               Buy Items via WhatsApp
-            </a>
+            </PrimaryButton>
           </div>
         </div>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }
