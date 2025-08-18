@@ -1,12 +1,19 @@
-/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global base styles */
 html, body {
-  @apply min-h-dvh bg-white text-zinc-900;
+  /* Use built-in class to avoid custom config */
+  @apply min-h-screen bg-white text-zinc-900 antialiased;
 }
 
+/* Consistent container utility */
+.container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Brand link color */
 a {
-  @apply outline-none;
+  @apply text-emerald-700 hover:text-emerald-800;
 }
