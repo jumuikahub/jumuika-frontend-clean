@@ -29,9 +29,13 @@ export default function VendorsLanding() {
             Open Vendor Dashboard
           </PrimaryButton>
 
-          <PrimaryButton href={WHATSAPP_CTA_URL} intent="outline">
+          {/* Outline-style CTA without using a non-existent `intent` prop */}
+          <Link
+            href={WHATSAPP_CTA_URL}
+            className="rounded-full border border-emerald-300 px-5 py-2.5 text-emerald-700 hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+          >
             Request Access via WhatsApp
-          </PrimaryButton>
+          </Link>
         </div>
 
         <div className="mt-10 grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3 text-left">
