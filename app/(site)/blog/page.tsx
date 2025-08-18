@@ -1,15 +1,32 @@
-// app/(site)/blog/page.tsx
+import Link from "next/link";
+
+export const metadata = {
+  title: "Blog • Jumuika Hub KE",
+  description:
+    "Updates, playbooks, and stories from Jumuika Hub KE’s WhatsApp-first toolkit.",
+};
+
 export default function BlogPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
-      <section className="rounded-3xl bg-emerald-50 ring-1 ring-emerald-100/80 px-5 sm:px-8 md:px-10 py-8 md:py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-emerald-900">
-          Jumuika Blog
+    <section className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-3xl text-center">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          Jumuika Hub KE Blog
         </h1>
-        <p className="mt-4 max-w-3xl text-slate-700 leading-relaxed">
-          Get the latest updates, business tips, and smart automation insights from the Jumuika ecosystem.
+        <p className="mt-3 text-slate-700">
+          Insights on WhatsApp commerce, vendor enablement, and student
+          services. Articles are coming soon — stay tuned!
         </p>
-      </section>
-    </div>
+
+        <div className="mt-8">
+          <Link
+            href="/how-it-works"
+            className="rounded-xl border px-5 py-3 text-slate-800 hover:bg-slate-50"
+          >
+            Start with: How it works
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
