@@ -1,16 +1,26 @@
 // app/(site)/privacy/page.tsx
+export const metadata = {
+  title: "Privacy • Jumuika Hub KE",
+};
+
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
-      <section className="rounded-3xl bg-emerald-50 ring-1 ring-emerald-100/80 px-5 sm:px-8 md:px-10 py-8 md:py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-emerald-900">
-          Privacy Policy
-        </h1>
-        <p className="mt-4 max-w-3xl text-slate-700 leading-relaxed">
-          We value your privacy. This page outlines how we collect, use, and safeguard your data
-          on Jumuika Hub KE. No user data is ever sold or shared without consent.
+    <section className="space-y-6">
+      <header className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6 text-center">
+        <h1 className="text-2xl font-bold">Privacy Policy</h1>
+        <p className="mx-auto mt-2 max-w-3xl text-zinc-700">
+          We value your privacy. This page outlines how we collect, use, and
+          safeguard your data on Jumuika Hub KE. No user data is ever sold or
+          shared without consent.
         </p>
-      </section>
-    </div>
+      </header>
+
+      <div className="prose prose-zinc mx-auto max-w-3xl">
+        <p>
+          We collect the minimum necessary information to provide our WhatsApp-
+          first services. You may request deletion of your data at any time.
+        </p>
+      </div>
+    </section>
   );
 }

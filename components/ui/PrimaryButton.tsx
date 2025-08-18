@@ -1,26 +1,42 @@
 // components/ui/PrimaryButton.tsx
 import Link from "next/link";
-import { ComponentProps } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils"; // if you don't have a cn() helper, replace cn(...) with array join.
 
-type Props = ComponentProps<typeof Link> & {
-  variant?: "primary" | "outline";
+const button = cva(
+  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        solid:
+          "bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:ring-emerald-600",
+        outline:
+          "ring-1 ring-emerald-600/30 text-emerald-700 hover:bg-emerald-50 focus-visible:ring-emerald-600",
+      },
+      block: {
+        true: "w-full",
+        false: "",
+      },
+    },
+    defaultVariants: { variant: "solid", block: false },
+  }
+);
+
+type Props = VariantProps<typeof button> & {
+  href: string;
+  children: React.ReactNode;
   className?: string;
 };
 
 export default function PrimaryButton({
+  href,
   children,
-  variant = "primary",
-  className = "",
-  ...rest
+  variant,
+  block,
+  className,
 }: Props) {
-  const base =
-    "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/40";
-  const styles =
-    variant === "primary"
-      ? "bg-emerald-700 text-white hover:bg-emerald-800"
-      : "border border-emerald-700 text-emerald-800 hover:bg-emerald-50";
   return (
-    <Link {...rest} className={[base, styles, className].join(" ")} >
+    <Link href={href} className={cn(button({ variant, block }), className)}>
       {children}
     </Link>
   );

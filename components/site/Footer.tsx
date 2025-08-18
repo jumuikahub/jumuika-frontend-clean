@@ -1,51 +1,49 @@
 // components/site/Footer.tsx
 import Link from "next/link";
-import {
-  FOOTER_COMPANY,
-  FOOTER_LEGAL,
-  SITE_NAME,
-  SITE_TAGLINE,
-} from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 sm:grid-cols-3">
-        <div>
-          <h3 className="font-semibold">{SITE_NAME}</h3>
-          <p className="mt-2 max-w-sm text-sm text-zinc-600">{SITE_TAGLINE}</p>
-        </div>
+    <footer className="border-t border-zinc-100">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid gap-8 py-10 sm:grid-cols-3">
+          <div>
+            <div className="text-sm font-semibold">{BRAND.name}</div>
+            <p className="mt-2 text-sm text-zinc-600">{BRAND.tagline}</p>
+          </div>
 
-        <div>
-          <h4 className="mb-2 font-semibold">Company</h4>
-          <ul className="space-y-2 text-sm">
-            {FOOTER_COMPANY.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="hover:text-emerald-700">
-                  {l.label}
+          <div>
+            <div className="text-sm font-semibold">Company</div>
+            <ul className="mt-2 space-y-2 text-sm text-zinc-600">
+              <li>
+                <Link href="/blog" className="hover:text-zinc-900">
+                  Blog
                 </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-        <div>
-          <h4 className="mb-2 font-semibold">Legal</h4>
-          <ul className="space-y-2 text-sm">
-            {FOOTER_LEGAL.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="hover:text-emerald-700">
-                  {l.label}
+          <div>
+            <div className="text-sm font-semibold">Legal</div>
+            <ul className="mt-2 space-y-2 text-sm text-zinc-600">
+              <li>
+                <Link href="/privacy" className="hover:text-zinc-900">
+                  Privacy
                 </Link>
               </li>
-            ))}
-          </ul>
+              <li>
+                <Link href="/terms" className="hover:text-zinc-900">
+                  Terms &amp; Conditions
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div className="border-t">
-        <div className="mx-auto max-w-7xl px-4 py-6 text-xs text-zinc-500">
-          © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+        <div className="border-t border-zinc-100 py-6">
+          <p className="text-xs text-zinc-500">
+            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

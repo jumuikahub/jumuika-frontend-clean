@@ -3,58 +3,47 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { NAV_LINKS } from "@/lib/constants";
-import { cn } from "@/lib/utils"; // if you don't have a cn helper, replace with simple string join
+import { BRAND } from "@/lib/constants";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-6 px-4 sm:h-16">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-100">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          {/* If /public/logo.svg exists it renders; otherwise text still shows */}
+          {/* If /public/logo.svg exists it renders; if not, the text still shows. */}
           <Image
             src="/logo.svg"
-            alt="Jumuika logo"
+            alt={BRAND.name}
             width={24}
             height={24}
             className="h-6 w-6"
             priority
           />
-          <span className="font-semibold tracking-tight">Jumuika Hub KE</span>
+          <span className="text-sm font-semibold tracking-tight">
+            {BRAND.name}
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 sm:flex">
-          {NAV_LINKS.map((l) => {
-            const active = pathname === l.href;
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  active
-                    ? "text-emerald-700"
-                    : "text-zinc-600 hover:text-emerald-700"
-                )}
-              >
-                {l.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="flex items-center gap-6">
+          <Link href="/about" className="text-sm text-zinc-700 hover:text-zinc-900">
+            About
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="text-sm text-zinc-700 hover:text-zinc-900"
+          >
+            How it works
+          </Link>
 
-        <div className="ml-auto">
+          {/* Right-aligned CTA to Vendor dashboard */}
           <Link
             href="/vendors/dashboard"
-            className="rounded-full border border-emerald-600 px-3 py-1.5 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
+            className="rounded-full border border-emerald-200 px-4 py-2 text-sm text-emerald-700 hover:bg-emerald-50"
           >
             Vendor Dashboard
           </Link>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
