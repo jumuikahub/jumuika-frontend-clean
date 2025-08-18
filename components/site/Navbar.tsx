@@ -2,53 +2,54 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BRAND } from "@/lib/constants";
-
-const links = [
-  { href: "/about", label: "About" },
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/blog", label: "Blog" },
-  // Institutions & InternLink intentionally hidden for now.
-];
-
-function NavLink({ href, label }: { href: string; label: string }) {
-  const pathname = usePathname();
-  const active = pathname === href;
-  return (
-    <Link
-      href={href}
-      className={[
-        "text-sm transition",
-        active ? "text-emerald-900" : "text-emerald-900/70 hover:text-emerald-900",
-      ].join(" ")}
-    >
-      {label}
-    </Link>
-  );
-}
+import { NAV_LINKS } from "@/lib/constants";
+import { cn } from "@/lib/utils"; // if you don't have a cn helper, replace with simple string join
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-emerald-900/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-6 px-4 sm:h-16">
         <Link href="/" className="flex items-center gap-2">
-          <div className="h-6 w-6 rounded-full bg-emerald-700" aria-hidden />
-          <span className="text-sm font-semibold text-emerald-900">
-            {BRAND.name}
-          </span>
+          {/* If /public/logo.svg exists it renders; otherwise text still shows */}
+          <Image
+            src="/logo.svg"
+            alt="Jumuika logo"
+            width={24}
+            height={24}
+            className="h-6 w-6"
+            priority
+          />
+          <span className="font-semibold tracking-tight">Jumuika Hub KE</span>
         </Link>
 
-        <nav className="hidden sm:flex items-center gap-6">
-          {links.map((l) => (
-            <NavLink key={l.href} {...l} />
-          ))}
+        <nav className="hidden items-center gap-6 sm:flex">
+          {NAV_LINKS.map((l) => {
+            const active = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  active
+                    ? "text-emerald-700"
+                    : "text-zinc-600 hover:text-emerald-700"
+                )}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto">
           <Link
-            href="/vendors"
-            className="inline-flex items-center rounded-full border border-emerald-700 text-emerald-800 text-sm px-4 py-2 hover:bg-emerald-50"
+            href="/vendors/dashboard"
+            className="rounded-full border border-emerald-600 px-3 py-1.5 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
           >
             Vendor Dashboard
           </Link>

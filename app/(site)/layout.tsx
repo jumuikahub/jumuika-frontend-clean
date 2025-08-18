@@ -1,13 +1,14 @@
 // app/(site)/layout.tsx
-import "../globals.css";
+import type { ReactNode } from "react";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
+import "../globals.css";
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-dvh bg-white text-zinc-900">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
