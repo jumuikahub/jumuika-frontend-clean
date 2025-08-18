@@ -1,59 +1,75 @@
 // app/vendors/page.tsx
-import Container from "@/components/layout/Container";
+import Link from "next/link";
+import { Metadata } from "next";
+import Section from "@/components/layout/Section";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import { WHATSAPP_CTA_URL } from "@/lib/constants";
 
-export const metadata = {
-  title: "Vendors | Jumuika Hub KE",
+export const metadata: Metadata = {
+  title: "Vendors • Jumuika Hub KE",
   description:
     "A lightweight dashboard for vendors to list products/services and chat with customers on WhatsApp — in real time.",
 };
 
-const CARDS = [
-  {
-    title: "List Products & Services",
-    body: "Create and update listings on the fly.",
-  },
-  {
-    title: "Orders in Real-time",
-    body: "Track bookings and purchases instantly.",
-  },
-  {
-    title: "Smart Messaging",
-    body: "Confirm, remind, and follow-up on WhatsApp.",
-  },
-];
-
-export default function VendorsPage() {
+export default function VendorsLanding() {
   return (
-    <section className="w-full bg-white">
-      <Container>
-        <div className="mx-auto max-w-4xl py-14 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Jumuika for Vendors
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Manage listings, orders, and messaging — while customers
-            interact on WhatsApp. Real-time, no apps needed.
-          </p>
+    <main className="min-h-[70vh]">
+      <Section className="text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-emerald-900">
+          Jumuika Manager
+        </h1>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <PrimaryButton href="/vendors/dashboard" label="Open Vendor Dashboard" />
-            <PrimaryButton label="Request Access via WhatsApp" intent="outline" />
+        <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-slate-600">
+          A lightweight dashboard to manage listings, orders, and messaging —
+          while customers interact on WhatsApp. Real-time, no apps needed.
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <PrimaryButton href="/vendors/dashboard">
+            Open Vendor Dashboard
+          </PrimaryButton>
+
+          <PrimaryButton href={WHATSAPP_CTA_URL} intent="outline">
+            Request Access via WhatsApp
+          </PrimaryButton>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3 text-left">
+          <div className="rounded-2xl border border-emerald-200 bg-white p-5">
+            <h3 className="font-medium text-emerald-800">
+              List Products & Services
+            </h3>
+            <p className="mt-2 text-slate-600">
+              Create and update listings on the fly.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-emerald-200 bg-white p-5">
+            <h3 className="font-medium text-emerald-800">Orders in Real-time</h3>
+            <p className="mt-2 text-slate-600">
+              Track bookings and purchases instantly.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-emerald-200 bg-white p-5">
+            <h3 className="font-medium text-emerald-800">Smart Messaging</h3>
+            <p className="mt-2 text-slate-600">
+              Confirm, remind, and follow-up on WhatsApp.
+            </p>
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-5xl gap-6 pb-16 sm:grid-cols-3">
-          {CARDS.map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">{c.title}</h3>
-              <p className="mt-2 text-slate-600">{c.body}</p>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </section>
+        <p className="mt-10 text-sm text-slate-500">
+          Prefer to talk to us?{" "}
+          <Link
+            href={WHATSAPP_CTA_URL}
+            className="underline decoration-emerald-400 hover:text-emerald-700"
+          >
+            Chat on WhatsApp
+          </Link>
+          .
+        </p>
+      </Section>
+    </main>
   );
 }
