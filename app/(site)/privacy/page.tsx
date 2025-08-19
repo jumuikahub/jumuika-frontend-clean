@@ -1,21 +1,41 @@
-export default function Privacy() {
+// app/(site)/privacy/page.tsx
+import metadata from "./metadata";
+
+export { metadata };
+
+export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950 px-6 py-16">
-      <h1 className="text-4xl font-bold text-green-600 mb-6 text-center">Privacy Policy</h1>
-      <div className="max-w-4xl mx-auto space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-        <p>
-          At Jumuika Hub KE, we respect your privacy and are committed to protecting your personal
-          data. All interactions occur through WhatsApp and are handled with strict confidentiality.
+    <main className="mx-auto max-w-4xl px-4 py-16">
+      <section className="rounded-3xl border border-emerald-200 bg-emerald-50/60 p-8 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight text-emerald-900 sm:text-5xl">
+          Privacy Policy
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-emerald-900/80">
+          We value your privacy. This page outlines how we collect, use, and
+          safeguard your data on Jumuika Hub KE. No user data is ever sold or
+          shared without consent.
         </p>
+      </section>
+
+      <article className="prose prose-zinc mx-auto mt-10 max-w-4xl">
+        <h2>What we collect</h2>
         <p>
-          We do not share your personal information with third parties without consent. Vendors are
-          responsible for managing their own tax obligations and issuing receipts independently.
+          Minimal contact information and conversation metadata strictly for
+          service delivery on WhatsApp.
         </p>
+
+        <h2>How we use your data</h2>
         <p>
-          By using our services, you agree to this Privacy Policy. For any questions, contact us at
-          info@jumuikahub.com.
+          To provide real-time messaging, booking, and commerce experiences to
+          vendors and students, and to improve the platform.
         </p>
-      </div>
+
+        <h2>Your choices</h2>
+        <p>
+          You may request access to or deletion of your data at any time. Reach
+          out via WhatsApp using the contact button on our site.
+        </p>
+      </article>
     </main>
   );
 }

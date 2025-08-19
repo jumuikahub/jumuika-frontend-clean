@@ -1,36 +1,43 @@
-"use client";
-
+// app/page.tsx
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/ModeToggle";
 
-export default function Home() {
+const WA_URL = "https://wa.me/254104250912";
+
+export const metadata = {
+  title: "Home",
+};
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 flex flex-col items-center justify-center px-6 py-16 text-center">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-        Welcome to <span className="text-green-600">Jumuika Hub KE</span>
-      </h1>
-      <p className="max-w-2xl text-lg text-gray-600 dark:text-gray-300 mb-10">
-        A WhatsApp-First Smart Business Toolkit. Automate bookings, payments, and vendor listings
-        while keeping your business connected on WhatsApp.
-      </p>
+    <section className="bg-emerald-50/60 py-16">
+      <div className="mx-auto max-w-5xl px-4 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight text-emerald-900 sm:text-5xl">
+          Welcome to Jumuika Hub KE
+        </h1>
 
-      <div className="flex gap-4 flex-wrap justify-center">
-        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Buy">
-          <Button size="lg" className="rounded-2xl">
-            Buy Items via WhatsApp
-          </Button>
-        </Link>
-        <Link href="https://wa.me/254700915610?text=I%20want%20to%20Book">
-          <Button size="lg" variant="outline" className="rounded-2xl">
+        <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-emerald-900/80">
+          WhatsApp-first toolkit for vendors and students to connect, transact,
+          and grow — no apps, no friction.
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href={WA_URL}
+            target="_blank"
+            className="inline-flex items-center rounded-full bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-700"
+          >
             Book Services via WhatsApp
-          </Button>
-        </Link>
-      </div>
+          </Link>
 
-      <div className="mt-12">
-        <ModeToggle />
+          <Link
+            href={WA_URL}
+            target="_blank"
+            className="inline-flex items-center rounded-full border border-emerald-300 bg-white px-6 py-3 text-emerald-700 transition hover:bg-emerald-50"
+          >
+            Buy Items via WhatsApp
+          </Link>
+        </div>
       </div>
-    </main>
+    </section>
   );
 }

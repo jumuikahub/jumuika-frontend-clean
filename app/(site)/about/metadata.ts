@@ -1,7 +1,10 @@
+// app/(site)/about/metadata.ts
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "About | Jumuika Hub KE",
+const metadata: Metadata = {
+  title: "About • Jumuika Hub KE",
   description:
-    "Learn about Jumuika Hub KE and our WhatsApp-first business toolkit.",
+    "We help vendors and students connect and transact seamlessly on WhatsApp — real-time commerce, no apps, no friction.",
 };
+
+export default metadata;

@@ -1,6 +1,10 @@
+// app/(site)/terms/metadata.ts
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Jumuika Hub KE",
-  description: "Terms and conditions for using Jumuika Hub KE.",
+const metadata: Metadata = {
+  title: "Terms & Conditions • Jumuika Hub KE",
+  description:
+    "The terms that govern your use of Jumuika Hub KE.",
 };
+
+export default metadata;
