@@ -1,8 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Keep it very small to avoid PostCSS/Tailwind issues */
+/* app/globals.css */
 html, body {
-  /* no min-h-dvh here */
+  min-height: 100%;
+}
+
+body {
+  background: #fff;
+  color: #0a0a0a;
 }

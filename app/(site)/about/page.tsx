@@ -1,49 +1,44 @@
 // app/(site)/about/page.tsx
-import metadata from "./metadata";
+import { BRAND } from "@/lib/constants";
 
-export { metadata };
+export const metadata = {
+  title: `About • ${BRAND.name}`,
+  description: BRAND.tagline,
+};
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-16">
-      <section className="text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight text-emerald-900 sm:text-5xl">
-          About Jumuika Hub KE
+    <section className="mx-auto max-w-6xl px-4">
+      <div className="my-8 rounded-2xl border bg-emerald-50 p-8 text-center md:my-10 md:p-12">
+        <h1 className="text-3xl font-bold text-emerald-900 md:text-4xl">
+          About {BRAND.name}
         </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-lg text-zinc-700">
-          We help vendors and students connect and transact seamlessly on
-          WhatsApp. Our mission is to enable real-time commerce — no apps, no
-          friction.
+        <p className="mx-auto mt-3 max-w-3xl text-emerald-900/90">
+          We help vendors and students connect and transact on WhatsApp —
+          real-time commerce with zero app installs.
         </p>
-      </section>
+      </div>
 
-      <section className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[
-          {
-            title: "Simple",
-            body:
-              "WhatsApp-first. Start instantly — no app installs.",
-          },
-          {
-            title: "Reliable",
-            body:
-              "Real-time interactions that keep your operations moving.",
-          },
-          {
-            title: "Inclusive",
-            body:
-              "Designed for vendors and students across Kenya.",
-          },
-        ].map((c) => (
-          <div
-            key={c.title}
-            className="rounded-2xl border border-emerald-200 bg-white p-6"
-          >
-            <h3 className="text-lg font-semibold text-emerald-900">{c.title}</h3>
-            <p className="mt-2 text-zinc-700">{c.body}</p>
-          </div>
-        ))}
-      </section>
-    </main>
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="rounded-xl border p-5">
+          <h3 className="font-semibold text-zinc-900">Simple</h3>
+          <p className="mt-2 text-sm text-zinc-600">
+            WhatsApp-first. Start instantly — no app installs.
+          </p>
+        </div>
+        <div className="rounded-xl border p-5">
+          <h3 className="font-semibold text-zinc-900">Reliable</h3>
+          <p className="mt-2 text-sm text-zinc-600">
+            Real-time interactions that keep your operations moving.
+          </p>
+        </div>
+        <div className="rounded-xl border p-5">
+          <h3 className="font-semibold text-zinc-900">Inclusive</h3>
+          <p className="mt-2 text-sm text-zinc-600">
+            Designed for vendors and students across Kenya.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }

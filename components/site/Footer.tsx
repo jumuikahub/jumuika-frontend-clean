@@ -1,64 +1,52 @@
+// components/site/Footer.tsx
 import Link from "next/link";
+import { BRAND, FOOTER_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-100 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 sm:grid-cols-3">
-          {/* Brand blurb */}
+    <footer className="border-t bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <h3 className="text-base font-semibold text-emerald-900">
-              Jumuika Hub KE
-            </h3>
-            <p className="mt-3 max-w-xs text-sm leading-6 text-zinc-700">
-              WhatsApp-first toolkit to help vendors and students connect,
-              sell, and grow — in real time.
+            <div className="mb-2 flex items-center gap-2">
+              <span className="inline-block h-6 w-6 rounded-full bg-emerald-600" />
+              <span className="font-semibold text-zinc-900">{BRAND.name}</span>
+            </div>
+            <p className="text-sm text-zinc-600">
+              WhatsApp-first smart business toolkit for vendors and students.
             </p>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-emerald-900">Company</h4>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-zinc-700 hover:text-emerald-900"
-                >
-                  Blog
-                </Link>
-              </li>
+            <h4 className="mb-2 text-sm font-semibold text-zinc-900">Company</h4>
+            <ul className="space-y-1">
+              {FOOTER_LINKS.company.map((l) => (
+                <li key={l.href}>
+                  <Link className="text-sm text-zinc-600 hover:text-zinc-900" href={l.href}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
-            <h4 className="text-sm font-semibold text-emerald-900">Legal</h4>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-zinc-700 hover:text-emerald-900"
-                >
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-zinc-700 hover:text-emerald-900"
-                >
-                  Terms &amp; Conditions
-                </Link>
-              </li>
+            <h4 className="mb-2 text-sm font-semibold text-zinc-900">Legal</h4>
+            <ul className="space-y-1">
+              {FOOTER_LINKS.legal.map((l) => (
+                <li key={l.href}>
+                  <Link className="text-sm text-zinc-600 hover:text-zinc-900" href={l.href}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-10 border-t border-zinc-100 pt-6 text-xs text-zinc-500">
-          © {new Date().getFullYear()} Jumuika Hub KE. All rights reserved.
-        </div>
+        <p className="mt-8 text-xs text-zinc-500">
+          © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+        </p>
       </div>
     </footer>
   );
