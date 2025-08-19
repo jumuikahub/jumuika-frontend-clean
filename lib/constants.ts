@@ -1,24 +1,42 @@
 // lib/constants.ts
-export const BRAND = {
-  name: "Jumuika Hub KE",
-  tagline:
-    "WhatsApp-first smart business toolkit for vendors and students — real-time, no apps.",
-} as const;
 
-// Single WhatsApp number (do not change format in the href)
-export const WHATSAPP_CTA_URL =
-  "https://wa.me/254104250912?text=Hi%20Jumuika%20Hub%20KE%2C%20I%27d%20like%20to%20get%20started.";
+/**
+ * Global brand + CTA constants used across pages.
+ * Keep these as simple string constants so they tree-shake well in Next.js.
+ */
 
-export const NAV_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/how-it-works", label: "How it works" },
-  // Blog is footer-only by request; omit from Navbar
-] as const;
+// ---- Brand ----
+export const BRAND_NAME = "Jumuika Hub KE";
 
-export const FOOTER_LINKS = {
-  company: [{ href: "/blog", label: "Blog" }],
-  legal: [
-    { href: "/privacy", label: "Privacy" },
-    { href: "/terms", label: "Terms & Conditions" },
-  ],
-} as const;
+// Short, current tagline (no Institutions / InternLink mentions)
+export const BRAND_TAGLINE =
+  "WhatsApp-first smart business toolkit for vendors and students — real-time, no apps.";
+
+// ---- CTAs ----
+/**
+ * One WhatsApp entry point you can reuse for all CTAs.
+ * Replace the number below with your production number/wa.me link.
+ */
+export const WHATSAPP_CTA_URL = "https://wa.me/254XXXXXXXXX";
+
+// Optional: a second CTA for buying/marketplace if you want different flows.
+export const WHATSAPP_BUY_URL = WHATSAPP_CTA_URL;
+
+// ---- Legacy aliases (safe for older imports) ----
+/** Some files might still import BRAND; keep a friendly alias. */
+export const BRAND = BRAND_NAME;
+/** Older code might import TAGLINE. */
+export const TAGLINE = BRAND_TAGLINE;
+/** Older code might have used WHATSAPP_CTA. */
+export const WHATSAPP_CTA = WHATSAPP_CTA_URL;
+
+// Default export (handy in some places, but not required)
+export default {
+  BRAND_NAME,
+  BRAND_TAGLINE,
+  WHATSAPP_CTA_URL,
+  WHATSAPP_BUY_URL,
+  BRAND,
+  TAGLINE,
+  WHATSAPP_CTA,
+};
