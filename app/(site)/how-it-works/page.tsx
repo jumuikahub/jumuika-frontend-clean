@@ -1,53 +1,63 @@
 // app/(site)/how-it-works/page.tsx
 import Link from "next/link";
-import { BRAND, WHATSAPP_CTA_URL } from "@/lib/constants";
+import { BRAND_NAME, WHATSAPP_CTA_URL } from "@/lib/constants";
 
 export const metadata = {
-  title: `How it works • ${BRAND.name}`,
-  description: "The easiest way for vendors and students to transact via WhatsApp.",
+  title: `How it works • ${BRAND_NAME}`,
+  description: "The fast way for vendors and students to connect — via WhatsApp.",
 };
+
+const Step = ({
+  n,
+  title,
+  children,
+}: {
+  n: number;
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-soft">
+    <h3 className="font-heading text-lg text-zinc-900">
+      {n}. {title}
+    </h3>
+    <p className="mt-2 text-zinc-700">{children}</p>
+  </div>
+);
 
 export default function HowItWorksPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4">
-      <div className="my-8 rounded-2xl border bg-emerald-50 p-8 text-center md:my-10 md:p-12">
-        <h1 className="text-3xl font-bold text-emerald-900 md:text-4xl">
-          How {BRAND.name} Works
+    <section className="bg-gradient-to-b from-brand/10 via-brand/5 to-transparent">
+      <div className="mx-auto max-w-6xl px-4 py-16">
+        <h1 className="text-center font-heading text-4xl tracking-tight text-brand-dark">
+          How {BRAND_NAME} Works
         </h1>
-        <p className="mx-auto mt-3 max-w-3xl text-emerald-900/90">
-          Connect, list, and sell — all via WhatsApp.
+
+        <p className="mx-auto mt-4 max-w-3xl text-center text-zinc-700">
+          The easiest way for vendors and students to connect, transact, and
+          grow — all via WhatsApp.
         </p>
-      </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">1. Onboard</h3>
-          <p className="mt-2 text-sm text-zinc-600">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <Step n={1} title="Onboard">
             Register and connect your WhatsApp number.
-          </p>
-        </div>
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">2. List & Manage</h3>
-          <p className="mt-2 text-sm text-zinc-600">
+          </Step>
+          <Step n={2} title="List & Manage">
             Add products, services, or bookings and manage in real-time.
-          </p>
-        </div>
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">3. Connect & Sell</h3>
-          <p className="mt-2 text-sm text-zinc-600">
+          </Step>
+          <Step n={3} title="Connect & Sell">
             Customers contact you instantly on WhatsApp.
-          </p>
+          </Step>
         </div>
-      </div>
 
-      <div className="mt-8 flex justify-center">
-        <Link
-          href={WHATSAPP_CTA_URL}
-          target="_blank"
-          className="rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700"
-        >
-          Get Started via WhatsApp
-        </Link>
+        <div className="mt-10 flex justify-center">
+          <Link
+            href={WHATSAPP_CTA_URL}
+            target="_blank"
+            className="inline-flex items-center justify-center rounded-xl bg-brand px-5 py-3 text-sm font-medium text-white shadow-soft transition-all hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand/30"
+          >
+            Get Started via WhatsApp
+          </Link>
+        </div>
       </div>
     </section>
   );

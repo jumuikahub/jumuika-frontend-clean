@@ -1,42 +1,47 @@
 // app/(site)/about/page.tsx
-import { BRAND } from "@/lib/constants";
+import { BRAND_NAME } from "@/lib/constants";
 
 export const metadata = {
-  title: `About • ${BRAND.name}`,
-  description: BRAND.tagline,
+  title: `About • ${BRAND_NAME}`,
+  description:
+    "We help vendors and students connect and transact seamlessly on WhatsApp — real-time commerce, no apps.",
 };
+
+const Card = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-soft">
+    <h3 className="font-heading text-lg text-zinc-900">{title}</h3>
+    <p className="mt-2 text-zinc-700">{children}</p>
+  </div>
+);
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4">
-      <div className="my-8 rounded-2xl border bg-emerald-50 p-8 text-center md:my-10 md:p-12">
-        <h1 className="text-3xl font-bold text-emerald-900 md:text-4xl">
-          About {BRAND.name}
+    <section className="bg-gradient-to-b from-brand/10 via-brand/5 to-transparent">
+      <div className="mx-auto max-w-6xl px-4 py-16">
+        <h1 className="text-center font-heading text-4xl tracking-tight text-brand-dark">
+          About {BRAND_NAME}
         </h1>
-        <p className="mx-auto mt-3 max-w-3xl text-emerald-900/90">
-          We help vendors and students connect and transact on WhatsApp —
-          real-time commerce with zero app installs.
-        </p>
-      </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">Simple</h3>
-          <p className="mt-2 text-sm text-zinc-600">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-zinc-700">
+          We help vendors and students connect and transact seamlessly on
+          WhatsApp. Our mission is to enable real-time commerce — no apps, no
+          friction.
+        </p>
+
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <Card title="Simple">
             WhatsApp-first. Start instantly — no app installs.
-          </p>
-        </div>
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">Reliable</h3>
-          <p className="mt-2 text-sm text-zinc-600">
+          </Card>
+          <Card title="Reliable">
             Real-time interactions that keep your operations moving.
-          </p>
-        </div>
-        <div className="rounded-xl border p-5">
-          <h3 className="font-semibold text-zinc-900">Inclusive</h3>
-          <p className="mt-2 text-sm text-zinc-600">
-            Designed for vendors and students across Kenya.
-          </p>
+          </Card>
+          <Card title="Inclusive">Designed for vendors and students.</Card>
         </div>
       </div>
     </section>
