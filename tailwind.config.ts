@@ -1,44 +1,39 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
+        // Brand palette (emerald-like). Used by bg-brand-600, ring-brand-500, etc.
         brand: {
-          light: "#38BDF8", // Jumuika light blue
-          DEFAULT: "#0284C7", // Jumuika main blue
-          dark: "#0369A1", // Jumuika dark blue
+          50:  "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#059669",
+          700: "#047857",
+          800: "#065f46",
+          900: "#064e3b",
         },
-        accent: {
-          light: "#FACC15", // yellow accent
-          dark: "#CA8A04", // darker gold
-        },
-        neutral: {
-          light: "#F3F4F6",
-          dark: "#111827",
-        },
-      },
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
-      },
-      boxShadow: {
-        soft: "0 2px 10px rgba(0,0,0,0.08)",
       },
       borderRadius: {
         xl: "1rem",
-        "2xl": "1.5rem",
+        "2xl": "1.25rem",
+      },
+      boxShadow: {
+        soft: "0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };
 
 export default config;
