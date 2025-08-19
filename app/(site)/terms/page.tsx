@@ -1,26 +1,23 @@
-// app/(site)/terms/page.tsx
-export const metadata = {
-  title: "Terms & Conditions • Jumuika Hub KE",
-};
-
-export default function TermsPage() {
+export default function Terms() {
   return (
-    <section className="space-y-6">
-      <header className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6 text-center">
-        <h1 className="text-2xl font-bold">Terms & Conditions</h1>
-        <p className="mx-auto mt-2 max-w-3xl text-zinc-700">
-          By using Jumuika Hub KE you agree to these terms. Please read them
-          carefully.
-        </p>
-      </header>
-
-      <div className="prose prose-zinc mx-auto max-w-3xl">
+    <main className="min-h-screen bg-white dark:bg-gray-950 px-6 py-16">
+      <h1 className="text-4xl font-bold text-green-600 mb-6 text-center">Terms & Conditions</h1>
+      <div className="max-w-4xl mx-auto space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
         <p>
-          Jumuika Hub KE is provided “as is”. You’re responsible for the content
-          you share and for complying with WhatsApp’s terms. We may update these
-          terms occasionally.
+          Jumuika Hub KE provides a SaaS toolkit that enables vendors and buyers to connect on
+          WhatsApp. By using our services, you agree to comply with these Terms.
+        </p>
+        <ul className="list-disc pl-6">
+          <li>Vendors are responsible for their own listings, pricing, and customer interactions.</li>
+          <li>Jumuika Hub KE does not issue receipts or handle vendor taxes.</li>
+          <li>Subscription fees are non-refundable once paid.</li>
+          <li>Bookings and reservations must follow vendor timelines and cancellation rules.</li>
+        </ul>
+        <p>
+          Jumuika Hub KE reserves the right to update these Terms. Continued use of our platform
+          means acceptance of all updates.
         </p>
       </div>
-    </section>
+    </main>
   );
 }

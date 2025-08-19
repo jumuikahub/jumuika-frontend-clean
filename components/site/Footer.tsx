@@ -1,38 +1,53 @@
-// components/site/Footer.tsx
 import Link from "next/link";
-import { BRAND } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-100">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-8 py-10 sm:grid-cols-3">
+    <footer className="border-t border-zinc-100 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <div className="grid gap-10 sm:grid-cols-3">
+          {/* Brand blurb */}
           <div>
-            <div className="text-sm font-semibold">{BRAND.name}</div>
-            <p className="mt-2 text-sm text-zinc-600">{BRAND.tagline}</p>
+            <h3 className="text-base font-semibold text-emerald-900">
+              Jumuika Hub KE
+            </h3>
+            <p className="mt-3 max-w-xs text-sm leading-6 text-zinc-700">
+              WhatsApp-first toolkit to help vendors and students connect,
+              sell, and grow — in real time.
+            </p>
           </div>
 
+          {/* Company */}
           <div>
-            <div className="text-sm font-semibold">Company</div>
-            <ul className="mt-2 space-y-2 text-sm text-zinc-600">
+            <h4 className="text-sm font-semibold text-emerald-900">Company</h4>
+            <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link href="/blog" className="hover:text-zinc-900">
+                <Link
+                  href="/blog"
+                  className="text-zinc-700 hover:text-emerald-900"
+                >
                   Blog
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Legal */}
           <div>
-            <div className="text-sm font-semibold">Legal</div>
-            <ul className="mt-2 space-y-2 text-sm text-zinc-600">
+            <h4 className="text-sm font-semibold text-emerald-900">Legal</h4>
+            <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="hover:text-zinc-900">
+                <Link
+                  href="/privacy"
+                  className="text-zinc-700 hover:text-emerald-900"
+                >
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-zinc-900">
+                <Link
+                  href="/terms"
+                  className="text-zinc-700 hover:text-emerald-900"
+                >
                   Terms &amp; Conditions
                 </Link>
               </li>
@@ -40,10 +55,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-100 py-6">
-          <p className="text-xs text-zinc-500">
-            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
-          </p>
+        {/* Bottom bar */}
+        <div className="mt-10 border-t border-zinc-100 pt-6 text-xs text-zinc-500">
+          © {new Date().getFullYear()} Jumuika Hub KE. All rights reserved.
         </div>
       </div>
     </footer>

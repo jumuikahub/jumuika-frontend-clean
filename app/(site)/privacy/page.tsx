@@ -1,26 +1,21 @@
-// app/(site)/privacy/page.tsx
-export const metadata = {
-  title: "Privacy • Jumuika Hub KE",
-};
-
-export default function PrivacyPage() {
+export default function Privacy() {
   return (
-    <section className="space-y-6">
-      <header className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6 text-center">
-        <h1 className="text-2xl font-bold">Privacy Policy</h1>
-        <p className="mx-auto mt-2 max-w-3xl text-zinc-700">
-          We value your privacy. This page outlines how we collect, use, and
-          safeguard your data on Jumuika Hub KE. No user data is ever sold or
-          shared without consent.
-        </p>
-      </header>
-
-      <div className="prose prose-zinc mx-auto max-w-3xl">
+    <main className="min-h-screen bg-white dark:bg-gray-950 px-6 py-16">
+      <h1 className="text-4xl font-bold text-green-600 mb-6 text-center">Privacy Policy</h1>
+      <div className="max-w-4xl mx-auto space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
         <p>
-          We collect the minimum necessary information to provide our WhatsApp-
-          first services. You may request deletion of your data at any time.
+          At Jumuika Hub KE, we respect your privacy and are committed to protecting your personal
+          data. All interactions occur through WhatsApp and are handled with strict confidentiality.
+        </p>
+        <p>
+          We do not share your personal information with third parties without consent. Vendors are
+          responsible for managing their own tax obligations and issuing receipts independently.
+        </p>
+        <p>
+          By using our services, you agree to this Privacy Policy. For any questions, contact us at
+          info@jumuikahub.com.
         </p>
       </div>
-    </section>
+    </main>
   );
 }
