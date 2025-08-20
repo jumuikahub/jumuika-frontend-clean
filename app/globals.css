@@ -2,35 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
-@layer base {
-  html, body {
-    /* Use a broadly-supported min height */
-    @apply min-h-screen bg-white text-zinc-900 antialiased;
-  }
+/* Page baseline */
+html, body { @apply bg-white text-zinc-900; }
+
+/* Buttons (use className="btn-primary" | "btn-outline") */
+.btn-primary {
+  @apply bg-emerald-600 text-white hover:bg-emerald-700
+         focus:outline-none focus:ring-2 focus:ring-emerald-500/30
+         rounded-xl px-5 py-2.5 font-medium shadow-sm;
 }
 
-/* Small utility used by pages for consistent horizontal padding */
-@layer utilities {
-  .container-px {
-    @apply px-4 sm:px-6 lg:px-8;
-  }
+.btn-outline {
+  @apply border border-emerald-600 text-emerald-700 hover:bg-emerald-50
+         focus:outline-none focus:ring-2 focus:ring-emerald-500/30
+         rounded-xl px-5 py-2.5 font-medium shadow-sm;
 }
 
-/* Reusable components (important: inside a layer for @apply) */
-@layer components {
-  .btn-primary {
-    @apply bg-brand-600 text-white hover:bg-brand-700
-           focus:outline-none focus:ring-2 focus:ring-brand-500/30
-           rounded-xl px-5 py-2.5 font-medium shadow-sm;
-  }
-
-  .btn-outline {
-    @apply border border-zinc-200 hover:bg-zinc-50
-           text-zinc-800 rounded-xl px-5 py-2.5 font-medium shadow-sm;
-  }
-
-  .footer-divider {
-    @apply border-t border-zinc-200 mt-10 pt-6;
-  }
+/* Utilities used by sections */
+.section {
+  @apply mx-auto max-w-6xl px-4;
 }

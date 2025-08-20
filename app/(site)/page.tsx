@@ -2,30 +2,30 @@
 import Link from "next/link";
 import constants from "@/lib/constants";
 
-const { BRAND_NAME, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
-
 export const metadata = {
-  title: `${BRAND_NAME} • Home`,
-  description: TAGLINE,
+  title: `Home • ${constants.BRAND_NAME}`,
+  description: constants.TAGLINE,
 };
 
 export default function HomePage() {
+  const { BRAND_NAME, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
+
   return (
-    <section className="bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="mx-auto max-w-5xl px-4 py-14 text-center md:py-20">
-        <h1 className="text-5xl font-bold tracking-tight md:text-6xl">
+    <section className="border-b bg-gradient-to-b from-emerald-50 to-emerald-100/40">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+        <h1 className="text-center text-4xl font-semibold tracking-tight sm:text-6xl">
           Welcome to {BRAND_NAME}
         </h1>
 
-        <p className="mx-auto mt-4 max-w-3xl text-neutral-700 md:text-lg">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-zinc-700">
           {TAGLINE}
         </p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-8 flex justify-center gap-4">
           <Link
             href={WHATSAPP_CTA_URL}
             target="_blank"
-            className="rounded-lg bg-primary px-6 py-3 text-white shadow hover:bg-primary/90"
+            className="btn-primary"
           >
             Book Services via WhatsApp
           </Link>
@@ -33,7 +33,7 @@ export default function HomePage() {
           <Link
             href={WHATSAPP_BUY_URL}
             target="_blank"
-            className="rounded-lg border border-neutral-300 px-6 py-3 text-neutral-800 shadow-sm hover:bg-neutral-50"
+            className="btn-outline"
           >
             Buy Items via WhatsApp
           </Link>
