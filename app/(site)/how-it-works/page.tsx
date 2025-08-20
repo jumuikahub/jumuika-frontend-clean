@@ -1,52 +1,45 @@
 // app/(site)/how-it-works/page.tsx
-import Link from "next/link";
-import constants from "@/lib/constants";
-
-const { BRAND, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
 
 export const metadata = {
-  title: `How it works • ${BRAND}`,
-  description: TAGLINE,
+  title: "How it works • Jumuika Hub KE",
 };
-
-const steps = [
-  {
-    title: "1. Onboard",
-    text: "Register and connect your WhatsApp number.",
-  },
-  {
-    title: "2. List & Manage",
-    text: "Add products, services, or bookings and manage in real-time.",
-  },
-  {
-    title: "3. Connect & Sell",
-    text: "Customers contact you instantly on WhatsApp.",
-  },
-];
 
 export default function HowItWorksPage() {
   return (
-    <div className="hero">
-      <h1 className="hero-title">How {BRAND} Works</h1>
-      <p className="hero-sub">{TAGLINE}</p>
+    <section className="mx-auto max-w-5xl px-4 py-16">
+      <div className="rounded-3xl bg-brand-50 ring-1 ring-brand-100/60 px-6 sm:px-10 py-12 sm:py-16 text-center">
+        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">
+          How Jumuika Hub KE Works
+        </h1>
+        <p className="mt-4 text-lg text-zinc-600">
+          WhatsApp-first smart business toolkit for vendors & institutions — simple
+          listings, instant WhatsApp orders, and real-time engagement.
+        </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {steps.map((s) => (
-          <div key={s.title} className="card">
-            <h3 className="font-semibold text-zinc-900">{s.title}</h3>
-            <p className="mt-2 text-zinc-600">{s.text}</p>
+        <div className="mt-10 grid gap-6 sm:gap-8 sm:grid-cols-3 text-left">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <h3 className="font-semibold">1. Onboard</h3>
+            <p className="mt-2 text-sm text-zinc-600">
+              Register and connect your WhatsApp number.
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <h3 className="font-semibold">2. List &amp; Manage</h3>
+            <p className="mt-2 text-sm text-zinc-600">
+              Add products, services, or bookings and manage in real-time.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <h3 className="font-semibold">3. Connect &amp; Sell</h3>
+            <p className="mt-2 text-sm text-zinc-600">
+              Customers contact you instantly on WhatsApp.
+            </p>
+          </div>
+        </div>
 
-      <div className="hero-cta">
-        <Link href={WHATSAPP_CTA_URL} className="btn-primary">
-          Book Services via WhatsApp
-        </Link>
-        <Link href={WHATSAPP_BUY_URL} className="btn-outline">
-          Buy Items via WhatsApp
-        </Link>
+        <PrimaryCTAs />
       </div>
-    </div>
+    </section>
   );
 }
