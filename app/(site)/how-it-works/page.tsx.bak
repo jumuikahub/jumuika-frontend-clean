@@ -1,7 +1,6 @@
 // app/(site)/how-it-works/page.tsx
 import Link from "next/link";
-import constants from "@/lib/constants";
-const { BRAND_NAME, WHATSAPP_CTA_URL } = constants;
+import { BRAND_NAME, WHATSAPP_CTA_URL } from "@/lib/constants";
 
 export const metadata = {
   title: `How it works • ${BRAND_NAME}`,

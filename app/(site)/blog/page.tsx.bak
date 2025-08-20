@@ -1,8 +1,7 @@
 // app/(site)/blog/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
-import constants from "@/lib/constants";
-const { BRAND_NAME } = constants;
+import { BRAND_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Blog • ${BRAND_NAME}`,

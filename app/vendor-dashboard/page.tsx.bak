@@ -1,7 +1,6 @@
 // app/vendor-dashboard/page.tsx
 import type { Metadata } from "next";
-import constants from "@/lib/constants";
-const { BRAND_NAME } = constants;
+import { BRAND_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Vendor Dashboard • ${BRAND_NAME}`,

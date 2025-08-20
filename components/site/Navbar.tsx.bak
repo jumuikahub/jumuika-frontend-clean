@@ -2,8 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import constants from "@/lib/constants";
-const { NAV_LINKS } = constants;
+import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
   return (

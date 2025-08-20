@@ -1,6 +1,5 @@
 // app/(site)/about/page.tsx
-import constants from "@/lib/constants";
-const { BRAND_NAME } = constants;
+import { BRAND_NAME } from "@/lib/constants";
 
 export const metadata = {
   title: `About • ${BRAND_NAME}`,
