@@ -1,43 +1,28 @@
 // app/(site)/page.tsx
 import Link from "next/link";
 import constants from "@/lib/constants";
+const { BRAND, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
 
 export const metadata = {
-  title: `Home • ${constants.BRAND_NAME}`,
-  description: constants.TAGLINE,
+  title: `Home • ${BRAND}`,
+  description: TAGLINE,
 };
 
 export default function HomePage() {
-  const { BRAND_NAME, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
-
   return (
-    <section className="border-b bg-gradient-to-b from-emerald-50 to-emerald-100/40">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-        <h1 className="text-center text-4xl font-semibold tracking-tight sm:text-6xl">
-          Welcome to {BRAND_NAME}
-        </h1>
+    <section className="mt-10 rounded-2xl bg-brand-50 px-4 py-14 text-center sm:px-6 lg:px-8">
+      <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+        Welcome to {BRAND}
+      </h1>
+      <p className="mx-auto mt-4 max-w-3xl text-lg text-zinc-600">{TAGLINE}</p>
 
-        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-zinc-700">
-          {TAGLINE}
-        </p>
-
-        <div className="mt-8 flex justify-center gap-4">
-          <Link
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            className="btn-primary"
-          >
-            Book Services via WhatsApp
-          </Link>
-
-          <Link
-            href={WHATSAPP_BUY_URL}
-            target="_blank"
-            className="btn-outline"
-          >
-            Buy Items via WhatsApp
-          </Link>
-        </div>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <Link href={WHATSAPP_CTA_URL} className="btn-primary" target="_blank">
+          Book Services via WhatsApp
+        </Link>
+        <Link href={WHATSAPP_BUY_URL} className="btn-outline" target="_blank">
+          Buy Items via WhatsApp
+        </Link>
       </div>
     </section>
   );

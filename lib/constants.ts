@@ -1,26 +1,23 @@
 // lib/constants.ts
+const BRAND = "Jumuika Hub KE";
+
+const TAGLINE =
+  "WhatsApp-first smart business toolkit for vendors & institutions — simple listings, instant WhatsApp orders, and real-time engagement.";
+
+const WHATSAPP_CTA_URL = "https://wa.me/254104250912"; // services / support
+const WHATSAPP_BUY_URL = "https://wa.me/254104250912"; // buy query (same for now)
+
+const NAV_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/how-it-works", label: "How it works" },
+];
+
 const constants = {
-  BRAND_NAME: "Jumuika Hub KE",
-  TAGLINE:
-    "WhatsApp-first smart business toolkit for vendors & institutions — simple listings, instant WhatsApp orders, and real-time engagement.",
-  WHATSAPP_CTA_URL:
-    "https://wa.me/254104250912", // ← put your bookings/chat # here
-  WHATSAPP_BUY_URL:
-    "https://wa.me/254104250912?text=Hi%20I%20want%20to%20buy", // ← put your buying/chat # here
-  LOGO_PATH: "/logo.png", // optional; falls back to text if missing
-  NAV_LINKS: [
-    { href: "/about", label: "About" },
-    { href: "/how-it-works", label: "How it works" },
-    { href: "/vendor-dashboard", label: "Vendor Dashboard" },
-  ],
-  FOOTER_LINKS: {
-    company: [{ href: "/blog", label: "Blog" }],
-    legal: [
-      { href: "/privacy", label: "Privacy" },
-      { href: "/terms", label: "Terms & Conditions" },
-    ],
-  },
-} as const;
+  BRAND,
+  TAGLINE,
+  WHATSAPP_CTA_URL,
+  WHATSAPP_BUY_URL,
+  NAV_LINKS,
+};
 
 export default constants;
-export type AppConstants = typeof constants;
