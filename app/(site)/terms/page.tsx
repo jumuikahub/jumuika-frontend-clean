@@ -1,48 +1,48 @@
 // app/(site)/terms/page.tsx
 import constants from "@/lib/constants";
-const { BRAND_NAME } = constants;
+
+const { BRAND_NAME, TAGLINE } = constants;
 
 export const metadata = {
   title: `Terms & Conditions • ${BRAND_NAME}`,
-  description:
-    "Terms that govern use of Jumuika Hub KE and any related WhatsApp interactions.",
+  description: TAGLINE,
 };
 
 export default function TermsPage() {
   return (
-    <section className="bg-gradient-to-b from-brand/10 via-brand/5 to-transparent">
-      <div className="mx-auto max-w-3xl px-4 py-16">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-soft">
-          <h1 className="text-center font-heading text-3xl text-brand-dark">
-            Terms & Conditions
-          </h1>
+    <section className="mx-auto max-w-3xl py-10">
+      <header className="text-center">
+        <h1 className="text-4xl font-bold md:text-5xl">Terms & Conditions</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-neutral-700">
+          Please read these terms carefully. By using {BRAND_NAME}, you agree
+          to the conditions below.
+        </p>
+      </header>
 
-          <div className="prose prose-zinc mx-auto mt-6">
-            <p>
-              By using {BRAND_NAME}, you agree to these terms. We provide a
-              WhatsApp-first toolkit that connects vendors and students.
-            </p>
+      <div className="prose mt-10 max-w-none text-sm leading-7 text-neutral-800">
+        <h2>Use of service</h2>
+        <p>
+          You’ll use the platform in compliance with applicable laws and solely
+          for lawful commerce via WhatsApp.
+        </p>
 
-            <h3>Acceptable use</h3>
-            <p>
-              Use the platform lawfully and respectfully. Do not abuse,
-              spam, or misrepresent services or identity.
-            </p>
+        <h2>Vendor responsibilities</h2>
+        <p>
+          Vendors are responsible for accuracy of listings, pricing, and timely
+          customer communication on WhatsApp.
+        </p>
 
-            <h3>Payments & bookings</h3>
-            <p>
-              Transactions and bookings coordinated via WhatsApp are between
-              vendors and customers. {BRAND_NAME} is not a party to those
-              agreements.
-            </p>
+        <h2>Liability</h2>
+        <p>
+          {BRAND_NAME} is a facilitation toolkit. We aren’t a party to
+          transactions between vendors and customers.
+        </p>
 
-            <h3>Changes</h3>
-            <p>
-              We may update these terms to improve service or meet compliance
-              needs. Continued use indicates acceptance of the latest version.
-            </p>
-          </div>
-        </div>
+        <h2>Changes</h2>
+        <p>
+          We may update these terms from time to time. Continued use indicates
+          acceptance of the latest version.
+        </p>
       </div>
     </section>
   );
