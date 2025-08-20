@@ -1,27 +1,24 @@
 // app/vendor-dashboard/page.tsx
-import type { Metadata } from "next";
 import constants from "@/lib/constants";
 const { BRAND_NAME } = constants;
 
-export const metadata: Metadata = {
+export const metadata = {
   title: `Vendor Dashboard • ${BRAND_NAME}`,
-  description:
-    "Your lightweight dashboard will live here. Listings, orders and messaging — connected to WhatsApp.",
-  robots: { index: true, follow: false },
+  robots: { index: false, follow: false }, // keep semi-hidden until live
 };
 
-export default function VendorDashboardPage() {
+export default function VendorDashboard() {
   return (
-    <section className="bg-gradient-to-b from-brand/10 via-brand/5 to-transparent">
-      <div className="mx-auto max-w-6xl px-4 py-16 text-center">
-        <h1 className="font-heading text-4xl tracking-tight text-brand-dark">
+    <main className="section">
+      <div className="wrap">
+        <h1 className="mt-16 text-center text-3xl font-semibold tracking-tight">
           Vendor Dashboard
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-zinc-700">
-          Your lightweight dashboard will live here. Listings, orders and
-          messaging — connected to WhatsApp.
+        <p className="mx-auto mt-3 max-w-2xl text-center text-zinc-700">
+          Your lightweight dashboard will live here. Listings, orders and messaging —
+          connected to WhatsApp.
         </p>
       </div>
-    </section>
+    </main>
   );
 }
