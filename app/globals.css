@@ -1,31 +1,32 @@
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base page */
 html, body {
-  @apply min-h-dvh bg-white text-zinc-900;
+  /* Use min-h-screen instead of min-h-dvh for universal support */
+  @apply min-h-screen bg-white text-zinc-900 antialiased;
 }
 
-/* Consistent buttons (emerald theme) */
-.btn-primary {
-  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium
-  shadow-sm bg-emerald-600 text-white hover:bg-emerald-700
-  focus:outline-none focus:ring-2 focus:ring-emerald-500/30;
-}
-.btn-outline {
-  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium
-  border border-emerald-600 text-emerald-700 hover:bg-emerald-50;
-}
-
-/* Reusable layout helpers */
-.section {
+/* Spacing helper used by pages */
+.container-px {
   @apply px-4 sm:px-6 lg:px-8;
 }
-.wrap {
-  @apply mx-auto w-full max-w-6xl;
+
+/* Buttons (reference by className="btn-primary" | "btn-outline") */
+.btn-primary {
+  @apply bg-brand-600 text-white hover:bg-brand-700
+         focus:outline-none focus:ring-2 focus:ring-brand-500/30
+         rounded-xl px-5 py-2.5 font-medium shadow-sm;
 }
 
-/* Cards used on About/How-it-works */
-.info-card {
-  @apply rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm;
+.btn-outline {
+  @apply border border-zinc-200 hover:bg-zinc-50
+         text-zinc-800 rounded-xl px-5 py-2.5 font-medium shadow-sm;
+}
+
+/* Footer divider */
+.footer-divider {
+  @apply border-t border-zinc-200 mt-10 pt-6;
 }
