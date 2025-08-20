@@ -1,23 +1,14 @@
 // app/(site)/layout.tsx
 import "@/app/globals.css";
-import type { Metadata } from "next";
-import constants from "@/lib/constants";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
-
-const { BRAND_NAME } = constants;
-
-export const metadata: Metadata = {
-  title: BRAND_NAME,
-  description: "Jumuika Hub KE website",
-};
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-dvh bg-white text-neutral-900 antialiased">
         <Navbar />
-        <main>{children}</main>
+        <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
         <Footer />
       </body>
     </html>

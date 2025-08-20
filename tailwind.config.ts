@@ -10,26 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand palette (emerald-like). Used by bg-brand-600, ring-brand-500, etc.
-        brand: {
-          50:  "#ecfdf5",
-          100: "#d1fae5",
-          200: "#a7f3d0",
-          300: "#6ee7b7",
-          400: "#34d399",
-          500: "#10b981",
-          600: "#059669",
-          700: "#047857",
-          800: "#065f46",
-          900: "#064e3b",
-        },
+        primary: "#16a34a",   // emerald-600
+        secondary: "#065f46", // emerald-800-ish (deep)
+        accent: "#fbbf24",    // amber-400
       },
       borderRadius: {
-        xl: "1rem",
-        "2xl": "1.25rem",
-      },
-      boxShadow: {
-        soft: "0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)",
+        xl: "0.75rem",
       },
     },
   },
