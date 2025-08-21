@@ -2,17 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Keep base type readable */
-html, body { @apply bg-white text-zinc-900; }
-
-/* Buttons (used everywhere) */
-.btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5
-         font-medium shadow-sm bg-brand-600 text-white
-         hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30;
+/* Base */
+@layer base {
+  html, body { @apply min-h-screen bg-white text-zinc-900; }
 }
-.btn-outline {
-  @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5
-         font-medium shadow-sm border border-brand-300 text-brand-800 bg-white
-         hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-500/20;
+
+/* Reusable components/utilities */
+@layer components {
+  .content-wrap { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-y   { @apply py-12 sm:py-16 lg:py-20; }
+  .hero-panel  { @apply rounded-2xl bg-brand-50/70 ring-1 ring-brand-100/60 shadow-soft; }
+
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700
+      focus:outline-none focus:ring-2 focus:ring-brand-500/30
+      rounded-xl px-5 py-2.5 font-medium shadow-sm;
+  }
+  .btn-outline {
+    @apply border border-brand-600 text-brand-700 hover:bg-brand-50
+      rounded-xl px-5 py-2.5 font-medium;
+  }
 }

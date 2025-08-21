@@ -1,27 +1,32 @@
-// app/(site)/page.tsx
-import Link from "next/link";
 import constants from "@/lib/constants";
-
-const { BRAND, TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
+import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
 
 export const metadata = {
-  title: `Home • ${BRAND}`,
-  description: TAGLINE,
+  title: `Welcome • ${constants.BRAND}`,
+  description: constants.TAGLINE,
 };
 
 export default function HomePage() {
   return (
-    <section className="hero">
-      <h1 className="hero-title">Welcome to {BRAND}</h1>
-      <p className="hero-sub">{TAGLINE}</p>
+    <section className="section-y">
+      <div className="content-wrap">
+        <div className="hero-panel p-10 sm:p-12">
+          <h1 className="text-4xl sm:text-5xl font-semibold text-center">
+            Welcome to {constants.BRAND}
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-center text-zinc-700">
+            {constants.TAGLINE}
+          </p>
 
-      <div className="hero-cta">
-        <Link href={WHATSAPP_CTA_URL} className="btn-primary">
-          Book Services via WhatsApp
-        </Link>
-        <Link href={WHATSAPP_BUY_URL} className="btn-outline">
-          Buy Items via WhatsApp
-        </Link>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <WhatsAppCTA label="Book Services via WhatsApp" variant="primary" />
+            <WhatsAppCTA
+              label="Buy Items via WhatsApp"
+              variant="outline"
+              href={constants.WHATSAPP_BUY_URL}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

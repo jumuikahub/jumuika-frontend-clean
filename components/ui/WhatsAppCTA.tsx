@@ -1,19 +1,14 @@
-// components/ui/WhatsAppCTA.tsx
 import Link from "next/link";
 import constants from "@/lib/constants";
 
 type ButtonVariant = "primary" | "outline";
 
-interface Props {
-  /** "primary" = solid brand button, "outline" = outline button  */
+type Props = {
   variant?: ButtonVariant;
-  /** extra utility classes if needed */
   className?: string;
-  /** custom label (defaults to Book Services) */
   label?: string;
-  /** override URL (defaults to WHATSAPP_CTA_URL) */
-  href?: string;
-}
+  href?: string; // optional override
+};
 
 export default function WhatsAppCTA({
   variant = "primary",
@@ -23,7 +18,6 @@ export default function WhatsAppCTA({
 }: Props) {
   const { WHATSAPP_CTA_URL } = constants;
   const base = variant === "primary" ? "btn-primary" : "btn-outline";
-
   return (
     <Link href={href ?? WHATSAPP_CTA_URL} className={`${base} ${className}`}>
       {label}
