@@ -1,33 +1,32 @@
 // components/ui/WhatsAppCTA.tsx
+import Link from "next/link";
 import constants from "@/lib/constants";
-const { WHATSAPP_CTA_URL } = constants;
-import PrimaryButton from "./PrimaryButton";
 
-type IncomingVariant = "primary" | "solid" | "outline";
-type ButtonVariant = "solid" | "outline";
+type ButtonVariant = "primary" | "outline";
 
-const mapVariant = (v: IncomingVariant | undefined): ButtonVariant =>
-  v === "outline" ? "outline" : "solid"; // treat "primary" as "solid"
-
-type Props = {
-  /** You may still pass "primary" from older code; it will be mapped to "solid". */
-  variant?: IncomingVariant;
+interface Props {
+  /** "primary" = solid brand button, "outline" = outline button  */
+  variant?: ButtonVariant;
+  /** extra utility classes if needed */
   className?: string;
-  children?: React.ReactNode;
-};
+  /** custom label (defaults to Book Services) */
+  label?: string;
+  /** override URL (defaults to WHATSAPP_CTA_URL) */
+  href?: string;
+}
 
 export default function WhatsAppCTA({
-  variant = "solid",
-  className,
-  children = "Chat on WhatsApp",
+  variant = "primary",
+  className = "",
+  label = "Book Services via WhatsApp",
+  href,
 }: Props) {
+  const { WHATSAPP_CTA_URL } = constants;
+  const base = variant === "primary" ? "btn-primary" : "btn-outline";
+
   return (
-    <PrimaryButton
-      href={WHATSAPP_CTA_URL}
-      variant={mapVariant(variant)}
-      className={className}
-    >
-      {children}
-    </PrimaryButton>
+    <Link href={href ?? WHATSAPP_CTA_URL} className={`${base} ${className}`}>
+      {label}
+    </Link>
   );
 }
