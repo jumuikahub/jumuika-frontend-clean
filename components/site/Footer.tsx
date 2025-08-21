@@ -1,45 +1,56 @@
+// components/site/Footer.tsx
 import Link from "next/link";
 import constants from "@/lib/constants";
 
-export default function Footer() {
-  const year = new Date().getFullYear();
-  const { BRAND, TAGLINE } = constants;
+const { BRAND, TAGLINE } = constants;
 
+export default function Footer() {
   return (
-    <footer className="border-t bg-white">
-      <div className="content-wrap py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+    <footer className="border-t border-zinc-200 mt-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          {/* Brand + blurb */}
           <div>
-            <div className="flex items-center font-medium">
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-semibold">
-                J
-              </span>
-              <span className="ml-2">{BRAND}</span>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-6 w-6 rounded-full bg-emerald-600" />
+              <span className="font-semibold">{BRAND}</span>
             </div>
-            <p className="mt-3 text-sm text-zinc-600">{TAGLINE}</p>
+            <p className="text-sm text-zinc-600 leading-relaxed">{TAGLINE}</p>
           </div>
 
+          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold">Company</h4>
+            <h3 className="text-sm font-semibold tracking-wide text-zinc-900">
+              Company
+            </h3>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link href="/blog" className="hover:underline">
+                <Link href="/blog" className="text-zinc-600 hover:text-zinc-900">
                   Blog
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Legal */}
           <div>
-            <h4 className="text-sm font-semibold">Legal</h4>
+            <h3 className="text-sm font-semibold tracking-wide text-zinc-900">
+              Legal
+            </h3>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="hover:underline">
+                <Link
+                  href="/privacy"
+                  className="text-zinc-600 hover:text-zinc-900"
+                >
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:underline">
+                <Link
+                  href="/terms"
+                  className="text-zinc-600 hover:text-zinc-900"
+                >
                   Terms &amp; Conditions
                 </Link>
               </li>
@@ -47,8 +58,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t text-xs text-zinc-500">
-          © {year} {BRAND}. All rights reserved.
+        <div className="mt-10 border-t border-zinc-200 pt-6 text-xs text-zinc-500">
+          © {new Date().getFullYear()} {BRAND}. All rights reserved.
         </div>
       </div>
     </footer>

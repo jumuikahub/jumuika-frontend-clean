@@ -1,38 +1,78 @@
+// components/site/Navbar.tsx
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import constants from "@/lib/constants";
 
-export default function Navbar() {
-  const { BRAND, NAV_LINKS } = constants;
+const { BRAND, NAV_LINKS } = constants;
 
+/**
+ * Renders the brand logo. Place your logo at /public/logo.svg (preferred) or /public/logo.png.
+ * If the image is missing, we fallback to the brand text.
+ */
+function Brand() {
   return (
-    <header className="border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <nav className="content-wrap h-14 flex items-center justify-between">
-        <Link href="/" className="inline-flex items-center">
-          {/* Text brand (simple & reliable). Swap for <Image> later if you have /public/logo.svg */}
-          <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-white text-xs font-semibold">
-            J
-          </span>
-          <span className="ml-2 text-sm font-medium">{BRAND}</span>
-        </Link>
+    <Link href="/" className="inline-flex items-center gap-2">
+      {/* Logo image (expects /public/logo.svg or /public/logo.png) */}
+      <Image
+        src="/logo.svg"
+        alt={`${BRAND} logo`}
+        width={28}
+        height={28}
+        className="rounded-full"
+        priority
+        onError={(e) => {
+          // If the SVG is missing, hide the broken image (text fallback will still render)
+          (e.target as HTMLImageElement).style.display = "none";
+        }}
+      />
+      <span className="font-semibold tracking-tight">{BRAND}</span>
+    </Link>
+  );
+}
 
-        <ul className="hidden sm:flex items-center gap-6 text-sm">
-          {NAV_LINKS.map((l) => (
-            <li key={l.href}>
-              <Link className="hover:underline" href={l.href}>
-                {l.label}
-              </Link>
-            </li>
+export default function Navbar() {
+  return (
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/80 backdrop-blur">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <Brand />
+
+        <nav aria-label="Main" className="hidden md:flex items-center gap-6">
+          {NAV_LINKS?.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors"
+            >
+              {item.label}
+            </Link>
           ))}
-        </ul>
+        </nav>
 
-        <Link
-          href="/vendor-dashboard"
-          className="hidden sm:inline-flex rounded-full border px-3.5 py-1.5 text-sm"
-        >
-          Vendor Dashboard
-        </Link>
+        <div className="ml-4">
+          <Link
+            href="/vendor-dashboard"
+            className="inline-flex items-center rounded-full border border-emerald-700/30 px-4 py-1.5 text-sm font-medium text-emerald-800 hover:bg-emerald-50"
+          >
+            Vendor Dashboard
+          </Link>
+        </div>
+      </div>
+
+      {/* Mobile nav (optional minimal) */}
+      <nav className="md:hidden border-t border-zinc-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 flex gap-4 overflow-x-auto">
+          {NAV_LINKS?.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-zinc-700 whitespace-nowrap"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </nav>
     </header>
   );
