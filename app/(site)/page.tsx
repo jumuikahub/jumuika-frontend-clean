@@ -1,33 +1,23 @@
-import constants from "@/lib/constants";
-import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import { BRAND, TAGLINE } from "@/lib/constants";
 
 export const metadata = {
-  title: `Welcome • ${constants.BRAND}`,
-  description: constants.TAGLINE,
+  title: `Home • ${BRAND}`,
 };
 
 export default function HomePage() {
   return (
-    <section className="section-y">
-      <div className="content-wrap">
-        <div className="hero-panel p-10 sm:p-12">
-          <h1 className="text-4xl sm:text-5xl font-semibold text-center">
-            Welcome to {constants.BRAND}
+    <main className="mx-auto max-w-7xl px-4">
+      <section className="my-12 rounded-2xl bg-emerald-50/60 p-8 md:my-16 md:p-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+            Welcome to {BRAND}
           </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-center text-zinc-700">
-            {constants.TAGLINE}
-          </p>
+          <p className="mt-4 text-base text-neutral-700 md:text-lg">{TAGLINE}</p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <WhatsAppCTA label="Book Services via WhatsApp" variant="primary" />
-            <WhatsAppCTA
-              label="Buy Items via WhatsApp"
-              variant="outline"
-              href={constants.WHATSAPP_BUY_URL}
-            />
-          </div>
+          <PrimaryCTAs className="mt-8 justify-center" />
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }

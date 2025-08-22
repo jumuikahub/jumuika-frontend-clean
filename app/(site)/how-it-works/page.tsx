@@ -1,61 +1,47 @@
-import constants from '@/lib/constants';
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: `How it works • ${constants.BRAND}`,
-  description: constants.TAGLINE,
+  title: `How it works • ${BRAND}`,
 };
 
+const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div className="rounded-2xl border bg-white p-5 shadow-sm">
+    <h3 className="mb-2 font-semibold">{title}</h3>
+    <p className="text-sm text-neutral-700">{children}</p>
+  </div>
+);
+
 export default function HowItWorksPage() {
-  const { TAGLINE, WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
-
   return (
-    <section className="my-10">
-      <div className="rounded-2xl bg-brand-50 p-6 ring-1 ring-brand-600/10 sm:p-10">
-        <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
-          How {constants.BRAND} Works
-        </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-zinc-700">
-          {TAGLINE}
-        </p>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border bg-white p-6 shadow-sm">
-            <h3 className="font-semibold">1. Onboard</h3>
-            <p className="mt-2 text-sm text-zinc-700">
-              Register and connect your WhatsApp number.
-            </p>
-          </div>
-          <div className="rounded-2xl border bg-white p-6 shadow-sm">
-            <h3 className="font-semibold">2. List & Manage</h3>
-            <p className="mt-2 text-sm text-zinc-700">
-              Add products, services, or bookings and manage in real-time.
-            </p>
-          </div>
-          <div className="rounded-2xl border bg-white p-6 shadow-sm">
-            <h3 className="font-semibold">3. Connect & Sell</h3>
-            <p className="mt-2 text-sm text-zinc-700">
-              Customers contact you instantly on WhatsApp.
-            </p>
-          </div>
+    <main className="mx-auto max-w-7xl px-4">
+      <section className="my-12 rounded-2xl bg-emerald-50/60 p-8 md:my-16 md:p-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+            How {BRAND} Works
+          </h1>
+          <p className="mt-4 text-base text-neutral-700 md:text-lg">
+            WhatsApp-first smart business toolkit for vendors &amp; institutions —
+            simple listings, instant WhatsApp orders, and real-time engagement.
+          </p>
         </div>
 
-        <div className="mt-8 flex justify-center gap-4">
-          <a
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            className="btn-primary"
-          >
-            Book Services via WhatsApp
-          </a>
-          <a
-            href={WHATSAPP_BUY_URL}
-            target="_blank"
-            className="btn-outline"
-          >
-            Buy Items via WhatsApp
-          </a>
+        <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:mt-10 md:grid-cols-3">
+          <Card title="1. Onboard">
+            Register and connect your WhatsApp number.
+          </Card>
+          <Card title="2. List & Manage">
+            Add products, services, or bookings and manage in real-time.
+          </Card>
+          <Card title="3. Connect & Sell">
+            Customers contact you instantly on WhatsApp.
+          </Card>
         </div>
-      </div>
-    </section>
+
+        <div className="mt-8 flex justify-center">
+          <PrimaryCTAs />
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,54 +1,74 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import constants from '@/lib/constants';
+import Link from "next/link";
 
 export default function Footer() {
-  const { BRAND, TAGLINE } = constants;
-
   return (
-    <footer className="border-t bg-white">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 py-10 md:grid-cols-3">
-          {/* Brand + tagline */}
-          <div>
-            <div className="flex items-center gap-3">
-              {/* tiny logo pill fallback so the logo always “renders” */}
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-600/80" />
-              <span className="font-semibold tracking-tight">{BRAND}</span>
+    <footer className="border-t">
+      {/* Top row */}
+      <div className="mx-auto max-w-7xl px-4 py-8 md:py-10">
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Brand blurb */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="inline-block h-3.5 w-3.5 rounded-full bg-emerald-600" />
+              <span className="text-sm font-medium">Jumuika Hub KE</span>
             </div>
-            <p className="mt-3 text-sm text-zinc-600">{TAGLINE}</p>
+            <p className="text-sm leading-relaxed text-neutral-600">
+              WhatsApp-first smart business toolkit for vendors &amp; institutions —
+              simple listings, instant WhatsApp orders, and real-time engagement.
+            </p>
           </div>
 
           {/* Company */}
-          <div>
-            <h4 className="text-sm font-semibold text-zinc-900">Company</h4>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-600">
+          <nav className="space-y-3">
+            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
+              Company
+            </h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="/blog" className="hover:text-zinc-900">Blog</Link>
+                <Link
+                  href="/blog"
+                  className="text-sm text-neutral-700 hover:text-neutral-900"
+                >
+                  Blog
+                </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Legal */}
-          <div>
-            <h4 className="text-sm font-semibold text-zinc-900">Legal</h4>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-600">
+          <nav className="space-y-3">
+            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
+              Legal
+            </h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="/privacy" className="hover:text-zinc-900">Privacy</Link>
+                <Link
+                  href="/privacy"
+                  className="text-sm text-neutral-700 hover:text-neutral-900"
+                >
+                  Privacy
+                </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-zinc-900">Terms & Conditions</Link>
+                <Link
+                  href="/terms"
+                  className="text-sm text-neutral-700 hover:text-neutral-900"
+                >
+                  Terms &amp; Conditions
+                </Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
+      </div>
 
-        <div className="border-t" />
-
-        <div className="py-6">
-          <p className="text-xs text-zinc-500">
-            © {new Date().getFullYear()} {BRAND}. All rights reserved.
+      {/* Bottom bar */}
+      <div className="border-t">
+        <div className="mx-auto max-w-7xl px-4 py-4">
+          <p className="text-xs text-neutral-500">
+            © {new Date().getFullYear()} Jumuika Hub KE. All rights reserved.
           </p>
         </div>
       </div>
