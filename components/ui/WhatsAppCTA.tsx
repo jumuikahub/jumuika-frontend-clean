@@ -1,26 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import constants from "@/lib/constants";
+import { WHATSAPP_CTA_URL, BRAND } from "@/lib/constants";
 
-type ButtonVariant = "primary" | "outline";
-
-type Props = {
-  variant?: ButtonVariant;
-  className?: string;
-  label?: string;
-  href?: string; // optional override
-};
-
-export default function WhatsAppCTA({
-  variant = "primary",
-  className = "",
-  label = "Book Services via WhatsApp",
-  href,
-}: Props) {
-  const { WHATSAPP_CTA_URL } = constants;
-  const base = variant === "primary" ? "btn-primary" : "btn-outline";
+export default function WhatsAppCTA() {
   return (
-    <Link href={href ?? WHATSAPP_CTA_URL} className={`${base} ${className}`}>
-      {label}
-    </Link>
+    <div className="mt-6">
+      <Link
+        href={WHATSAPP_CTA_URL}
+        target="_blank"
+        className="inline-block px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+      >
+        Chat with {BRAND} on WhatsApp
+      </Link>
+    </div>
   );
 }

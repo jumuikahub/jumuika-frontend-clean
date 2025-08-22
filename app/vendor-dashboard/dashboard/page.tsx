@@ -1,27 +1,19 @@
-import constants from "@/lib/constants";
-import WhatsAppCTA from "@/components/ui/WhatsAppCTA";
+// app/vendor-dashboard/dashboard/page.tsx
+
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: `Vendor Dashboard • ${constants.BRAND}`,
-  description:
-    "Your lightweight dashboard — listings, orders, and messaging — connected to WhatsApp.",
+  title: `Vendor Dashboard – ${BRAND}`,
+  description: `Manage your store with ${BRAND}`,
 };
 
 export default function VendorDashboardPage() {
   return (
-    <section className="section-y">
-      <div className="content-wrap">
-        <h1 className="text-4xl sm:text-5xl font-semibold text-center">
-          Vendor Dashboard
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-zinc-700">
-          Your lightweight dashboard will live here — listings, orders, and
-          messaging — connected to WhatsApp.
-        </p>
-        <div className="mt-8 flex justify-center">
-          <WhatsAppCTA label="Open WhatsApp" variant="primary" />
-        </div>
-      </div>
-    </section>
+    <div className="max-w-4xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Vendor Dashboard</h1>
+      <p className="text-gray-700">
+        Welcome to your vendor dashboard on {BRAND}.
+      </p>
+    </div>
   );
 }

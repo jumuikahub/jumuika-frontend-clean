@@ -1,30 +1,19 @@
 // app/(site)/terms/page.tsx
-import constants from "@/lib/constants";
-const { BRAND } = constants;
+
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: `Terms & Conditions • ${BRAND}`,
-  description: `Terms & Conditions for ${BRAND}`,
+  title: `Terms & Conditions – ${BRAND}`,
+  description: `Terms of service for ${BRAND}`,
 };
 
 export default function TermsPage() {
   return (
-    <section className="prose prose-zinc mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
-      <h1>Terms &amp; Conditions</h1>
-      <p>
-        By using {BRAND}, you agree to operate lawfully and respect other users.
-        We may update these terms as the product evolves.
+    <div className="max-w-2xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Terms & Conditions</h1>
+      <p className="text-gray-700">
+        By using {BRAND}, you agree to our terms and conditions.
       </p>
-      <h2>Acceptable use</h2>
-      <ul>
-        <li>No fraud, spam, or prohibited items/services.</li>
-        <li>Respect privacy and applicable regulations.</li>
-      </ul>
-      <h2>Liability</h2>
-      <p>
-        The service is provided “as is”. We aim for reliability but do not
-        guarantee uninterrupted availability.
-      </p>
-    </section>
+    </div>
   );
 }
