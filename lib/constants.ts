@@ -1,16 +1,19 @@
 // lib/constants.ts
 
-// Branding
+// Core brand constants
 export const BRAND = "Jumuika Hub KE";
-export const TAGLINE =
-  "WhatsApp-first smart business toolkit for vendors & institutions — simple listings, instant WhatsApp orders, and real-time engagement.";
+export const TAGLINE = "Smart WhatsApp-First Marketplace in Kenya";
 
-// WhatsApp CTA URLs
-// 👉 Replace these sample numbers/links with your actual WhatsApp Business numbers
+// WhatsApp links (replace numbers with your official WhatsApp Business line)
 export const WHATSAPP_CTA_URL =
-  "https://wa.me/254700000000?text=Hello%20Jumuika%20Hub%20KE%2C%20I%20would%20like%20to%20book%20a%20service";
+  "https://wa.me/254104250912?text=Hi%20Jumuika%20Hub";
 export const WHATSAPP_BUY_URL =
-  "https://wa.me/254700000000?text=Hello%20Jumuika%20Hub%20KE%2C%20I%20would%20like%20to%20buy%20an%20item";
+  "https://wa.me/254104250912?text=I%20want%20to%20buy";
 
-// Other shared constants can go here
-export const FOOTER_COPYRIGHT = `© ${new Date().getFullYear()} ${BRAND}. All rights reserved.`;
+// Default export (to support files importing `constants` as default)
+export default {
+  BRAND,
+  TAGLINE,
+  WHATSAPP_CTA_URL,
+  WHATSAPP_BUY_URL,
+};
