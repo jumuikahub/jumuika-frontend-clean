@@ -1,29 +1,39 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
+        // Brand palette (green family used in your UI)
         brand: {
-          50: "#eefbf3",
-          100: "#d8f4e4",
-          200: "#b5e8cc",
-          300: "#87d7ae",
-          400: "#58c48e",
-          500: "#34b36f",
-          600: "#259658",
-          700: "#1e7747",
-          800: "#195f3b",
-          900: "#144e32",
+          50: "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#059669",
+          700: "#047857",
+          800: "#065f46",
+          900: "#064e3b",
         },
       },
       boxShadow: {
-        soft:
-          "0 1px 2px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06)",
+        card: "0 1px 2px 0 rgb(16 24 40 / 0.05)",
+      },
+      borderRadius: {
+        xl: "0.75rem",
+        "2xl": "1rem",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
