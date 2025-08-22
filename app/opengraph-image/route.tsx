@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { ImageResponse } from "next/og";
-import constants from "@/lib/constants";
+import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants";
 
 export const runtime = "edge";
 export const contentType = "image/png";

@@ -1,6 +1,6 @@
 // components/site/Footer.tsx
 import Link from "next/link";
-import constants from "@/lib/constants"; // ⬅️ default import
+import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants"; // ⬅️ default import
 
 const { BRAND, FOOTER_LINKS } = constants;
 

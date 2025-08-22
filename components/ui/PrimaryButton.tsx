@@ -1,6 +1,6 @@
 // components/ui/PrimaryCTAs.tsx
 import Link from "next/link";
-import constants from "@/lib/constants";
+import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants";
 const { WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
 
 export default function PrimaryCTAs() {
