@@ -10,7 +10,7 @@ echo "📌 Current branch: $BRANCH"
 
 # --- Step 1: Replace default import with named imports everywhere ---
 echo "🔍 Step 1: Replacing default import with named imports..."
-grep -rl 'import constants from "@/lib/constants"' . \
+grep -rl 'import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants"' . \
   | xargs sed -i 's/import constants from "@\/lib\/constants"/import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@\/lib\/constants"/g' || true
 
 # --- Step 2: Remove unused TAGLINE ---
