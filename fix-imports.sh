@@ -8,7 +8,7 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "📌 Branch: $BRANCH"
 
 # --- Step 1: Normalize all constants imports ---
-grep -rl 'import constants from "@/lib/constants"' . \
+grep -rl 'import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants"' . \
   | xargs sed -i 's/import constants from "@\/lib\/constants"/import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@\/lib\/constants"/g' || true
 
 # --- Step 2: Remove unused constants safely ---

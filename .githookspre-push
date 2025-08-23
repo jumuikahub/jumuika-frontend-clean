@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "🪝 Pre-push: fixing imports..."
+./fix-imports.sh || {
+  echo "❌ Import fix failed. Push aborted."
+  exit 1
+}
