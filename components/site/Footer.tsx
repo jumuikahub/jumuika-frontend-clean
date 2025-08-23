@@ -2,76 +2,71 @@
 
 import Link from "next/link";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="border-t">
-      {/* Top row */}
-      <div className="mx-auto max-w-7xl px-4 py-8 md:py-10">
-        <div className="grid gap-8 md:grid-cols-3">
-          {/* Brand blurb */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="inline-block h-3.5 w-3.5 rounded-full bg-emerald-600" />
-              <span className="text-sm font-medium">Jumuika Hub KE</span>
-            </div>
-            <p className="text-sm leading-relaxed text-neutral-600">
-              WhatsApp-first smart business toolkit for vendors &amp; institutions —
-              simple listings, instant WhatsApp orders, and real-time engagement.
-            </p>
-          </div>
+    <footer className="bg-gray-900 text-gray-300 py-8 mt-10">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Left Section */}
+        <div>
+          <h2 className="text-xl font-bold text-white mb-2">Jumuika Hub KE</h2>
+          <p className="text-sm">
+            WhatsApp-first SaaS toolkit for institutions, vendors, and students.
+          </p>
+        </div>
 
-          {/* Company */}
-          <nav className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
-              Company
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </nav>
+        {/* Links */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/about" className="hover:text-green-400 transition">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="/internlink" className="hover:text-green-400 transition">
+                InternLink
+              </Link>
+            </li>
+            <li>
+              <Link href="/institutions" className="hover:text-green-400 transition">
+                For Colleges & Schools
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/blog`}
+                className="hover:text-green-400 transition"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:text-green-400 transition">
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="hover:text-green-400 transition">
+                Privacy Policy
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-          {/* Legal */}
-          <nav className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
-              Legal
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
-                  Terms &amp; Conditions
-                </Link>
-              </li>
-            </ul>
-          </nav>
+        {/* Contact */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">Contact</h3>
+          <p>Email: support@jumuikahub.co.ke</p>
+          <p>WhatsApp: +254700915610</p>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t">
-        <div className="mx-auto max-w-7xl px-4 py-4">
-          <p className="text-xs text-neutral-500">
-            © {new Date().getFullYear()} Jumuika Hub KE. All rights reserved.
-          </p>
-        </div>
+      <div className="text-center text-sm text-gray-500 mt-6">
+        © {new Date().getFullYear()} Jumuika Hub KE. All rights reserved.
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
