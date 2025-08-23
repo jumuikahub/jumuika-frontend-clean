@@ -1,10 +1,15 @@
-import { redirect } from 'next/navigation';
+// app/vendor-dashboard/dashboard/page.tsx
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: 'Vendor Dashboard',
+  title: `Vendor Dashboard - ${BRAND}`,
 };
 
-export default function VendorDashboardRedirect() {
-  // If your real dashboard lives at /vendor/dashboard, redirect there:
-  redirect('/vendor/dashboard');
+export default function DashboardPage() {
+  return (
+    <section className="p-8">
+      <h1 className="text-2xl font-bold mb-4">{BRAND} Vendor Dashboard</h1>
+      <p>Welcome to your vendor dashboard. Manage your listings, sales, and account here.</p>
+    </section>
+  );
 }
