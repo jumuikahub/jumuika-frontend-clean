@@ -1,14 +1,65 @@
-import { ImageResponse, type NextRequest } from "next/server";
-import { BRAND } from "@/lib/constants";
+// app/opengraph-image/route.tsx
+import { ImageResponse } from "next/og";
 
+// Route segment config
 export const runtime = "edge";
 
-export async function GET(_req: NextRequest) {
-  return ImageResponse(
+// Important: Update with your brand colors / logo path
+const brand = {
+  name: "Jumuika Hub KE",
+  tagline: "WhatsApp-First SaaS Business Toolkit",
+  logo: `${process.env.NEXT_PUBLIC_APP_URL}/logo.png`,
+  bgColor: "#ffffff",
+  textColor: "#0f172a", // slate-900
+};
+
+export async function GET() {
+  return new ImageResponse(
     (
-      <div tw="flex items-center justify-center w-full h-full bg-white text-black">
-        <span tw="text-4xl font-bold">{BRAND}</span>
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: brand.bgColor,
+          color: brand.textColor,
+          fontSize: 48,
+          fontWeight: 700,
+          textAlign: "center",
+          padding: "40px",
+        }}
+      >
+        {/* Logo */}
+        <img
+          src={brand.logo}
+          alt={brand.name}
+          width={120}
+          height={120}
+          style={{ borderRadius: "50%", marginBottom: "20px" }}
+        />
+
+        {/* Title */}
+        <div>{brand.name}</div>
+
+        {/* Tagline */}
+        <div
+          style={{
+            fontSize: 24,
+            fontWeight: 400,
+            marginTop: "12px",
+            color: "#334155", // slate-600
+          }}
+        >
+          {brand.tagline}
+        </div>
       </div>
-    )
+    ),
+    {
+      width: 1200,
+      height: 630,
+    }
   );
 }
