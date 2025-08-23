@@ -1,25 +1,23 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 
 export const metadata: Metadata = {
-  // 👇 change to your real domain after cut-over
-  metadataBase: new URL("https://jumuika-frontend-clean-nlw9-9marp4oyp.vercel.app"),
-  title: {
-    default: "Jumuika Hub KE",
-    template: "%s • Jumuika Hub KE",
-  },
-  description:
-    "WhatsApp-first smart business toolkit — simple listings, instant WhatsApp orders, and real-time engagement.",
+  title: "Jumuika Hub KE",
+  description: "WhatsApp-first SaaS Business Toolkit for Kenya",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="min-h-dvh bg-white text-neutral-900 antialiased">
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
