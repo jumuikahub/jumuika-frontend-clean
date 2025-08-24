@@ -3,9 +3,9 @@ import Link from "next/link";
 import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants";
 const { WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
 
-export default function PrimaryCTAs({ className = '', ...props }) {
+export default function PrimaryCTAs() {
   return (
-    <div className={className} className="mt-8 flex flex-wrap items-center gap-4 justify-center">
+    <div className="mt-8 flex flex-wrap items-center gap-4 justify-center">
       <Link href={WHATSAPP_CTA_URL} className="btn-primary">
         Book Services via WhatsApp
       </Link>

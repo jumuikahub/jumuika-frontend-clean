@@ -1,20 +1,20 @@
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+// app/(site)/page.tsx
+import React from "react";
 import { BRAND, TAGLINE } from "@/lib/constants";
+import { PrimaryCTAs } from "@/components/ui/PrimaryCTAs";
 
 export const metadata = {
-  title: `Home • ${BRAND}`,
+  title: `${BRAND} – Home`,
+  description: TAGLINE,
 };
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-7xl px-4">
-      <section className="my-12 rounded-2xl bg-emerald-50/60 p-8 md:my-16 md:p-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-            Welcome to {BRAND}
-          </h1>
+    <main className="min-h-screen">
+      <section className="mx-auto max-w-4xl px-6 py-16">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">{BRAND}</h1>
           <p className="mt-4 text-base text-neutral-700 md:text-lg">{TAGLINE}</p>
-
           <PrimaryCTAs className="mt-8 justify-center" />
         </div>
       </section>

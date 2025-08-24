@@ -1,59 +1,78 @@
 // app/opengraph-image/route.tsx
 import { ImageResponse } from "next/og";
 
-// Route segment config
 export const runtime = "edge";
 
-// Important: Update with your brand colors / logo path
-const brand = {
-  name: "Jumuika Hub KE",
-  tagline: "WhatsApp-First SaaS Business Toolkit",
-  logo: `${process.env.NEXT_PUBLIC_APP_URL}/logo.png`,
-  bgColor: "#ffffff",
-  textColor: "#0f172a", // slate-900
-};
+// Default metadata for the OG image
+const title = "Jumuika Hub KE";
+const description =
+  "WhatsApp-First SaaS Toolkit for Institutions, Vendors & Businesses. Simplify bookings, payments, and communication — all on WhatsApp.";
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jumuika.vercel.app";
+const logoUrl = `${siteUrl}/logo.png`; // Ensure logo.png exists in /public
 
 export async function GET() {
   return new ImageResponse(
     (
       <div
         style={{
+          display: "flex",
           height: "100%",
           width: "100%",
-          display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: brand.bgColor,
-          color: brand.textColor,
-          fontSize: 48,
-          fontWeight: 700,
-          textAlign: "center",
+          flexDirection: "column",
+          backgroundColor: "#ffffff",
+          backgroundImage: "linear-gradient(to bottom right, #e0f2fe, #f9fafb)",
+          fontSize: 42,
+          fontFamily: "sans-serif",
+          color: "#111827",
           padding: "40px",
+          textAlign: "center",
         }}
       >
         {/* Logo */}
         <img
-          src={brand.logo}
-          alt={brand.name}
+          src={logoUrl}
+          alt="Jumuika Logo"
           width={120}
           height={120}
-          style={{ borderRadius: "50%", marginBottom: "20px" }}
+          style={{ borderRadius: "20px", marginBottom: "30px" }}
         />
 
         {/* Title */}
-        <div>{brand.name}</div>
-
-        {/* Tagline */}
         <div
           style={{
-            fontSize: 24,
-            fontWeight: 400,
-            marginTop: "12px",
-            color: "#334155", // slate-600
+            fontSize: 64,
+            fontWeight: "bold",
+            marginBottom: "20px",
+            color: "#0f172a",
           }}
         >
-          {brand.tagline}
+          {title}
+        </div>
+
+        {/* Description */}
+        <div
+          style={{
+            fontSize: 32,
+            maxWidth: "900px",
+            lineHeight: 1.4,
+            color: "#334155",
+          }}
+        >
+          {description}
+        </div>
+
+        {/* Footer Website */}
+        <div
+          style={{
+            marginTop: "50px",
+            fontSize: 28,
+            fontWeight: "500",
+            color: "#2563eb",
+          }}
+        >
+          {siteUrl.replace("https://", "").replace("http://", "")}
         </div>
       </div>
     ),

@@ -9,9 +9,9 @@ const nav = [
   { href: "/internlink", label: "InternLink" },
 ];
 
-export default function Header({ className = '', ...props }) {
+export default function Header() {
   return (
-    <header className={className} className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b">
+    <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b">
       <div className="mx-auto flex items-center justify-between w-full max-w-7xl px-4 sm:px-6 lg:px-8 h-14">
         <Link href="/" className="flex items-center gap-2">
           <Logo />

@@ -66,7 +66,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       // Anchor branch – only spread anchor-safe props
       const { href, ...anchorRest } = rest as ButtonAsAnchor;
       return (
-        <a className={className}
+        <a
           ref={ref as Ref<HTMLAnchorElement>}
           href={href}
           className={classes}

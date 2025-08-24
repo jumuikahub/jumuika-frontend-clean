@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Logo({ className = '', ...props }) {
+export default function Logo() {
   const [broken, setBroken] = useState(false);
 
   // If you renamed the asset, update the src below:
   const src = "/logo.svg";
 
   return (
-    <Link className={className} href="/" className="flex items-center gap-2">
+    <Link href="/" className="flex items-center gap-2">
       {!broken ? (
         <Image
           src={src}
