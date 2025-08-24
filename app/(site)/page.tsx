@@ -1,23 +1,16 @@
-// app/(site)/page.tsx
 import React from "react";
-import { BRAND, TAGLINE } from "@/lib/constants";
-import { PrimaryCTAs } from "@/components/ui/PrimaryCTAs";
+import { BRAND } from "@/lib/constants";
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs"; // ✅ default import
 
 export const metadata = {
-  title: `${BRAND} – Home`,
-  description: TAGLINE,
+  title: `${BRAND} – Welcome`,
 };
 
-export default function HomePage() {
+export default function Page() {
   return (
-    <main className="min-h-screen">
-      <section className="mx-auto max-w-4xl px-6 py-16">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">{BRAND}</h1>
-          <p className="mt-4 text-base text-neutral-700 md:text-lg">{TAGLINE}</p>
-          <PrimaryCTAs className="mt-8 justify-center" />
-        </div>
-      </section>
+    <main>
+      <h1>Welcome to {BRAND}</h1>
+      <PrimaryCTAs />  {/* ✅ use component directly */}
     </main>
   );
 }

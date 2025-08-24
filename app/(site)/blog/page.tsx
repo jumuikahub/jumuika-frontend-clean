@@ -1,16 +1,17 @@
-// app/(site)/blog/page.tsx
-import { BRAND, TAGLINE } from "@/lib/constants";
-
-export const metadata = {
-  title: `Blog - ${BRAND}`,
-  description: TAGLINE,
-};
+import PrimaryCTAs from "@/components/PrimaryCTAs";
 
 export default function BlogPage() {
   return (
-    <section className="p-8">
-      <h1 className="text-2xl font-bold mb-4">{BRAND} Blog</h1>
-      <p>Stay tuned for insights and stories around {TAGLINE}.</p>
-    </section>
+    <main className="flex flex-col items-center justify-center px-6 py-12">
+      <div className="max-w-3xl text-center">
+        <h1 className="text-4xl font-bold mb-6">Jumuika Blog</h1>
+        <p className="text-lg mb-6">
+          Stay updated with the latest news, insights, and tutorials about
+          WhatsApp-first commerce, SaaS innovations, and smart business
+          automation in Kenya and beyond.
+        </p>
+        <PrimaryCTAs />
+      </div>
+    </main>
   );
 }
