@@ -1,4 +1,4 @@
-import PrimaryCTAs from "@/components/PrimaryCTAs";
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
 
 export default function AboutPage() {
   return (
