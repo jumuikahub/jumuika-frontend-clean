@@ -1,22 +1,9 @@
-[
-  {
-    "key": "NEXT_PUBLIC_APP_URL",
-    "value": "https://jumuika.netlify.app"
-  },
-  {
-    "key": "NEXT_PUBLIC_WHATSAPP_NUMBER",
-    "value": "+254104250912"
-  },
-  {
-    "key": "NEXT_PUBLIC_API_URL",
-    "value": "https://jumuika-backend.onrender.com"
-  },
-  {
-    "key": "NEXT_PUBLIC_SITE_NAME",
-    "value": "Jumuika Hub KE"
-  },
-  {
-    "key": "NEXT_PUBLIC_SUPPORT_EMAIL",
-    "value": "support@jumuika.co.ke"
-  }
-]
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js", "use": "@vercel/next" }
+  ],
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" }
+  ]
+}
