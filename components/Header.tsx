@@ -1,34 +1,50 @@
-// components/Header.tsx
-import Link from "next/link";
-import Logo from "./Logo";
+"use client";
 
-const nav = [
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+
+const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/institutions", label: "Institutions" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/internlink", label: "InternLink" },
+  { href: "/blog", label: "Blog" },
+  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
 ];
 
-export default function Header({ className = '', ...props }) {
+export default function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className={className} className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b">
-      <div className="mx-auto flex items-center justify-between w-full max-w-7xl px-4 sm:px-6 lg:px-8 h-14">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="sr-only">Jumuika Hub KE</span>
+    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold text-primary">
+          Jumuika Hub KE
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {nav.map((i) => (
+        {/* Nav Links */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
             <Link
-              key={i.href}
-              href={i.href}
-              className="text-slate-700 hover:text-slate-900 transition"
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium hover:text-primary transition-colors",
+                pathname === link.href ? "text-primary" : "text-gray-600"
+              )}
             >
-              {i.label}
+              {link.label}
             </Link>
           ))}
         </nav>
+
+        {/* CTA Buttons */}
+        <div className="flex items-center space-x-2">
+          <PrimaryCTAs />
+        </div>
       </div>
     </header>
   );
