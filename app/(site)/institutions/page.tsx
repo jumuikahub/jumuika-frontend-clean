@@ -1,11 +1,16 @@
-// app/(site)/institutions/page.tsx
-import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
-export const dynamic = "force-static";
-export const metadata = {
-  robots: { index: false, follow: false },
-};
-
-export default function InstitutionsShelved() {
-  redirect("/");
+export default function InstitutionsPage() {
+  return (
+    <section className="p-10 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6">For Colleges & Schools</h1>
+      <p className="text-gray-700 mb-8">
+        Onboard students, manage fee payments, and send automated updates directly through WhatsApp.
+      </p>
+      <Button variant="primary" asChild>
+        <Link href="https://wa.me/254104250912">Onboard Your Institution</Link>
+      </Button>
+    </section>
+  )
 }

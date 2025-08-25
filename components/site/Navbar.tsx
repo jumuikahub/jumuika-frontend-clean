@@ -1,41 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/Button"; // ✅ Fixed: capital B
 
 export default function Navbar() {
-  const pathname = usePathname();
-
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/how-it-works", label: "How It Works" },
-    { href: "/institutions", label: "For Colleges & Schools" },
-  ];
-
   return (
-    <nav className="flex items-center justify-between px-6 py-4 shadow-md bg-white">
-      <Link href="/" className="text-xl font-bold">
-        Jumuika Hub KE
-      </Link>
-      <div className="flex space-x-6">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`${
-              pathname === link.href
-                ? "text-blue-600 font-semibold"
-                : "text-gray-700 hover:text-blue-600"
-            }`}
-          >
-            {link.label}
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-xl font-bold text-green-600">
+          Jumuika Hub KE
+        </Link>
+
+        {/* Menu */}
+        <div className="space-x-6">
+          <Link href="/about" className="hover:text-green-600">
+            About
           </Link>
-        ))}
+          <Link href="/how-it-works" className="hover:text-green-600">
+            How It Works
+          </Link>
+          <Link href="/blog" className="hover:text-green-600">
+            Blog
+          </Link>
+        </div>
       </div>
-      <Button>Get Started</Button>
     </nav>
   );
 }
