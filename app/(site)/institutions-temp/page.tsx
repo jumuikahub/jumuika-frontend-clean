@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "// disabled for deploy "
 import Link from "next/link"
 
 export default function InstitutionsPage() {
