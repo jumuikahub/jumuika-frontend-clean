@@ -1,18 +1,17 @@
-import SEO from "@/components/site/SEO";
+import SEO from "@/components/site/SEO"; // ✅ Fixed path
 
 export default function BlogPage() {
   return (
     <>
       <SEO
         title="Jumuika Hub KE Blog"
-        description="Read insights, guides, and updates on WhatsApp-first SaaS business operations in Kenya."
-        keywords="Jumuika blog, WhatsApp business insights, SaaS toolkit Kenya"
+        description="Insights, updates, and stories from Jumuika Hub KE. Stay informed on WhatsApp commerce trends in Kenya."
       />
       <main className="p-6">
-        <h1 className="text-3xl font-bold">Blog</h1>
-        <p className="mt-4 text-lg">
-          Explore tips, updates, and stories on building and running
-          WhatsApp-first businesses with Jumuika Hub KE.
+        <h1 className="text-3xl font-bold mb-4">Our Blog</h1>
+        <p>
+          Welcome to the Jumuika Hub KE Blog. Here, we share updates, insights,
+          and stories on the future of WhatsApp-first commerce in Kenya.
         </p>
       </main>
     </>

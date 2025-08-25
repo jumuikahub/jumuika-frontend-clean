@@ -1,18 +1,17 @@
-import SEO from "@/components/site/SEO";
+import SEO from "@/components/site/SEO"; // ✅ Fixed path
 
 export default function HomePage() {
   return (
     <>
       <SEO
-        title="Jumuika Hub KE | WhatsApp-First SaaS Toolkit"
-        description="Run your business, bookings, and payments directly from WhatsApp. Jumuika Hub KE connects vendors, buyers, and institutions seamlessly."
-        keywords="WhatsApp business Kenya, Jumuika Hub KE, SaaS toolkit, M-Pesa integration, vendor marketplace"
+        title="Jumuika Hub KE – WhatsApp-First SaaS Business Toolkit"
+        description="Connect vendors and buyers on WhatsApp for bookings, payments, rewards, and referrals. A smart marketplace designed for Kenya."
       />
       <main className="p-6">
-        <h1 className="text-3xl font-bold">Welcome to Jumuika Hub KE</h1>
-        <p className="mt-4 text-lg">
-          Your WhatsApp-first SaaS toolkit for bookings, payments, float
-          rewards, and vendor-buyer connections.
+        <h1 className="text-3xl font-bold mb-4">Welcome to Jumuika Hub KE</h1>
+        <p>
+          The WhatsApp-first smart marketplace for bookings, payments,
+          float rewards, referrals, and listings — all without an app.
         </p>
       </main>
     </>
