@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 
 export default function OnboardPage() {
   return (
@@ -16,7 +17,7 @@ export default function OnboardPage() {
 
         <div className="pt-2">
           {/* WhatsApp CTA — must render as anchor */}
-          <Button
+          <Button asChild className="w-full bg-green-600 hover:bg-green-700">\n        <a href="https://wa.me/254104250912" target="_blank" rel="noopener noreferrer"
             as="a"
             href="https://wa.me/254104250912"
             target="_blank"
