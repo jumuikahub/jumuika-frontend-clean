@@ -1,21 +1,23 @@
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import SEO from "@/components/site/SEO";
+import PrimaryCTA from "@/components/PrimaryCTA"; // ✅ fixed path
 
 export default function TermsPage() {
   return (
-    <main className="flex flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl font-bold mb-6">Terms & Conditions</h1>
-        <p className="text-lg mb-6">
-          By using Jumuika Hub KE, you agree to follow our terms and conditions
-          that ensure transparency, compliance, and safe use of our platform.
+    <>
+      <SEO
+        title="Terms & Conditions – Jumuika Hub KE"
+        description="Review Jumuika Hub KE’s terms and conditions of service."
+      />
+      <main className="p-6">
+        <h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1>
+        <p>
+          These Terms & Conditions govern your use of Jumuika Hub KE. By
+          accessing our services, you agree to these rules.
         </p>
-        <p className="text-lg mb-6">
-          Our services are built to comply with Meta policies and Kenyan
-          financial regulations. By continuing to use our services, you consent
-          to fair use and responsible communication via WhatsApp.
-        </p>
-        <PrimaryCTAs />
-      </div>
-    </main>
+        <div className="mt-6">
+          <PrimaryCTA />
+        </div>
+      </main>
+    </>
   );
 }

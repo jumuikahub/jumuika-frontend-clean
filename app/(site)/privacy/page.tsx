@@ -1,22 +1,23 @@
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import SEO from "@/components/site/SEO";
+import PrimaryCTA from "@/components/PrimaryCTA"; // ✅ fixed path
 
 export default function PrivacyPage() {
   return (
-    <main className="flex flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
-        <p className="text-lg mb-6">
-          At Jumuika Hub KE, your privacy is our priority. We are committed to
-          protecting your personal information and ensuring compliance with
-          Meta’s latest guidelines and Kenya’s Data Protection laws.
+    <>
+      <SEO
+        title="Privacy Policy – Jumuika Hub KE"
+        description="Read Jumuika Hub KE’s privacy policy and learn how we protect your data."
+      />
+      <main className="p-6">
+        <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
+        <p>
+          At Jumuika Hub KE, your privacy is our priority. This page outlines how
+          we handle data responsibly and securely.
         </p>
-        <p className="text-lg mb-6">
-          We only collect the minimum data required to provide services such as
-          bookings, M-PESA payments, and WhatsApp notifications. We never sell
-          your information to third parties.
-        </p>
-        <PrimaryCTAs />
-      </div>
-    </main>
+        <div className="mt-6">
+          <PrimaryCTA />
+        </div>
+      </main>
+    </>
   );
 }
