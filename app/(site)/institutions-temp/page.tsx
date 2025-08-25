@@ -1,4 +1,4 @@
-import { Button } from "// disabled for deploy "
+// Temporarily disabled for deploy
 import Link from "next/link"
 
 export default function InstitutionsPage() {
