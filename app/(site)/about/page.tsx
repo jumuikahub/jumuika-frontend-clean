@@ -1,20 +1,23 @@
-import SEO from "@/components/site/SEO"; // ✅ Fixed path
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Jumuika Hub KE",
+  description: "Learn more about Jumuika Hub KE – the WhatsApp-first SaaS toolkit.",
+};
 
 export default function AboutPage() {
   return (
-    <>
-      <SEO
-        title="About Jumuika Hub KE"
-        description="Learn about Jumuika Hub KE’s mission to transform Kenyan commerce through WhatsApp-first solutions."
-      />
-      <main className="p-6">
-        <h1 className="text-3xl font-bold mb-4">About Us</h1>
-        <p>
-          Jumuika Hub KE is building Kenya’s first WhatsApp-first business toolkit.
-          We empower vendors, institutions, and buyers to connect seamlessly
-          without the need for traditional apps.
-        </p>
-      </main>
-    </>
+    <main className="p-8 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">About Us</h1>
+      <p className="mb-4">
+        Jumuika Hub KE is a WhatsApp-first SaaS toolkit that enables businesses and institutions
+        to run operations seamlessly. From bookings to payments, we make everything accessible
+        on WhatsApp without requiring an app.
+      </p>
+      <p>
+        Our mission is to empower vendors, schools, and organizations with simple, secure,
+        and mobile-first tools to grow sustainably.
+      </p>
+    </main>
   );
 }
