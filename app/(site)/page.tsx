@@ -1,4 +1,4 @@
-import SEO from "@/components/SEO";
+import SEO from "@/components/site/SEO";
 
 export default function HomePage() {
   return (
