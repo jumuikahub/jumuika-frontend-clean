@@ -1,39 +1,22 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
-const Navbar = () => {
-  const pathname = usePathname();
-
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/institutions", label: "For Colleges & Schools" },
-    { href: "/internlink", label: "InternLink" },
-    { href: "/blog", label: "Blog" },
-  ];
-
+export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-      <div className="text-2xl font-bold text-green-600">
-        <Link href="/">Jumuika Hub KE</Link>
-      </div>
-      <div className="space-x-6">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`hover:text-green-600 transition ${
-              pathname === link.href ? "text-green-600 font-semibold" : ""
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
+    <nav className="w-full flex items-center justify-between px-6 py-4 shadow-sm bg-white">
+      <Link href="/" className="text-xl font-bold">
+        Jumuika Hub KE
+      </Link>
+      <div className="flex items-center gap-4">
+        <Link href="/about">About</Link>
+        <Link href="/institutions">For Colleges & Schools</Link>
+        <Link href="/internlink">InternLink</Link>
+        <Button variant="primary" asChild>
+          <Link href="https://wa.me/254104250912">Get Started</Link>
+        </Button>
       </div>
     </nav>
-  );
-};
-
-export default Navbar;
+  )
+}

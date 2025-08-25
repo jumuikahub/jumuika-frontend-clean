@@ -1,22 +1,21 @@
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import SEO from "@/components/SEO";
 
 export default function AboutPage() {
   return (
-    <main className="flex flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl font-bold mb-6">About Jumuika Hub KE</h1>
-        <p className="text-lg mb-6">
-          Jumuika Hub KE is a WhatsApp-First SaaS Business Toolkit that helps
-          vendors, institutions, and individuals manage bookings, payments,
-          referrals, and communications — all without the need for a mobile app.
+    <>
+      <SEO
+        title="About Jumuika Hub KE"
+        description="Learn about Jumuika Hub KE, Kenya's WhatsApp-first SaaS business toolkit for vendors, buyers, and institutions."
+        keywords="About Jumuika Hub KE, WhatsApp SaaS Kenya, vendor buyer toolkit"
+      />
+      <main className="p-6">
+        <h1 className="text-3xl font-bold">About Us</h1>
+        <p className="mt-4 text-lg">
+          Jumuika Hub KE is a WhatsApp-first smart business toolkit designed to
+          help vendors, buyers, and institutions manage bookings, payments, and
+          rewards — all without a standalone app.
         </p>
-        <p className="text-lg mb-6">
-          We focus on providing smart, secure, and Meta-compliant solutions
-          tailored for the Kenyan market, integrating M-PESA and WhatsApp APIs
-          to ensure frictionless commerce and automation.
-        </p>
-        <PrimaryCTAs />
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

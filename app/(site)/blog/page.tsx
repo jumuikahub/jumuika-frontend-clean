@@ -1,17 +1,20 @@
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import SEO from "@/components/SEO";
 
 export default function BlogPage() {
   return (
-    <main className="flex flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl font-bold mb-6">Jumuika Blog</h1>
-        <p className="text-lg mb-6">
-          Stay updated with the latest news, insights, and tutorials about
-          WhatsApp-first commerce, SaaS innovations, and smart business
-          automation in Kenya and beyond.
+    <>
+      <SEO
+        title="Jumuika Hub KE Blog"
+        description="Read insights, guides, and updates on WhatsApp-first SaaS business operations in Kenya."
+        keywords="Jumuika blog, WhatsApp business insights, SaaS toolkit Kenya"
+      />
+      <main className="p-6">
+        <h1 className="text-3xl font-bold">Blog</h1>
+        <p className="mt-4 text-lg">
+          Explore tips, updates, and stories on building and running
+          WhatsApp-first businesses with Jumuika Hub KE.
         </p>
-        <PrimaryCTAs />
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
