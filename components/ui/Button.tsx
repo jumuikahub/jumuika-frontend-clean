@@ -1,95 +1,57 @@
-// components/ui/Button.tsx
-import React, {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  forwardRef,
-  ReactNode,
-  Ref,
-} from "react";
-import clsx from "clsx";
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
 
-/** ----- Variants & sizing (tweak styles as you like) ----- */
-type Variant = "primary" | "outline";
-type Size = "md" | "lg";
+import { cn } from "@/lib/utils"
 
-function baseClasses(variant: Variant, size: Size) {
-  const v =
-    variant === "outline"
-      ? "border border-emerald-700 text-emerald-800 hover:bg-emerald-50"
-      : "bg-emerald-800 text-white hover:bg-emerald-700";
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
 
-  const s = size === "lg" ? "px-6 py-3 text-base" : "px-5 py-2.5 text-sm";
-  return clsx(
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50",
-    v,
-    s
-  );
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
 }
 
-/** ----- Common props shared by both modes ----- */
-type CommonProps = {
-  children?: ReactNode;
-  className?: string;
-  variant?: Variant;
-  size?: Size;
-};
-
-/** ----- Discriminated union for clean typing ----- */
-type ButtonAsButton = CommonProps &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> & {
-    as?: "button";
-    href?: never; // prevent href on real <button>
-  };
-
-type ButtonAsAnchor = CommonProps &
-  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className"> & {
-    as: "a";
-    href: string; // required for anchor
-  };
-
-export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
-
-/** ----- Component ----- */
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      children,
-      className,
-      variant = "primary",
-      size = "md",
-      ...rest
-    } = props as ButtonProps;
-
-    const classes = clsx(baseClasses(variant, size), className);
-
-    if ((rest as ButtonAsAnchor).as === "a") {
-      // Anchor branch – only spread anchor-safe props
-      const { href, ...anchorRest } = rest as ButtonAsAnchor;
-      return (
-        <a className={className}
-          ref={ref as Ref<HTMLAnchorElement>}
-          href={href}
-          className={classes}
-          {...anchorRest}
-        >
-          {children}
-        </a>
-      );
-    }
-
-    // Button branch – only spread button-safe props
-    const buttonRest = rest as ButtonAsButton;
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
     return (
-      <button
-        ref={ref as Ref<HTMLButtonElement>}
-        className={classes}
-        {...buttonRest}
-      >
-        {children}
-      </button>
-    );
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
   }
-);
+)
+Button.displayName = "Button"
 
-Button.displayName = "Button";
-export default Button;
+export { Button, buttonVariants }
