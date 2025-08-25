@@ -30,3 +30,7 @@ lpt[1-9]
 **/com[1-9]
 **/LPT[1-9]
 **/lpt[1-9]
+
+# Ignore InternLink and Institutions modules everywhere
+**/internlink*/
+**/institutions*/
