@@ -34,3 +34,5 @@ lpt[1-9]
 # Ignore InternLink and Institutions modules everywhere
 **/internlink*/
 **/institutions*/
+
+.vercel
