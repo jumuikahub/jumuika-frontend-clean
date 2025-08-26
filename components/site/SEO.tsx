@@ -1,20 +1,19 @@
-export default function SEO() {
+import React from "react";
+import Head from "next/head";
+
+interface SEOProps {
+  title: string;
+  description: string;
+}
+
+export default function SEO({ title, description }: SEOProps) {
   return (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta
-        name="keywords"
-        content="Jumuika Hub KE, WhatsApp Business, SaaS Kenya, M-Pesa integration, bookings"
-      />
-      <meta
-        property="og:title"
-        content="Jumuika Hub KE - WhatsApp-first SaaS Toolkit"
-      />
-      <meta
-        property="og:description"
-        content="Simplifying commerce, bookings, and payments via WhatsApp in Kenya."
-      />
+    <Head>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-    </>
+    </Head>
   );
 }
