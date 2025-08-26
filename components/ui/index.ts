@@ -1,3 +1,5 @@
-// Barrel exports – keep casing exactly as the filename on disk.
-export { Button } from './Button';
-export type { ButtonProps } from './Button';
+export { default as Button } from "./Button";
+export { default as Input } from "./Input";
+export { default as Label } from "./Label";
+export { default as Select } from "./Select";
+// PrimaryButton moved to components/common/

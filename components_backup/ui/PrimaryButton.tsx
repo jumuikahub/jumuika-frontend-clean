@@ -1,9 +1,9 @@
-// components/ui/PrimaryCTAs.tsx
+// components/ui/PrimaryButtons.tsx
 import Link from "next/link";
 import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants";
 const { WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;
 
-export default function PrimaryCTAs() {
+export default function PrimaryButtons() {
   return (
     <div className="mt-8 flex flex-wrap items-center gap-4 justify-center">
       <Link href={WHATSAPP_CTA_URL} className="btn-primary">

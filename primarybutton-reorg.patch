@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2025
+From: Jumuika Lead Consultant <you@example.com>
+Date: Tue, 26 Aug 2025 22:00:00 +0300
+Subject: [PATCH] Move PrimaryButton to common/, update ui/index.ts, fix imports
+
+---
+ components/ui/index.ts | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+ rename components/ui/PrimaryButton.tsx => components/common/PrimaryButton.tsx (100%)
+
+diff --git a/components/ui/index.ts b/components/ui/index.ts
+index abcdef0..1234567 100644
+--- a/components/ui/index.ts
++++ b/components/ui/index.ts
+@@ -1,8 +1,8 @@
+-export { default as Button } from "./Button";
+-export { default as Input } from "./Input";
+-export { default as Label } from "./Label";
+-export { default as Select } from "./Select";
+-
+-// Note: PrimaryButton is now a "common" component, so it's no longer exported here
++export { default as Button } from "./Button";
++export { default as Input } from "./Input";
++export { default as Label } from "./Label";
++export { default as Select } from "./Select";
++// PrimaryButton moved to components/common/
+--
+2.41.0
