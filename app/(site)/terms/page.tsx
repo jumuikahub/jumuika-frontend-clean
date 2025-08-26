@@ -1,5 +1,5 @@
 import SEO from "@/components/site/SEO";
-import PrimaryCTA from "@/components/PrimaryCTA"; // ✅ fixed path
+import PrimaryButton from "@/components/PrimaryButton"; // ✅ fixed path
 
 export default function TermsPage() {
   return (
@@ -15,7 +15,7 @@ export default function TermsPage() {
           accessing our services, you agree to these rules.
         </p>
         <div className="mt-6">
-          <PrimaryCTA />
+          <PrimaryButton />
         </div>
       </main>
     </>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import PrimaryCTAs from "@/components/ui/PrimaryCTAs";
+import PrimaryButtons from "@/components/ui/PrimaryButtons";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -43,7 +43,7 @@ export default function Header() {
 
         {/* CTA Buttons */}
         <div className="flex items-center space-x-2">
-          <PrimaryCTAs />
+          <PrimaryButtons />
         </div>
       </div>
     </header>
