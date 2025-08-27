@@ -1,5 +1,5 @@
-export { default as Button } from "./Button";
-export { default as Input } from "./Input";
-export { default as Label } from "./Label";
-export { default as Select } from "./Select";
-// PrimaryButton moved to components/common/
+// components/ui/index.ts
+export { default as Button } from "./button";
+export { default as Card } from "./card";
+export { default as PrimaryCTA } from "./primary-cta";
+export { default as WhatsAppCTA } from "./WhatsAppCTA";

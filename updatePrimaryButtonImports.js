@@ -1,15 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
-// Scan the project root instead of src
-const baseDir = path.join(__dirname); 
+const baseDir = path.join(__dirname); // project root
 
 function scanFiles(dir) {
   let files = [];
   fs.readdirSync(dir).forEach(file => {
     const fullPath = path.join(dir, file);
     if (fs.statSync(fullPath).isDirectory()) {
-      // Skip node_modules and .git
       if (!["node_modules", ".git"].includes(file)) {
         files = files.concat(scanFiles(fullPath));
       }
@@ -22,7 +20,7 @@ function scanFiles(dir) {
 
 function updateImports(filePath) {
   let content = fs.readFileSync(filePath, "utf8");
-  const regex = /from ['"]@\/components\/ui\/PrimaryButton['"]/g;
+  const regex = /from ['"]@\/components\/PrimaryButton['"]/g;
   if (regex.test(content)) {
     content = content.replace(regex, "from '@/components/common/PrimaryButton'");
     fs.writeFileSync(filePath, content, "utf8");
