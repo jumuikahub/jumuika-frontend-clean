@@ -1,20 +1,24 @@
-import React from "react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "How It Works | Jumuika Hub KE",
-  description: "Understand how Jumuika Hub KE helps businesses and institutions run on WhatsApp.",
-};
-
 export default function HowItWorksPage() {
   return (
-    <main className="p-8 max-w-4xl mx-auto">
+    <main className="min-h-screen p-8 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">How It Works</h1>
-      <ol className="list-decimal list-inside space-y-3">
-        <li>Sign up your business or institution on Jumuika Hub KE.</li>
-        <li>Get a dedicated WhatsApp-powered interface for your customers.</li>
-        <li>Accept payments via M-Pesa Buy Goods Till directly on WhatsApp.</li>
-        <li>Use referral rewards and booking automation to grow faster.</li>
+      <ol className="list-decimal pl-6 space-y-4">
+        <li>
+          <strong>Onboard Your Business:</strong> Sign up and connect your
+          WhatsApp number to Jumuika Hub KE.
+        </li>
+        <li>
+          <strong>Automate Bookings & Payments:</strong> Customers can place
+          orders or book services directly on WhatsApp.
+        </li>
+        <li>
+          <strong>Track Rewards & Referrals:</strong> Manage float rewards,
+          bonuses, and referral incentives seamlessly.
+        </li>
+        <li>
+          <strong>Grow Smarter:</strong> Use data insights to understand and
+          scale your business without needing a custom app.
+        </li>
       </ol>
     </main>
   );

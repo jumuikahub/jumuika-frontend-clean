@@ -1,34 +1,36 @@
-import "../globals.css";
+import "./globals.css";
 import type { Metadata } from "next";
-import Navbar from "@/components/site/Navbar";
-import Footer from "@/components/site/Footer";
 
 export const metadata: Metadata = {
-  title: "Jumuika Hub KE",
-  description: "WhatsApp-First SaaS Business Toolkit for Kenya",
-  keywords: ["WhatsApp Business", "Kenya", "Jumuika", "M-Pesa", "SaaS", "Marketplace"],
+  title: "Jumuika Hub KE – WhatsApp-First SaaS Business Toolkit",
+  description:
+    "Run your business on WhatsApp with Jumuika Hub KE. Automate bookings, payments, referrals, and customer engagement—without needing an app.",
+  metadataBase: new URL("https://jumuikahub.vercel.app"),
   openGraph: {
     title: "Jumuika Hub KE",
-    description: "Run your business directly on WhatsApp – bookings, payments, referrals, and more.",
+    description:
+      "WhatsApp-First SaaS Business Toolkit for payments, bookings, and referrals.",
     url: "https://jumuikahub.vercel.app",
     siteName: "Jumuika Hub KE",
-    locale: "en_KE",
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jumuika Hub KE",
+    description:
+      "WhatsApp-First SaaS Business Toolkit for payments, bookings, and referrals.",
   },
 };
 
-export default function SiteLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
