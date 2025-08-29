@@ -1,31 +1,27 @@
-"use client";
+// components/Logo.tsx
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
 
-export default function Logo({ className = '', ...props }) {
-  const [broken, setBroken] = useState(false);
+interface LogoProps {
+  href?: string;
+  size?: number;
+}
 
-  // If you renamed the asset, update the src below:
-  const src = "/logo.svg";
-
+export default function Logo({ href = "/", size = 40 }: LogoProps) {
   return (
-    <Link className={className} href="/" className="flex items-center gap-2">
-      {!broken ? (
-        <Image
-          src={src}
-          alt="Jumuika Hub KE"
-          width={28}
-          height={28}
-          priority
-          className="block"
-          onError={() => setBroken(true)}
-        />
-      ) : (
-        <div className="h-7 w-7 rounded-full bg-emerald-700" />
-      )}
-      <span className="font-medium text-slate-900">Jumuika Hub KE</span>
+    <Link href={href} className="flex items-center gap-2">
+      <Image
+        src="/logo.png" // make sure your logo is inside /public/logo.png
+        alt="Jumuika Hub KE Logo"
+        width={size}
+        height={size}
+        className="rounded-lg"
+        priority
+      />
+      <span className="font-bold text-xl tracking-tight text-gray-900">
+        Jumuika Hub KE
+      </span>
     </Link>
   );
 }
