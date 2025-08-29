@@ -1,27 +1,30 @@
-// next.config.mjs
-
 /** @type {import('next').NextConfig} */
-const baseConfig = {
+const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-};
 
-const ENV = process.env.NEXT_PUBLIC_ENV || process.env.NODE_ENV;
+  // Add rewrites so API calls can be proxied safely
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://graph.facebook.com/:path*", // Meta Graph API proxy
+      },
+    ];
+  },
 
-// Define disabled modules per environment
-const disabledModulesByEnv = {
-  development: ["internlink-temp", "institutions-temp"], // disable in dev
-  staging: ["internlink-temp"],                         // only disable internlink in staging
-  production: [],                                       // enable all in prod
-};
-
-const disabledModules = disabledModulesByEnv[ENV] || [];
-
-console.log(`⚙️ Running in ${ENV} mode — Disabled modules:`, disabledModules);
-
-export default {
-  ...baseConfig,
-  env: {
-    DISABLED_MODULES: disabledModules.join(","), // available in client & server
+  // Optional: security headers
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
   },
 };
+
+export default nextConfig;
