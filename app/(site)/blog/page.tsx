@@ -1,15 +1,15 @@
+// app/(site)/blog/page.tsx
+import PrimaryButton from "@/components/ui/PrimaryButton";
+
 export default function BlogPage() {
   return (
-    <main className="min-h-screen p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Blog</h1>
-      <p className="mb-4">
-        Welcome to the Jumuika Hub KE blog. Here we share insights, tips, and
-        updates on building a WhatsApp-first business in Kenya.
+    <main className="max-w-4xl mx-auto py-12">
+      <h1 className="text-3xl font-bold mb-6">Our Blog</h1>
+      <p className="text-gray-700 mb-6">
+        Stay updated with the latest news, product updates, and insights on 
+        WhatsApp-powered commerce.
       </p>
-      <p>
-        Stay tuned for case studies, product updates, and strategies to help
-        you grow and automate your business the smart way.
-      </p>
+      <PrimaryButton>Read Articles</PrimaryButton>
     </main>
   );
 }

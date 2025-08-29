@@ -1,34 +1,48 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
-import { ComponentProps } from "react";
+import React from "react";
 
-interface PrimaryButtonProps extends ComponentProps<typeof Button> {
-  isLoading?: boolean;
-}
+type PrimaryButtonProps = {
+  children: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
+};
 
 export default function PrimaryButton({
-  className,
   children,
-  isLoading,
+  href,
+  onClick,
+  className,
   disabled,
-  ...props
 }: PrimaryButtonProps) {
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-2xl bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed";
+
+  if (href) {
+    // Link mode
+    return (
+      <Link
+        href={href}
+        className={cn(baseClasses, className)}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  // Action mode (button)
   return (
-    <Button
-      className={cn(
-        // 🔵 Apply Jumuika brand theme color (update hex if you finalize brand palette)
-        "bg-[#0F9D58] hover:bg-[#0c7a45] text-white font-semibold rounded-xl px-6 py-3 transition-all duration-200 shadow-md hover:shadow-lg",
-        disabled && "opacity-60 cursor-not-allowed",
-        className
-      )}
-      disabled={isLoading || disabled}
-      {...props}
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={cn(baseClasses, className)}
     >
-      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {children}
-    </Button>
+    </button>
   );
 }

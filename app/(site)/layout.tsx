@@ -1,11 +1,17 @@
-import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// app/(site)/layout.tsx
+import type { Metadata } from "next";
+import "../globals.css"; // one clean global import
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Jumuika Hub KE",
-  description: "WhatsApp-First SaaS Business Toolkit for Kenya",
+  description: "WhatsApp-First SaaS Business Toolkit for Vendors, Institutions, and Buyers.",
+  openGraph: {
+    title: "Jumuika Hub KE",
+    description: "Smart WhatsApp-First SaaS toolkit for bookings, payments, float rewards, and more.",
+    url: "https://jumuika.vercel.app",
+    siteName: "Jumuika Hub KE",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -14,15 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-        <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+    <html lang="en">
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        {children}
       </body>
     </html>
   );
