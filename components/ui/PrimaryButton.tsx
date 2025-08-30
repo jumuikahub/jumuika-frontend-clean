@@ -1,48 +1,41 @@
+// components/ui/PrimaryButton.tsx
 "use client";
 
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; // adjust path if your utils is elsewhere
+import { ArrowRight } from "lucide-react";
 import React from "react";
 
-type PrimaryButtonProps = {
-  children: React.ReactNode;
+interface PrimaryButtonProps {
+  label: string;             // <-- added to match usage
   href?: string;
-  onClick?: () => void;
+  icon?: boolean;
   className?: string;
-  disabled?: boolean;
-};
+}
 
-export default function PrimaryButton({
-  children,
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  label,
   href,
-  onClick,
+  icon,
   className,
-  disabled,
-}: PrimaryButtonProps) {
-  const baseClasses =
-    "inline-flex items-center justify-center rounded-2xl bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed";
+}) => {
+  const buttonContent = (
+    <span
+      className={cn(
+        "inline-flex items-center px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors",
+        className
+      )}
+    >
+      {label}
+      {icon && <ArrowRight className="ml-2 h-4 w-4" />}
+    </span>
+  );
 
+  // If href exists, render as Next.js Link
   if (href) {
-    // Link mode
-    return (
-      <Link
-        href={href}
-        className={cn(baseClasses, className)}
-      >
-        {children}
-      </Link>
-    );
+    return <Link href={href}>{buttonContent}</Link>;
   }
 
-  // Action mode (button)
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={cn(baseClasses, className)}
-    >
-      {children}
-    </button>
-  );
-}
+  // Otherwise, render as button
+  return <button type="button">{buttonContent}</button>;
+};
