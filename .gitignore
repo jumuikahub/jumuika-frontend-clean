@@ -99,3 +99,8 @@ LPT6*
 LPT7*
 LPT8*
 LPT9*
+
+# ----------------------------
+# Vercel deployment metadata
+# ----------------------------
+.vercel/

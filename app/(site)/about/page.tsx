@@ -1,15 +1,17 @@
 // app/(site)/about/page.tsx
-import PrimaryButton from "@/components/ui/PrimaryButton";
+import { PrimaryButton } from "@/components";
 
 export default function AboutPage() {
   return (
-    <main className="max-w-3xl mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">About Jumuika Hub KE</h1>
-      <p className="text-gray-700 mb-6">
-        Jumuika Hub KE is a WhatsApp-First SaaS Business Toolkit that enables smart bookings, 
-        secure payments, referral rewards, and seamless vendor-to-buyer connections.
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">About Us</h1>
+      <p className="mt-2 text-gray-600">
+        Learn more about Jumuika Hub KE and our mission.
       </p>
-      <PrimaryButton>Learn More</PrimaryButton>
+
+      <PrimaryButton href="/how-it-works" icon className="mt-4">
+        How It Works
+      </PrimaryButton>
     </main>
   );
 }

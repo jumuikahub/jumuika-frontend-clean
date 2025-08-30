@@ -1,15 +1,17 @@
 // app/(site)/blog/page.tsx
-import PrimaryButton from "@/components/ui/PrimaryButton";
+import { PrimaryButton } from "@/components";
 
 export default function BlogPage() {
   return (
-    <main className="max-w-4xl mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">Our Blog</h1>
-      <p className="text-gray-700 mb-6">
-        Stay updated with the latest news, product updates, and insights on 
-        WhatsApp-powered commerce.
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Our Blog</h1>
+      <p className="mt-2 text-gray-600">
+        Insights, updates, and news from Jumuika Hub KE.
       </p>
-      <PrimaryButton>Read Articles</PrimaryButton>
+
+      <PrimaryButton href="/about" icon className="mt-4">
+        Back to About
+      </PrimaryButton>
     </main>
   );
 }

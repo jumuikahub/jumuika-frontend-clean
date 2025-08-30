@@ -1,20 +1,18 @@
 // app/(site)/page.tsx
-import PrimaryButton from "@/components/ui/PrimaryButton";
+import { PrimaryButton } from "@/components";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        Welcome to Jumuika Hub KE 🚀
-      </h1>
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Welcome to Jumuika Hub KE</h1>
+      <p className="mt-2 text-gray-600">
+        WhatsApp-First SaaS Business Toolkit
+      </p>
 
       {/* Test usage of PrimaryButton */}
-      <PrimaryButton
-        label="Get Started"
-        href="/about"
-        icon
-        className="mt-4"
-      />
+      <PrimaryButton href="/about" icon className="mt-4">
+        Get Started
+      </PrimaryButton>
     </main>
   );
 }

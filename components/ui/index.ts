@@ -1,4 +1,5 @@
 // Central export hub for all UI primitives in /components/ui
+// Includes both shadcn primitives and custom UI components like PrimaryButton
 
 export { Button } from "./button";
 export { Input } from "./input";
@@ -24,3 +25,6 @@ export { Popover, PopoverTrigger, PopoverContent } from "./popover";
 export { Skeleton } from "./skeleton";
 export { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "./toast";
 export { useToast } from "./use-toast";
+
+// ✅ Add PrimaryButton here
+export { default as PrimaryButton } from "./PrimaryButton";

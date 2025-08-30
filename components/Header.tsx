@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import PrimaryButtons from "@/components/ui/PrimaryButtons";
+import { Button } from "@/components/button";
+import PrimaryButtons from "@/components/PrimaryButtons";
 
 const navLinks = [
   { href: "/", label: "Home" },

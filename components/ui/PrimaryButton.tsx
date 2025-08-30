@@ -1,36 +1,55 @@
-// components/ui/PrimaryButton.tsx
+"use client";
 
-import * as React from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ButtonHTMLAttributes } from "react";
 
-export interface PrimaryButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost";
+interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  label?: string; // allow label
+  href?: string;
+  icon?: boolean;
 }
 
-const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
-  ({ className, variant = "default", children, ...props }, ref) => {
+const PrimaryButton = ({
+  label,
+  href,
+  icon,
+  className,
+  children,
+  ...props
+}: PrimaryButtonProps) => {
+  const content = (
+    <>
+      {icon && <span className="mr-2">🚀</span>}
+      {label || children}
+    </>
+  );
+
+  if (href) {
     return (
-      <button
-        ref={ref}
+      <Link
+        href={href}
         className={cn(
-          "px-4 py-2 rounded-2xl font-medium transition-all focus:outline-none",
-          variant === "default" &&
-            "bg-blue-600 text-white hover:bg-blue-700 shadow",
-          variant === "outline" &&
-            "border border-blue-600 text-blue-600 hover:bg-blue-50",
-          variant === "ghost" && "text-blue-600 hover:bg-blue-100",
+          "inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors",
           className
         )}
-        {...props}
       >
-        {children}
-      </button>
+        {content}
+      </Link>
     );
   }
-);
 
-PrimaryButton.displayName = "PrimaryButton";
+  return (
+    <button
+      {...props}
+      className={cn(
+        "inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors",
+        className
+      )}
+    >
+      {content}
+    </button>
+  );
+};
 
-// ✅ Default export so you don’t need to refactor all imports
 export default PrimaryButton;

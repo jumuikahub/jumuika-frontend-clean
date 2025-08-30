@@ -1,15 +1,17 @@
 // app/(site)/how-it-works/page.tsx
-import PrimaryButton from "@/components/ui/PrimaryButton";
+import { PrimaryButton } from "@/components";
 
 export default function HowItWorksPage() {
   return (
-    <main className="max-w-4xl mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">How It Works</h1>
-      <p className="text-gray-700 mb-6">
-        Jumuika Hub KE simplifies business operations by linking vendors, institutions, 
-        and buyers through WhatsApp for bookings, payments, and engagement.
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">How It Works</h1>
+      <p className="mt-2 text-gray-600">
+        Discover how Jumuika Hub KE makes business simple.
       </p>
-      <PrimaryButton>Start Now</PrimaryButton>
+
+      <PrimaryButton href="/blog" icon className="mt-4">
+        Visit Blog
+      </PrimaryButton>
     </main>
   );
 }
