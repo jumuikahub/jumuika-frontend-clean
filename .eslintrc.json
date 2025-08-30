@@ -2,30 +2,29 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": ".",
-    "ecmaVersion": 2020,
+    "ecmaVersion": "latest",
     "sourceType": "module",
-    "ecmaFeatures": { "jsx": true }
+    "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
   ],
   "rules": {
-    "no-restricted-syntax": [
-      "error",
-      {
-        "selector": "MemberExpression[object.name='constants']",
-        "message": "❌ Do not use 'constants.*'. Import directly from '@/lib/constants'."
-      }
-    ],
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "prettier/prettier": ["error"],
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
-  "ignorePatterns": ["node_modules/", ".next/", "out/", "dist/", "*.config.js"]
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

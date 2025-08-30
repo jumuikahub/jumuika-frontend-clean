@@ -1,41 +1,101 @@
-# Dependencies
-/node_modules
+# ----------------------------
+# OS & Editor junk
+# ----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
 
-# Build outputs
-/.next
-/out
-/build
+# VSCode & IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Debug / Logs
+# Logs & temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*.pid
+*.seed
+*.cover
+*.orig
+*.rej
+
+# Node & dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-*.log
+.pnpm-debug.log*
+.pnp/
+.pnp.js
 
-# Local environment variables
+# Environment & secrets
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
-# Vercel / Deployment
-.vercel
-
-# Editor / OS specific
-.DS_Store
-*.swp
-*.swo
-*.swm
-.idea/
-.vscode/
-*.iml
-
-# TypeScript
+# Build outputs
+.next/
+out/
+dist/
+build/
+coverage/
 *.tsbuildinfo
-next-env.d.ts
 
-# Coverage
-coverage
+# ----------------------------
+# Windows Reserved Names
+# ----------------------------
+# These filenames cannot exist on Windows, even with extensions
+CON
+PRN
+AUX
+NUL
+COM1
+COM2
+COM3
+COM4
+COM5
+COM6
+COM7
+COM8
+COM9
+LPT1
+LPT2
+LPT3
+LPT4
+LPT5
+LPT6
+LPT7
+LPT8
+LPT9
 
-# Other
-*.tgz
+# Match both bare names and names with any extension
+CON*
+PRN*
+AUX*
+NUL*
+COM1*
+COM2*
+COM3*
+COM4*
+COM5*
+COM6*
+COM7*
+COM8*
+COM9*
+LPT1*
+LPT2*
+LPT3*
+LPT4*
+LPT5*
+LPT6*
+LPT7*
+LPT8*
+LPT9*

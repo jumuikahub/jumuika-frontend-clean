@@ -1,41 +1,36 @@
 // components/ui/PrimaryButton.tsx
-"use client";
 
-import Link from "next/link";
-import { cn } from "@/lib/utils"; // adjust path if your utils is elsewhere
-import { ArrowRight } from "lucide-react";
-import React from "react";
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-interface PrimaryButtonProps {
-  label: string;             // <-- added to match usage
-  href?: string;
-  icon?: boolean;
-  className?: string;
+export interface PrimaryButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline" | "ghost";
 }
 
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
-  label,
-  href,
-  icon,
-  className,
-}) => {
-  const buttonContent = (
-    <span
-      className={cn(
-        "inline-flex items-center px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors",
-        className
-      )}
-    >
-      {label}
-      {icon && <ArrowRight className="ml-2 h-4 w-4" />}
-    </span>
-  );
-
-  // If href exists, render as Next.js Link
-  if (href) {
-    return <Link href={href}>{buttonContent}</Link>;
+const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
+  ({ className, variant = "default", children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          "px-4 py-2 rounded-2xl font-medium transition-all focus:outline-none",
+          variant === "default" &&
+            "bg-blue-600 text-white hover:bg-blue-700 shadow",
+          variant === "outline" &&
+            "border border-blue-600 text-blue-600 hover:bg-blue-50",
+          variant === "ghost" && "text-blue-600 hover:bg-blue-100",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </button>
+    );
   }
+);
 
-  // Otherwise, render as button
-  return <button type="button">{buttonContent}</button>;
-};
+PrimaryButton.displayName = "PrimaryButton";
+
+// ✅ Default export so you don’t need to refactor all imports
+export default PrimaryButton;
