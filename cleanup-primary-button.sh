@@ -1,79 +1,72 @@
 #!/bin/bash
 # cleanup-primary-button.sh
-# Consultant Script: Remove duplicate PrimaryButton, normalize imports, enforce safety, auto-run vercel build.
+# Final Consultant Version: Deduplicate PrimaryButton, normalize imports, repair git index, run Vercel build
 
 set -euo pipefail
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "📌 Current branch: $BRANCH"
 
-# --- Safety check ---
+# --- Step 0: Safety guard ---
 if [ "$BRANCH" != "main" ]; then
-  echo "❌ ERROR: You are on branch '$BRANCH'. This script only runs on 'main'."
-  echo "👉 Switch with: git checkout main"
+  echo "❌ Refusing to run: must be on main branch, you are on $BRANCH"
   exit 1
 fi
 
-# --- Step 0: Repair possible corrupted Git index ---
-echo "🛠️ Checking Git index..."
-if ! git status > /dev/null 2>&1; then
-  rm -f .git/index
+# --- Step 0.5: Repair git index if corrupted ---
+echo "🛠️ Repairing Git index if corrupted..."
+if ! git status &>/dev/null; then
+  mv .git/index .git/index.backup || true
   git reset
   echo "✔ Git index repaired."
 else
-  echo "✅ Git index healthy."
+  echo "✔ Git index healthy."
 fi
 
 # --- Step 1: Remove duplicate PrimaryButton ---
 echo "🗑️ Step 1: Removing duplicate PrimaryButton..."
-if [ -f "components/common/PrimaryButton.tsx" ]; then
-  git rm -f components/common/PrimaryButton.tsx
+if [ -f components/common/PrimaryButton.tsx ]; then
+  rm components/common/PrimaryButton.tsx
   echo "✔ Removed components/common/PrimaryButton.tsx"
 else
   echo "⚠️ components/common/PrimaryButton.tsx already gone, skipping"
 fi
 
-# --- Step 2: Fix imports referencing old path ---
-echo "🔍 Step 2: Fixing imports referencing components/common/PrimaryButton..."
-FILES_UPDATED=$(grep -rl "components/common/PrimaryButton" . --exclude-dir={.git,node_modules,.vercel} || true)
-if [ -n "$FILES_UPDATED" ]; then
-  echo "$FILES_UPDATED" | while read -r file; do
-    sed -i 's#components/common/PrimaryButton#@/components#g' "$file"
-    echo "✔ Updated import in $file"
-  done
-else
-  echo "✅ No files referenced components/common/PrimaryButton"
-fi
+# --- Step 2: Fix imports pointing to common/PrimaryButton ---
+echo "🔍 Step 2: Fixing imports that referenced components/common/PrimaryButton..."
+grep -rl '@/components' . || true
+grep -rl '@/components' . | while read -r file; do
+  sed -i 's|@/components|@/components|g' "$file"
+  echo "✔ Updated import in $file"
+done
 
-# --- Step 3: Fix imports referencing ui/PrimaryButton directly ---
-echo "✨ Step 3: Normalizing any stray direct imports of PrimaryButton from ui..."
-FILES_UPDATED_UI=$(grep -rl "components/ui/PrimaryButton" . --exclude-dir={.git,node_modules,.vercel} || true)
-if [ -n "$FILES_UPDATED_UI" ]; then
-  echo "$FILES_UPDATED_UI" | while read -r file; do
-    sed -i 's#components/ui/PrimaryButton#@/components#g' "$file"
-    echo "✔ Updated import in $file"
-  done
-else
-  echo "✅ No files referenced components/ui/PrimaryButton"
-fi
+# --- Step 3: Normalize stray imports of PrimaryButton ---
+echo "✨ Step 3: Normalizing any stray direct imports of PrimaryButton..."
+grep -rl '@/components' . | while read -r file; do
+  sed -i 's|@/components|@/components|g' "$file"
+  echo "✔ Updated import in $file"
+done
 
-# --- Step 4: Git add & commit ---
-echo "📦 Step 4: Git add & commit..."
+# --- Step 4: Fix accidental double @/components ---
+echo "🩹 Step 4: Fixing doubled @/components imports..."
+grep -rl '@/components' . | while read -r file; do
+  sed -i 's|@/components|@/components|g' "$file"
+  echo "✔ Fixed doubled import in $file"
+done
+
+# --- Step 5: Stage, commit & push ---
+echo "📦 Step 5: Git add & commit..."
 git add .
-
 if git diff --cached --quiet; then
   echo "✅ No changes to commit."
 else
-  git commit -m "Chore: remove duplicate PrimaryButton and unify imports"
-  git push origin "$BRANCH"
-  echo "🚀 Cleanup committed and pushed."
+  git commit -m "Chore: cleanup PrimaryButton, repair index, fix imports"
+  git push origin main
+  echo "🚀 Changes committed and pushed."
 fi
 
-# --- Step 5: Local build test ---
-echo "🧪 Step 5: Running local Vercel build..."
-npx vercel build || {
-  echo "❌ Vercel build failed. Check errors above."
-  exit 1
-}
+# --- Step 6: Run local Vercel build to confirm ---
+echo "🔧 Step 6: Running vercel build locally..."
+npx vercel build || { echo "❌ Vercel build failed"; exit 1; }
 
-echo "🎉 All steps completed successfully, build passed!"
+echo "🎉 Cleanup and build finished successfully!"
