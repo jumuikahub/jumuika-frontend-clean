@@ -1,55 +1,36 @@
-"use client";
-
+import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes } from "react";
+import { Button } from "@/components"; // unified barrel import
 
-interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  label?: string; // allow label
+export interface PrimaryButtonProps {
+  text: string;
   href?: string;
   icon?: boolean;
+  className?: string;
 }
 
-const PrimaryButton = ({
-  label,
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  text,
   href,
-  icon,
-  className,
-  children,
-  ...props
-}: PrimaryButtonProps) => {
-  const content = (
-    <>
-      {icon && <span className="mr-2">🚀</span>}
-      {label || children}
-    </>
+  icon = false,
+  className = "",
+}) => {
+  const button = (
+    <Button className={`px-6 py-3 text-lg font-semibold ${className}`}>
+      {text}
+      {icon && <span className="ml-2">👉</span>}
+    </Button>
   );
 
   if (href) {
     return (
-      <Link
-        href={href}
-        className={cn(
-          "inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors",
-          className
-        )}
-      >
-        {content}
+      <Link href={href} passHref>
+        {button}
       </Link>
     );
   }
 
-  return (
-    <button
-      {...props}
-      className={cn(
-        "inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors",
-        className
-      )}
-    >
-      {content}
-    </button>
-  );
+  return button;
 };
 
 export default PrimaryButton;
