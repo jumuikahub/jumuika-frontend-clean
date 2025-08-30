@@ -1,38 +1,41 @@
-node_modules/
-.next/
-out/
-dist/
-.vercel/
+# Dependencies
+/node_modules
+
+# Build outputs
+/.next
+/out
+/build
+
+# Debug / Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Local environment variables
 .env
+.env.local
 .env.*.local
-# Block Windows device filenames anywhere (root and subfolders)
-NUL
-nul
-CON
-con
-PRN
-prn
-AUX
-aux
-COM[1-9]
-com[1-9]
-LPT[1-9]
-lpt[1-9]
-**/NUL
-**/nul
-**/CON
-**/con
-**/PRN
-**/prn
-**/AUX
-**/aux
-**/COM[1-9]
-**/com[1-9]
-**/LPT[1-9]
-**/lpt[1-9]
 
-# Ignore InternLink and Institutions modules everywhere
-**/internlink*/
-**/institutions*/
-
+# Vercel / Deployment
 .vercel
+
+# Editor / OS specific
+.DS_Store
+*.swp
+*.swo
+*.swm
+.idea/
+.vscode/
+*.iml
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Coverage
+coverage
+
+# Other
+*.tgz
