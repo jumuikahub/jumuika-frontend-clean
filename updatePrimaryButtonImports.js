@@ -22,7 +22,7 @@ function updateImports(filePath) {
   let content = fs.readFileSync(filePath, "utf8");
   const regex = /from ['"]@\/components\/PrimaryButton['"]/g;
   if (regex.test(content)) {
-    content = content.replace(regex, "from '@/components/common/PrimaryButton'");
+    content = content.replace(regex, "from '@/@/components'");
     fs.writeFileSync(filePath, content, "utf8");
     console.log(`Updated imports in: ${filePath}`);
   }

@@ -1,4 +1,4 @@
-// components/ui/PrimaryButtons.tsx
+// @/componentss.tsx
 import Link from "next/link";
 import { BRAND, TAGLINE, WHATSAPP_CTA_URL } from "@/lib/constants";
 const { WHATSAPP_CTA_URL, WHATSAPP_BUY_URL } = constants;

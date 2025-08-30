@@ -6,7 +6,7 @@ Subject: [PATCH] Move PrimaryButton to common/, update ui/index.ts, fix imports
 ---
  components/ui/index.ts | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
- rename components/ui/PrimaryButton.tsx => components/common/PrimaryButton.tsx (100%)
+ rename @/components.tsx => @/components.tsx (100%)
 
 diff --git a/components/ui/index.ts b/components/ui/index.ts
 index abcdef0..1234567 100644

@@ -1,6 +1,6 @@
 import React from "react";
 import SEO from "@/components/site/SEO";
-import PrimaryButton from '@/components/common/PrimaryButton'; // ✅ fixed path
+import PrimaryButton from '@/@/components'; // ✅ fixed path
 
 export default function TermsPage() {
   return (
