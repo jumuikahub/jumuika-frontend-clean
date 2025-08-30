@@ -1,5 +1,4 @@
 // Barrel export for all higher-level components (non-UI primitives)
-// This makes imports cleaner across the project.
 
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
@@ -11,5 +10,8 @@ export { default as Pricing } from "./Pricing";
 export { default as BlogList } from "./BlogList";
 export { default as BlogCard } from "./BlogCard";
 
-// ✅ Re-export all UI primitives (includes PrimaryButton now)
+// ✅ Export PrimaryButton directly
+export { PrimaryButton } from "./common/PrimaryButton";
+
+// Re-export UI primitives if any
 export * from "./ui";
