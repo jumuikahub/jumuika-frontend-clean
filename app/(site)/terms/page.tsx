@@ -1,6 +1,6 @@
 import React from "react";
 import SEO from "@/components/site/SEO";
-import PrimaryButton from '@/components'; // ✅ fixed path
+import { PrimaryButton } from "@/components";; // ✅ fixed path
 
 export default function TermsPage() {
   return (
@@ -16,7 +16,7 @@ export default function TermsPage() {
           accessing our services, you agree to these rules.
         </p>
         <div className="mt-6">
-          <PrimaryButton />
+          <PrimaryButton href="/">Click Me</PrimaryButton>
         </div>
       </main>
     </>

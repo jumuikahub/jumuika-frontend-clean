@@ -1,36 +1,33 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
-import { Button } from "@/components"; // unified barrel import
+import { cn } from "@/lib/utils";
 
 export interface PrimaryButtonProps {
-  text: string;
-  href?: string;
+  href: string;
   icon?: boolean;
   className?: string;
+  children: ReactNode; // ✅ allow text or JSX children
 }
 
-const PrimaryButton: React.FC<PrimaryButtonProps> = ({
-  text,
+export default function PrimaryButton({
   href,
-  icon = false,
-  className = "",
-}) => {
-  const button = (
-    <Button className={`px-6 py-3 text-lg font-semibold ${className}`}>
-      {text}
-      {icon && <span className="ml-2">👉</span>}
-    </Button>
+  icon,
+  className,
+  children,
+}: PrimaryButtonProps) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition",
+        className
+      )}
+    >
+      {children}
+      {icon && <span className="ml-2">→</span>}
+    </Link>
   );
+}
 
-  if (href) {
-    return (
-      <Link href={href} passHref>
-        {button}
-      </Link>
-    );
-  }
-
-  return button;
-};
 
 export default PrimaryButton;
