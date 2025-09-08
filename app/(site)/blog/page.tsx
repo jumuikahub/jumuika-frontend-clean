@@ -1,17 +1,14 @@
-// app/(site)/blog/page.tsx
-import { PrimaryButton } from "@/components";
+import BlogSection from "@/components/BlogSection";
+
+export const metadata = {
+  title: "Blog | Jumuika Hub KE",
+  description: "Read insights, guides, and updates from Jumuika Hub KE."
+};
 
 export default function BlogPage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold">Our Blog</h1>
-      <p className="mt-2 text-gray-600">
-        Insights, updates, and news from Jumuika Hub KE.
-      </p>
-
-      <PrimaryButton href="/about" icon className="mt-4">
-        Back to About
-      </PrimaryButton>
+    <main className="container mx-auto px-4 py-12">
+      <BlogSection />
     </main>
   );
 }

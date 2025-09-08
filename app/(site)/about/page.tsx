@@ -1,17 +1,14 @@
-// app/(site)/about/page.tsx
-import { PrimaryButton } from "@/components";
+import AboutSection from "@/components/AboutSection";
+
+export const metadata = {
+  title: "About | Jumuika Hub KE",
+  description: "Learn about Jumuika Hub KE, our mission, and how we empower businesses in Kenya."
+};
 
 export default function AboutPage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold">About Us</h1>
-      <p className="mt-2 text-gray-600">
-        Learn more about Jumuika Hub KE and our mission.
-      </p>
-
-      <PrimaryButton href="/how-it-works" icon className="mt-4">
-        How It Works
-      </PrimaryButton>
+    <main className="container mx-auto px-4 py-12">
+      <AboutSection />
     </main>
   );
 }

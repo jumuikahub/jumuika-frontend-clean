@@ -4,29 +4,37 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run setup:fresh && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "setup:fresh": "node setup-fresh-clone.js",
+    "switch:site": "bash ./switch-site.sh",
+    "switch:site:win": "powershell -ExecutionPolicy Bypass -File ./switch-site.ps1",
+    "switch:restore": "bash ./switch-site.sh restore"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.5.0",
-    "@supabase/supabase-js": "^2.45.0",
+    "@supabase/ssr": "^0.4.0",
+    "@tanstack/react-query": "^5.60.5",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.542.0",
-    "next": "14.2.5",
+    "lucide-react": "^0.469.0",
+    "next": "14.2.32",
+    "next-themes": "^0.3.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "sonner": "^1.4.0",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
-    "@types/react": "^18.2.24",
-    "@types/react-dom": "^18.2.12",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "14.2.5",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4",
-    "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.5.4"
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.3",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.6.3"
   }
 }

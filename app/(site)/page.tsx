@@ -1,18 +1,20 @@
-// app/(site)/page.tsx
-import { PrimaryButton } from "@/components";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import BlogSection from "@/components/BlogSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+
+export const metadata = {
+  title: "Jumuika Hub KE",
+  description: "WhatsApp-first SaaS business toolkit for Kenya — bookings, payments, rewards, and more."
+};
 
 export default function HomePage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold">Welcome to Jumuika Hub KE</h1>
-      <p className="mt-2 text-gray-600">
-        WhatsApp-First SaaS Business Toolkit
-      </p>
-
-      {/* Test usage of PrimaryButton */}
-      <PrimaryButton href="/about" icon className="mt-4">
-        Get Started
-      </PrimaryButton>
+    <main className="container mx-auto px-4 py-12 space-y-16">
+      <HeroSection />
+      <HowItWorksSection />
+      <AboutSection />
+      <BlogSection />
     </main>
   );
 }
