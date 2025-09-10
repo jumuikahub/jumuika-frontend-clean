@@ -2,7 +2,11 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # Run placeholder test
-npm test
-
-# Print a green check ✅ when test passes
-echo -e "\033[32m✅ Pre-commit checks passed\033[0m"
+if npm test; then
+  # Success
+  echo -e "\033[32m✅ Pre-commit checks passed\033[0m"
+else
+  # Failure
+  echo -e "\033[31m❌ Pre-commit checks failed. Commit aborted.\033[0m"
+  exit 1
+fi
