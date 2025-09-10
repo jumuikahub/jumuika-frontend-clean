@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run placeholder test
+npm test
+
+# Print a green check ✅ when test passes
+echo -e "\033[32m✅ Pre-commit checks passed\033[0m"
