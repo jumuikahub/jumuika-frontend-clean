@@ -1,30 +1,35 @@
 // lib/api.ts
+export async function callApi(
+  path: string,
+  method: string = "GET",
+  body?: any
+): Promise<{ success: boolean; message?: string; data?: any }> {
+  try {
+    const res = await fetch(path, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: body ? JSON.stringify(body) : undefined,
+    });
 
-/**
- * Utility to call backend API endpoints
- * @param endpoint - API route (e.g. "/api/whatsapp/send")
- * @param method - HTTP method (default: POST)
- * @param body - Request payload (optional)
- */
-export async function callApi<T>(
-  endpoint: string,
-  method: "GET" | "POST" | "PUT" | "DELETE" = "POST",
-  body?: Record<string, any>
-): Promise<T> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+    const json = await res.json().catch(() => ({}));
 
-  const res = await fetch(`${baseUrl}${endpoint}`, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+    if (!res.ok) {
+      return {
+        success: false,
+        message: json?.message || `Request failed with ${res.status}`,
+      };
+    }
 
-  if (!res.ok) {
-    const error = await res.text();
-    throw new Error(`API call failed: ${error}`);
+    return {
+      success: true,
+      message: json?.message,
+      data: json?.data,
+    };
+  } catch (err: any) {
+    console.error("API call error:", err);
+    return {
+      success: false,
+      message: "Network error",
+    };
   }
-
-  return res.json() as Promise<T>;
 }

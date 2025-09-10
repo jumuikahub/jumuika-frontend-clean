@@ -18,7 +18,7 @@ files.forEach((file) => {
   if (file.includes("/lib/") || file.includes("/server/") || file.includes("/app/api/")) {
     content = content.replace(
       /fetch\(["'`]\/api\//g,
-      `fetch(\`\${process.env.NEXT_PUBLIC_APP_URL}/api/`
+      "fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/"
     );
   }
 

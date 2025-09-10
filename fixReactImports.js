@@ -30,7 +30,7 @@ function fixFile(filePath) {
     // If "use client" is the first line, insert after it
     newContent = content.replace(
       /^("use client";\s*\n)/,
-      `$1import React from "react";\n`
+      "$1import React from \"react\";\n"
     );
   } else {
     // Otherwise, insert at very top

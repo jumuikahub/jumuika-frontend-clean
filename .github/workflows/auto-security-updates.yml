@@ -1,0 +1,61 @@
+name: Auto Security Updates
+
+on:
+  schedule:
+    - cron: "0 3 * * 0" # Runs every Sunday at 03:00 UTC
+  workflow_dispatch: # Allow manual trigger too
+
+jobs:
+  security-updates:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit fix
+        run: npm audit fix --force
+
+      - name: Run lint and type-check
+        run: |
+          npm run lint:fix
+          npm run type-check
+
+      - name: Verify Next.js build
+        run: npm run build
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B security-updates
+          git add package.json package-lock.json
+          git commit -m "chore: automated security updates (lint, type-check & build passed)" || echo "No changes to commit"
+          git push origin security-updates --force
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: security-updates
+          title: "Automated Security Updates"
+          body: |
+            This PR includes automated security updates from `npm audit fix --force`.
+
+            ✅ Lint, type-check, and build have already passed in this workflow.
+
+            Please review changes carefully before merging.
+          labels: security, automated

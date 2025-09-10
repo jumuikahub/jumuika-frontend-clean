@@ -3,37 +3,38 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/button";
-import PrimaryButtons from @/components/ui/PrimaryButtons";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "/terms", label: "Terms" },
+  { href: "/how-it-works", label: "How It Works" },
   { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+    <header className="border-b bg-background">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-primary">
+        <Link href="/" className="font-bold text-xl">
           Jumuika Hub KE
         </Link>
 
-        {/* Nav Links */}
-        <nav className="hidden md:flex items-center space-x-6">
+        {/* Navigation */}
+        <nav className="flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium hover:text-primary transition-colors",
-                pathname === link.href ? "text-primary" : "text-gray-600"
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === link.href
+                  ? "text-primary"
+                  : "text-muted-foreground"
               )}
             >
               {link.label}
@@ -41,10 +42,8 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA Buttons */}
-        <div className="flex items-center space-x-2">
-          <PrimaryButtons />
-        </div>
+        {/* CTA */}
+        <PrimaryButton>Get Started</PrimaryButton>
       </div>
     </header>
   );

@@ -1,36 +1,37 @@
-// lib/api.ts
+// lib/libapi.ts
 import { BASE_URL } from "@/lib/env";
 
+// Build full API URL
 function buildUrl(path: string) {
   if (/^https?:\/\//i.test(path)) return path;
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${BASE_URL}${normalized}`;
+  return `${BASE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
 }
 
-export async function apiGet<T = unknown>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(buildUrl(path), {
-    ...init,
-    method: "GET",
+// Main API fetch wrapper with generics
+export async function apiFetch<T = any>(
+  path: string,
+  method: string = "GET",
+  body?: any,
+  options?: RequestInit
+): Promise<T> {
+  const url = buildUrl(path);
+
+  const res = await fetch(url, {
+    method,
     headers: {
       "Content-Type": "application/json",
-      ...(init?.headers || {}),
+      ...(options?.headers || {}),
     },
-    // If you call this server-side and need revalidation, pass it via init.next
+    body: body ? JSON.stringify(body) : undefined,
+    ...options,
   });
-  if (!res.ok) throw new Error(`GET ${buildUrl(path)} -> ${res.status}`);
+
+  if (!res.ok) {
+    throw new Error(`API request failed: ${res.status} ${res.statusText}`);
+  }
+
   return (await res.json()) as T;
 }
 
-export async function apiPost<T = unknown>(path: string, body: any, init?: RequestInit): Promise<T> {
-  const res = await fetch(buildUrl(path), {
-    ...init,
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers || {}),
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`POST ${buildUrl(path)} -> ${res.status}`);
-  return (await res.json()) as T;
-}
+// ✅ Alias for backward compatibility
+export const callApi = apiFetch;

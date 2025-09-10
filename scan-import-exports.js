@@ -153,7 +153,7 @@ function processProject(project) {
         mismatches.push({
           file: sf.getFilePath(),
           spec,
-          issue: `Default import used but target has no default export.`,
+          issue: "Default import used but target has no default export.",
         });
 
         if (FIX) {
@@ -182,7 +182,7 @@ function processProject(project) {
           mismatches.push({
             file: sf.getFilePath(),
             spec,
-            issue: `Named import(s) used but target only exports default.`,
+            issue: "Named import(s) used but target only exports default.",
           });
 
           if (FIX) {
@@ -214,7 +214,7 @@ function main() {
       project.saveSync();
       console.log("\n🛠  Applied fixes in-place. Review with `git diff`.");
     } else {
-      console.log('\nRun with "--fix" to apply automatic fixes.');
+      console.log("\nRun with \"--fix\" to apply automatic fixes.");
     }
   }
 }
