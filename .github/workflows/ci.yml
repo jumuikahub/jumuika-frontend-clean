@@ -28,6 +28,24 @@ jobs:
       - name: Run safeguard (no Jest allowed)
         run: npm run ci:check
 
+      - name: Security audit (fail on vulnerabilities)
+        run: |
+          set -e
+          echo "🔒 Running npm audit..."
+          npm audit --production --audit-level=high
+          echo "✅ No blocking vulnerabilities found."
+
+      # Optional stricter mode: uncomment to auto-fix and fail if fixes applied
+      # - name: Security audit (strict with fix)
+      #   run: |
+      #     set -e
+      #     echo "🔒 Running npm audit fix..."
+      #     if npm audit fix --force --dry-run | grep -q "fixed"; then
+      #       echo "❌ Critical vulnerabilities detected that require fixing."
+      #       exit 1
+      #     fi
+      #     echo "✅ No critical vulnerabilities requiring fixes."
+
       - name: Build project
         run: npm run build
 
