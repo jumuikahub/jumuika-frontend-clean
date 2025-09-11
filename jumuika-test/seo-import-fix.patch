@@ -1,0 +1,44 @@
+diff --git a/app/(site)/about/page.tsx b/app/(site)/about/page.tsx
+--- a/app/(site)/about/page.tsx
++++ b/app/(site)/about/page.tsx
+@@ -1,6 +1,7 @@
+ "use client";
+ 
+-import SEO from "@/components/SEO";
++import SEO from "@/components/site/SEO";
+ 
+ export default function AboutPage() {
+   return (
+diff --git a/app/(site)/blog/page.tsx b/app/(site)/blog/page.tsx
+--- a/app/(site)/blog/page.tsx
++++ b/app/(site)/blog/page.tsx
+@@ -1,6 +1,7 @@
+ "use client";
+ 
+-import SEO from "@/components/SEO";
++import SEO from "@/components/site/SEO";
+ 
+ export default function BlogPage() {
+   return (
+diff --git a/app/(site)/how-it-works/page.tsx b/app/(site)/how-it-works/page.tsx
+--- a/app/(site)/how-it-works/page.tsx
++++ b/app/(site)/how-it-works/page.tsx
+@@ -1,6 +1,7 @@
+ "use client";
+ 
+-import SEO from "@/components/SEO";
++import SEO from "@/components/site/SEO";
+ 
+ export default function HowItWorksPage() {
+   return (
+diff --git a/app/(site)/privacy/page.tsx b/app/(site)/privacy/page.tsx
+--- a/app/(site)/privacy/page.tsx
++++ b/app/(site)/privacy/page.tsx
+@@ -1,6 +1,7 @@
+ "use client";
+ 
+-import SEO from "@/components/SEO";
++import SEO from "@/components/site/SEO";
+ 
+ export default function PrivacyPage() {
+   return (

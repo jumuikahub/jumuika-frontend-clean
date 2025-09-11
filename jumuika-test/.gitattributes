@@ -1,0 +1,22 @@
+# Enforce consistent line endings
+* text=auto eol=lf
+
+# Treat these as binary — don’t try to diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.mp3 binary
+*.pdf binary
+
+# Lock JSON, lockfiles to LF (avoid Windows CRLF)
+*.json text eol=lf
+*.lock text eol=lf
+
+# Ensure shell scripts stay executable and LF-only
+*.sh text eol=lf
+
+# PowerShell scripts (keep CRLF for Windows users)
+*.ps1 text eol=crlf

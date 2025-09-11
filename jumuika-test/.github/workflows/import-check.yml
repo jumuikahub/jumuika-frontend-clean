@@ -1,0 +1,19 @@
+name: Import Check
+
+on: [push, pull_request]
+
+jobs:
+  import-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Import Fix
+        run: |
+          chmod +x ./fix-imports.sh
+          ./fix-imports.sh
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "❌ Import issues detected. Please run ./fix-imports.sh locally."
+            exit 1
+          fi

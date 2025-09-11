@@ -1,0 +1,14 @@
+{
+  "dev": [
+    "internlink-temp",
+    "institutions-temp"
+  ],
+  "staging": [
+    "internlink-temp",
+    "institutions-temp"
+  ],
+  "production": [
+    "internlink-temp",
+    "institutions-temp"
+  ]
+}
