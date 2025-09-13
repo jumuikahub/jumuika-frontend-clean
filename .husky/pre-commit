@@ -1,12 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Run lint and tests before allowing commit
-if npm run lint && npm test; then
-  # Success
-  echo -e "\033[32m✅ Pre-commit checks passed (lint + tests)\033[0m"
+echo "🔍 Running baseline checks..."
+npm run ci:check
+
+if [ $? -eq 0 ]; then
+  echo "✅ Commit checks passed"
 else
-  # Failure
-  echo -e "\033[31m❌ Pre-commit checks failed. Commit aborted.\033[0m"
+  echo "❌ Commit checks failed"
   exit 1
 fi

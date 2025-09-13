@@ -1,34 +1,49 @@
 #!/usr/bin/env node
-
-/**
- * setup-fresh-clone.js
- *
- * Ensures Husky and Git hooks are automatically set up
- * when the repo is freshly cloned.
- */
-
 const { execSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
 
-function run(cmd) {
+const GREEN = "\x1b[32m";
+const RED = "\x1b[31m";
+const RESET = "\x1b[0m";
+
+function run(command, description) {
   try {
-    console.log(`\x1b[36m▶ Running:\x1b[0m ${cmd}`);
-    execSync(cmd, { stdio: "inherit" });
+    console.log(`\n[SETUP] Running: ${command}`);
+    execSync(command, { stdio: "inherit" });
+    console.log(`${GREEN}✔ ${description}${RESET}`);
   } catch (err) {
-    console.error(`\x1b[31m✖ Failed:\x1b[0m ${cmd}`);
+    console.error(`${RED}✘ Failed: ${command}${RESET}`);
     process.exit(1);
   }
 }
 
+console.log("\n🚀 Starting fresh-clone setup…\n");
+
 // Install dependencies
-run("npm install");
+run("npm install", "Dependencies installed");
 
-// Ensure Husky is enabled
-run("npx husky install");
+// Initialize husky (no noisy init log)
+if (!fs.existsSync(".husky")) {
+  fs.mkdirSync(".husky");
+}
+run("npx husky install", "Husky hooks initialized");
 
-// Make sure pre-commit hook exists
-run("cat > .husky/pre-commit <<'EOF'\n#!/bin/sh\n. \"$(dirname \"$0\")/_/husky.sh\"\nnpm run lint\nEOF");
+// Write pre-commit hook directly (no deprecated husky add)
+const hookPath = path.join(".husky", "pre-commit");
+const hookContent = `#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-// Give execute permission
-run("chmod +x .husky/pre-commit");
+npm run ci:check
+`;
+fs.writeFileSync(hookPath, hookContent, { mode: 0o755 });
+console.log(`${GREEN}✔ Pre-commit hook written${RESET}`);
 
-console.log("\x1b[32m✅ Husky setup complete! Pre-commit hook installed.\x1b[0m");
+// Run CI check once immediately
+try {
+  execSync("npm run ci:check", { stdio: "inherit" });
+  console.log(`${GREEN}✅ Baseline checks passed${RESET}`);
+} catch (err) {
+  console.error(`${RED}❌ Baseline checks failed${RESET}`);
+  process.exit(1);
+}

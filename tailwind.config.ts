@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,17 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          DEFAULT: "#006E51", // Example brand color (you can change later)
-          light: "#33A890",
-          dark: "#004C37",
+        primary: {
+          DEFAULT: "#2563eb", // Jumuika blue
+          light: "#3b82f6",
+          dark: "#1e40af",
         },
-      },
-      fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        secondary: {
+          DEFAULT: "#10b981", // Jumuika green
+          light: "#34d399",
+          dark: "#047857",
+        },
+        accent: {
+          DEFAULT: "#f59e0b", // warm accent (orange/gold)
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;

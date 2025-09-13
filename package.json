@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+<<<<<<< HEAD
     "lint": "eslint . --max-warnings=0",
     "setup:fresh": "node setup-fresh-clone.js",
     "check:setup": "node check-setup.js"
@@ -27,21 +28,26 @@
     "lint": "next lint --max-warnings=0",
     "test": "echo \"No tests yet\" && exit 0",
     "setup:fresh": "node setup-fresh-clone.js"
+=======
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "ci:check": "node scripts/ci-check.js",
+    "setup:fresh": "node setup-fresh-clone.js",
+    "check:setup": "node setup-fresh-clone.js --verify"
+>>>>>>> 63626d1 (Fix submodule issue and update project files)
   },
   "dependencies": {
     "next": "14.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "autoprefixer": "^10.4.14",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
-    "husky": "^9.0.11",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.2"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "husky": "^9.1.4"
   }
 }

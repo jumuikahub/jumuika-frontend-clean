@@ -1,26 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
-import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function HeroSection() {
   return (
-    <section className="container mx-auto flex flex-col items-center justify-center gap-6 py-20 text-center">
-      <h1 className="max-w-2xl text-4xl font-bold leading-tight md:text-5xl">
-        WhatsApp-First SaaS Toolkit for Kenya
-      </h1>
-      <p className="max-w-xl text-lg text-muted-foreground">
-        Jumuika Hub KE helps businesses, schools, and institutions manage bookings, payments, and communication — all on WhatsApp.
-      </p>
-      <div className="flex gap-4">
-        <PrimaryButton asChild>
-          <Link href="/how-it-works">Get Started</Link>
-        </PrimaryButton>
+    <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-black py-20 px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-4xl mx-auto"
+      >
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+          Jumuika Hub KE
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+          Kenya’s first WhatsApp-First SaaS toolkit — powering smart payments, 
+          bookings, and automated business workflows.
+        </p>
         <Link
-          href="/about"
-          className="rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted"
+          href="https://wa.me/254700915610"
+          target="_blank"
+          className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-2xl shadow-md transition"
         >
-          Learn More
+          Get Started on WhatsApp
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }
