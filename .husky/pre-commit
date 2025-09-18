@@ -1,5 +1,5 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# Husky v10-safe pre-commit hook
 
 echo "🔍 Running pre-commit checks only on staged files..."
 npx lint-staged

@@ -1,8 +1,13 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# Husky v10-safe pre-push hook
 
 echo "✅ Running tests before push..."
-npm test || {
+
+# Run via npm so Jest resolves correctly on all platforms
+if npm test; then
+  echo "✅ Tests passed. Proceeding with push."
+  exit 0
+else
   echo "❌ Tests failed. Push aborted."
   exit 1
-}
+fi
