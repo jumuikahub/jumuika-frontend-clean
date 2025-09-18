@@ -1,13 +1,19 @@
 #!/bin/sh
-# Husky v10-safe pre-push hook
+# Husky v10-safe pre-push hook with test guard
 
 echo "✅ Running tests before push..."
 
-# Run via npm so Jest resolves correctly on all platforms
-if npm test; then
-  echo "✅ Tests passed. Proceeding with push."
-  exit 0
+# Look for test files in the repo
+if git ls-files | grep -E '\.test\.(js|jsx|ts|tsx)$' > /dev/null; then
+  echo "🔎 Test files found, running npm test..."
+  if npm test; then
+    echo "✅ Tests passed. Proceeding with push."
+    exit 0
+  else
+    echo "❌ Tests failed. Push aborted."
+    exit 1
+  fi
 else
-  echo "❌ Tests failed. Push aborted."
-  exit 1
+  echo "⚠️  No test files found. Skipping tests."
+  exit 0
 fi
