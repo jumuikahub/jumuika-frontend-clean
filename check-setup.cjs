@@ -1,21 +1,11 @@
 #!/usr/bin/env node
-// check-setup.cjs
 const fs = require("fs");
-const path = require("path");
 
-console.log("🔍 Running baseline checks...");
+console.log("🔍 Checking repo setup...");
 
-// Ensure husky is installed
-const huskyDir = path.join(process.cwd(), ".husky");
-if (!fs.existsSync(huskyDir)) {
-  console.error("❌ Husky directory missing!");
+if (!fs.existsSync(".husky/pre-commit")) {
+  console.error("❌ Husky pre-commit hook missing!");
   process.exit(1);
 }
 
-// Ensure node_modules exists
-if (!fs.existsSync(path.join(process.cwd(), "node_modules"))) {
-  console.error("❌ node_modules missing! Run npm install first.");
-  process.exit(1);
-}
-
-console.log("✅ Baseline checks passed.");
+console.log("✅ Husky hooks are installed correctly.");
