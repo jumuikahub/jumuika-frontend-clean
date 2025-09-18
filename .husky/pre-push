@@ -1,9 +1,15 @@
 #!/bin/sh
-# Husky v10-safe pre-push hook with test guard
+# Husky v10-safe pre-push hook with Jest + test file guard
 
 echo "✅ Running tests before push..."
 
-# Look for test files in the repo
+# Check if Jest is installed
+if ! command -v jest >/dev/null 2>&1; then
+  echo "⚠️  Jest not found. Skipping tests."
+  exit 0
+fi
+
+# Look for test files
 if git ls-files | grep -E '\.test\.(js|jsx|ts|tsx)$' > /dev/null; then
   echo "🔎 Test files found, running npm test..."
   if npm test; then

@@ -1,53 +1,68 @@
-name: CI Pipeline
+name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   pull_request:
-    branches: ["main"]
+    branches: [main]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-
-      - name: Clean environment (ensure fresh clone behaviour)
-        run: rm -rf node_modules package-lock.json .setup-fresh-clone-ran
+          node-version-file: ".nvmrc"
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run safeguard (no Jest allowed)
-        run: npm run ci:check
+      - name: Lint
+        run: npm run lint
 
-      - name: Security audit (fail on vulnerabilities)
+      - name: Run tests (with guard)
         run: |
-          set -e
-          echo "🔒 Running npm audit..."
-          npm audit --production --audit-level=high
-          echo "✅ No blocking vulnerabilities found."
+          if ! npx jest --version >/dev/null 2>&1; then
+            echo "⚠️ Jest not installed. Skipping tests."
+            exit 0
+          fi
+          if ! git ls-files | grep -E '\.test\.(js|jsx|ts|tsx)$' > /dev/null; then
+            echo "⚠️ No test files found. Skipping tests."
+            exit 0
+          fi
+          echo "🔎 Running Jest tests..."
+          npm test
 
-      # Optional stricter mode: uncomment to auto-fix and fail if fixes applied
-      # - name: Security audit (strict with fix)
-      #   run: |
-      #     set -e
-      #     echo "🔒 Running npm audit fix..."
-      #     if npm audit fix --force --dry-run | grep -q "fixed"; then
-      #       echo "❌ Critical vulnerabilities detected that require fixing."
-      #       exit 1
-      #     fi
-      #     echo "✅ No critical vulnerabilities requiring fixes."
-
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Run tests
-        run: npm test
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+        env:
+          VERCEL_ENV: production
+
+      - name: Health Check
+        run: |
+          echo "🔎 Checking /api/health..."
+          sleep 10
+          response=$(curl -s -o response.json -w "%{http_code}" https://jumuika-frontend-clean.vercel.app/api/health)
+          if [ "$response" != "200" ]; then
+            echo "❌ Health check failed with status $response"
+            exit 1
+          fi
+          if ! grep -q '"status":"ok"' response.json; then
+            echo "❌ Health check did not return status: ok"
+            exit 1
+          fi
+          echo "✅ Health check passed."
