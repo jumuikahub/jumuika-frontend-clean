@@ -1,15 +1,13 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "outline" | "ghost";
 }
 
 const buttonVariants = {
   default: "bg-primary text-white hover:bg-primary/90",
-  outline:
-    "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+  outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
   ghost: "hover:bg-accent hover:text-accent-foreground",
 };
 

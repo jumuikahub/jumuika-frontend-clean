@@ -18,11 +18,7 @@ function scanDir(dir) {
         return; // skip
       }
       scanDir(filepath);
-    } else if (
-      file.endsWith(".ts") ||
-      file.endsWith(".tsx") ||
-      file.endsWith(".js")
-    ) {
+    } else if (file.endsWith(".ts") || file.endsWith(".tsx") || file.endsWith(".js")) {
       let content = fs.readFileSync(filepath, "utf8");
       if (search.test(content)) {
         console.log(`Replacing in: ${filepath}`);

@@ -22,11 +22,7 @@ const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
     };
 
     return (
-      <Comp
-        ref={ref as any}
-        className={cn(baseClasses, variants[variant], className)}
-        {...props}
-      />
+      <Comp ref={ref as any} className={cn(baseClasses, variants[variant], className)} {...props} />
     );
   }
 );

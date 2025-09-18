@@ -10,15 +10,9 @@ type SupabaseContextType = {
   session: Session | null;
 };
 
-const SupabaseContext = createContext<SupabaseContextType | undefined>(
-  undefined
-);
+const SupabaseContext = createContext<SupabaseContextType | undefined>(undefined);
 
-export const SupabaseAuthProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const SupabaseAuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [supabase] = useState(() =>
     createBrowserClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -47,9 +41,7 @@ export const SupabaseAuthProvider = ({
   }, [supabase]);
 
   return (
-    <SupabaseContext.Provider value={{ supabase, session }}>
-      {children}
-    </SupabaseContext.Provider>
+    <SupabaseContext.Provider value={{ supabase, session }}>{children}</SupabaseContext.Provider>
   );
 };
 

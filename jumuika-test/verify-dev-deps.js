@@ -9,7 +9,7 @@ const required = [
   "ts-jest",
   "@testing-library/react",
   "@testing-library/jest-dom",
-  "jest"
+  "jest",
 ];
 
 console.log("🔍 Verifying required devDependencies...");

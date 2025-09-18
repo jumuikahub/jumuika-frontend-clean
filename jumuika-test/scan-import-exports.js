@@ -214,7 +214,7 @@ function main() {
       project.saveSync();
       console.log("\n🛠  Applied fixes in-place. Review with `git diff`.");
     } else {
-      console.log("\nRun with \"--fix\" to apply automatic fixes.");
+      console.log('\nRun with "--fix" to apply automatic fixes.');
     }
   }
 }

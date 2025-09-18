@@ -12,7 +12,11 @@ export default function BlogSection() {
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Blog</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {blogPosts.map((post, idx) => (
-            <a key={idx} href={post.link} className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition">
+            <a
+              key={idx}
+              href={post.link}
+              className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition"
+            >
               <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
               <p className="text-gray-500 text-sm">{post.date}</p>
             </a>

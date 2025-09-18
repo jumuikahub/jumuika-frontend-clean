@@ -5,12 +5,10 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Manager | Jumuika Hub KE",
-  description:
-    "Manage vendors, services, and orders in real-time via WhatsApp. No apps needed.",
+  description: "Manage vendors, services, and orders in real-time via WhatsApp. No apps needed.",
   openGraph: {
     title: "Manager | Jumuika Hub KE",
-    description:
-      "Manage vendors, services, and orders in real-time via WhatsApp. No apps needed.",
+    description: "Manage vendors, services, and orders in real-time via WhatsApp. No apps needed.",
     url: "/manager",
     images: ["/og-image.png"],
   },
@@ -26,8 +24,8 @@ export default function ManagerPage() {
           Jumuika Manager
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-center text-emerald-900/80">
-          A lightweight dashboard to manage listings, orders, and messaging —
-          while customers interact on WhatsApp. Real-time, no apps needed.
+          A lightweight dashboard to manage listings, orders, and messaging — while customers
+          interact on WhatsApp. Real-time, no apps needed.
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-3">

@@ -33,16 +33,11 @@ function analyzeFile(filePath) {
 
   if (hasClassNameProp && rootApplied) return null;
 
-  const componentNameMatch = content.match(
-    /export\s+(default\s+)?function\s+(\w+)/
-  );
+  const componentNameMatch = content.match(/export\s+(default\s+)?function\s+(\w+)/);
   const componentName = componentNameMatch ? componentNameMatch[2] : "MyComponent";
 
   // Generate suggested fix
-  const fixTemplate = `// Suggested fix for ${path.relative(
-    COMPONENTS_DIR,
-    filePath
-  )}
+  const fixTemplate = `// Suggested fix for ${path.relative(COMPONENTS_DIR, filePath)}
 import * as React from "react";
 
 type ${componentName}Props = {

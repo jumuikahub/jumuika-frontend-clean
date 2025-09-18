@@ -67,9 +67,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`block rounded px-3 py-2 text-sm font-medium hover:bg-gray-100 ${
-                    pathname === link.href
-                      ? "text-green-600 bg-gray-50"
-                      : "text-gray-700"
+                    pathname === link.href ? "text-green-600 bg-gray-50" : "text-gray-700"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >

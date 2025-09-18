@@ -19,9 +19,7 @@ export default function Logo({ href = "/", size = 40 }: LogoProps) {
         className="rounded-lg"
         priority
       />
-      <span className="font-bold text-xl tracking-tight text-gray-900">
-        Jumuika Hub KE
-      </span>
+      <span className="font-bold text-xl tracking-tight text-gray-900">Jumuika Hub KE</span>
     </Link>
   );
 }

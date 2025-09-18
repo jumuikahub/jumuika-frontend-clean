@@ -1,7 +1,4 @@
-export async function proxyFetch(
-  path: string,
-  options: RequestInit = {}
-): Promise<any> {
+export async function proxyFetch(path: string, options: RequestInit = {}): Promise<any> {
   try {
     const res = await fetch(`/api/${path}`, {
       ...options,

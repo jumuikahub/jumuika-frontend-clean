@@ -1,12 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔍 Running baseline checks..."
-npm run ci:check
-
-if [ $? -eq 0 ]; then
-  echo "✅ Commit checks passed"
-else
-  echo "❌ Commit checks failed"
-  exit 1
-fi
+echo "🔎 Running pre-commit checks only on staged files..."
+npx lint-staged

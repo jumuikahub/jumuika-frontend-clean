@@ -11,11 +11,7 @@ export const metadata: Metadata = generateMetadata({
   image: "https://jumuikahub.com/og-image.png",
 });
 
-export default function SiteLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navbar at top */}

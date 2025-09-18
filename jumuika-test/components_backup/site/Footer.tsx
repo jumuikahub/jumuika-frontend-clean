@@ -15,22 +15,17 @@ export default function Footer() {
               <span className="text-sm font-medium">Jumuika Hub KE</span>
             </div>
             <p className="text-sm leading-relaxed text-neutral-600">
-              WhatsApp-first smart business toolkit for vendors &amp; institutions —
-              simple listings, instant WhatsApp orders, and real-time engagement.
+              WhatsApp-first smart business toolkit for vendors &amp; institutions — simple
+              listings, instant WhatsApp orders, and real-time engagement.
             </p>
           </div>
 
           {/* Company */}
           <nav className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
-              Company
-            </h3>
+            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
+                <Link href="/blog" className="text-sm text-neutral-700 hover:text-neutral-900">
                   Blog
                 </Link>
               </li>
@@ -39,23 +34,15 @@ export default function Footer() {
 
           {/* Legal */}
           <nav className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">
-              Legal
-            </h3>
+            <h3 className="text-sm font-semibold tracking-wide text-neutral-900">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/privacy"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
+                <Link href="/privacy" className="text-sm text-neutral-700 hover:text-neutral-900">
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-neutral-700 hover:text-neutral-900"
-                >
+                <Link href="/terms" className="text-sm text-neutral-700 hover:text-neutral-900">
                   Terms &amp; Conditions
                 </Link>
               </li>

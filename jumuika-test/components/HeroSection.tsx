@@ -8,7 +8,8 @@ export default function HeroSection() {
         WhatsApp-First SaaS Toolkit for Kenya
       </h1>
       <p className="max-w-xl text-lg text-muted-foreground">
-        Jumuika Hub KE helps businesses, schools, and institutions manage bookings, payments, and communication — all on WhatsApp.
+        Jumuika Hub KE helps businesses, schools, and institutions manage bookings, payments, and
+        communication — all on WhatsApp.
       </p>
       <div className="flex gap-4">
         <PrimaryButton asChild>

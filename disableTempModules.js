@@ -14,8 +14,7 @@ TEMP_FOLDERS.forEach((folder) => {
   if (fs.existsSync(pageFile)) {
     let content = fs.readFileSync(pageFile, "utf8");
     if (!content.startsWith("// TEMP DISABLED")) {
-      content =
-        `// TEMP DISABLED: excluded from build\n/*\n${content}\n*/\n`;
+      content = `// TEMP DISABLED: excluded from build\n/*\n${content}\n*/\n`;
       fs.writeFileSync(pageFile, content, "utf8");
       console.log(`🚫 Disabled route: ${pageFile}`);
     }
@@ -26,8 +25,7 @@ TEMP_FOLDERS.forEach((folder) => {
   if (fs.existsSync(onboardPage)) {
     let onboardContent = fs.readFileSync(onboardPage, "utf8");
     if (!onboardContent.startsWith("// TEMP DISABLED")) {
-      onboardContent =
-        `// TEMP DISABLED: excluded from build\n/*\n${onboardContent}\n*/\n`;
+      onboardContent = `// TEMP DISABLED: excluded from build\n/*\n${onboardContent}\n*/\n`;
       fs.writeFileSync(onboardPage, onboardContent, "utf8");
       console.log(`🚫 Disabled nested route: ${onboardPage}`);
     }

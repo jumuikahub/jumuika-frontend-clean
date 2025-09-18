@@ -5,7 +5,7 @@ const baseDir = path.join(__dirname); // project root
 
 function scanFiles(dir) {
   let files = [];
-  fs.readdirSync(dir).forEach(file => {
+  fs.readdirSync(dir).forEach((file) => {
     const fullPath = path.join(dir, file);
     if (fs.statSync(fullPath).isDirectory()) {
       if (!["node_modules", ".git"].includes(file)) {

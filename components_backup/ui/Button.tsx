@@ -50,46 +50,29 @@ type ButtonAsAnchor = CommonProps &
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 /** ----- Component ----- */
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      children,
-      className,
-      variant = "primary",
-      size = "md",
-      ...rest
-    } = props as ButtonProps;
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+  const { children, className, variant = "primary", size = "md", ...rest } = props as ButtonProps;
 
-    const classes = clsx(baseClasses(variant, size), className);
+  const classes = clsx(baseClasses(variant, size), className);
 
-    if ((rest as ButtonAsAnchor).as === "a") {
-      // Anchor branch – only spread anchor-safe props
-      const { href, ...anchorRest } = rest as ButtonAsAnchor;
-      return (
-        <a
-          ref={ref as Ref<HTMLAnchorElement>}
-          href={href}
-          className={classes}
-          {...anchorRest}
-        >
-          {children}
-        </a>
-      );
-    }
-
-    // Button branch – only spread button-safe props
-    const buttonRest = rest as ButtonAsButton;
+  if ((rest as ButtonAsAnchor).as === "a") {
+    // Anchor branch – only spread anchor-safe props
+    const { href, ...anchorRest } = rest as ButtonAsAnchor;
     return (
-      <button
-        ref={ref as Ref<HTMLButtonElement>}
-        className={classes}
-        {...buttonRest}
-      >
+      <a ref={ref as Ref<HTMLAnchorElement>} href={href} className={classes} {...anchorRest}>
         {children}
-      </button>
+      </a>
     );
   }
-);
+
+  // Button branch – only spread button-safe props
+  const buttonRest = rest as ButtonAsButton;
+  return (
+    <button ref={ref as Ref<HTMLButtonElement>} className={classes} {...buttonRest}>
+      {children}
+    </button>
+  );
+});
 
 Button.displayName = "Button";
 export default Button;

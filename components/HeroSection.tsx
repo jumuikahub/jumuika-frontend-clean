@@ -12,12 +12,10 @@ export default function HeroSection() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto"
       >
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-          Jumuika Hub KE
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Jumuika Hub KE</h1>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
-          Kenya’s first WhatsApp-First SaaS toolkit — powering smart payments, 
-          bookings, and automated business workflows.
+          Kenya’s first WhatsApp-First SaaS toolkit — powering smart payments, bookings, and
+          automated business workflows.
         </p>
         <Link
           href="https://wa.me/254700915610"

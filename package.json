@@ -2,52 +2,44 @@
   "name": "jumuika-frontend-clean",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
     "lint": "eslint . --max-warnings=0",
-    "setup:fresh": "node setup-fresh-clone.js",
-    "check:setup": "node check-setup.js"
+    "setup:fresh": "node setup-fresh-clone.cjs",
+    "check:setup": "node check-setup.cjs",
+    "ci:check": "npm run check:setup"
   },
   "dependencies": {
-    "next": "14.2.32",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "@supabase/ssr": "^0.4.0",
-    "@supabase/supabase-js": "^2.44.4"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.32",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.3"
-    "lint": "next lint --max-warnings=0",
-    "test": "echo \"No tests yet\" && exit 0",
-    "setup:fresh": "node setup-fresh-clone.js"
-=======
-    "lint": "eslint .",
-    "format": "prettier --check .",
-    "format:fix": "prettier --write .",
-    "type-check": "tsc --noEmit",
-    "ci:check": "node scripts/ci-check.js",
-    "setup:fresh": "node setup-fresh-clone.js",
-    "check:setup": "node setup-fresh-clone.js --verify"
->>>>>>> 63626d1 (Fix submodule issue and update project files)
-  },
-  "dependencies": {
-    "next": "14.2.3",
+    "next": "^14.2.32",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.3",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "husky": "^9.1.4"
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "autoprefixer": "10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.5",
+    "lint-staged": "^15.2.2",
+    "postcss": "8.4.41",
+    "prettier": "^3.3.3",
+    "tailwindcss": "3.4.10",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.3.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,scss,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }

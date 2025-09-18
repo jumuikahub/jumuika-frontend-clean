@@ -54,7 +54,10 @@ function patchFile(filePath) {
     /export\s+(default\s+)?function\s+(\w+)\s*\(([^)]*)\)/,
     (match, def, name, params) => {
       if (!params.includes("className")) {
-        const newParams = params.trim() === "" ? "{ className = '', ...props }" : `{ className = '', ...props, ${params.replace(/[{}]/g, "")} }`;
+        const newParams =
+          params.trim() === ""
+            ? "{ className = '', ...props }"
+            : `{ className = '', ...props, ${params.replace(/[{}]/g, "")} }`;
         return `export ${def || ""}function ${name}(${newParams})`;
       }
       return match;

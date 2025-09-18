@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* Global tweaks */
-html, body {
+html,
+body {
   height: 100%;
 }
