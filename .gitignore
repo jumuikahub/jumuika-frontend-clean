@@ -1,106 +1,26 @@
-# ----------------------------
-# OS & Editor junk
-# ----------------------------
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
+# Dependencies
+/node_modules
 
-# VSCode & IDE settings
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Logs & temp files
-*.log
-*.tmp
-*.bak
-*.swp
-*.pid
-*.seed
-*.cover
-*.orig
-*.rej
-
-# Node & dependencies
-node_modules/
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
-.pnp/
-.pnp.js
 
-# Environment & secrets
+# Build output
+/.next
+/out
+
+# Local env
 .env
-.env.*
-!.env.example
+.env.local
+.env.*.local
 
-# Build outputs
-.next/
-out/
-dist/
-build/
-coverage/
-*.tsbuildinfo
+# Vercel
+.vercel
 
-# ----------------------------
-# Windows Reserved Names
-# ----------------------------
-# These filenames cannot exist on Windows, even with extensions
-CON
-PRN
-AUX
-NUL
-COM1
-COM2
-COM3
-COM4
-COM5
-COM6
-COM7
-COM8
-COM9
-LPT1
-LPT2
-LPT3
-LPT4
-LPT5
-LPT6
-LPT7
-LPT8
-LPT9
+# Coverage
+/coverage
 
-# Match both bare names and names with any extension
-CON*
-PRN*
-AUX*
-NUL*
-COM1*
-COM2*
-COM3*
-COM4*
-COM5*
-COM6*
-COM7*
-COM8*
-COM9*
-LPT1*
-LPT2*
-LPT3*
-LPT4*
-LPT5*
-LPT6*
-LPT7*
-LPT8*
-LPT9*
-
-# ----------------------------
-# Vercel deployment metadata
-# ----------------------------
-.vercel/
+# Misc
+.DS_Store
+*.log
